@@ -1,6 +1,5 @@
 pub struct TurnState {
-    // todo: make private
-    pub money: u8,
+    money: u8,
 }
 
 impl TurnState {
@@ -11,5 +10,9 @@ impl TurnState {
     #[cfg(test)]
     pub fn debug_money(&self) -> u8 {
         self.money
+    }
+
+    pub fn add_money(&mut self, money: u8) {
+       self.money += money; 
     }
 }

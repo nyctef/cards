@@ -22,7 +22,7 @@ struct BasicTreasure {
 
 impl Card for BasicTreasure {
     fn play(&self, turn_state: &mut TurnState) {
-        turn_state.money += self.money;
+        turn_state.add_money(self.money);
     }
 }
 
