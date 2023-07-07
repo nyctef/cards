@@ -22,6 +22,7 @@ where
 
     pub fn from_initial_cards(mut cards: Vec<C>) -> Self {
         let mut result = Self::new();
+        // todo: shuffle
         result.deck.add_range(&mut cards);
         result
     }
