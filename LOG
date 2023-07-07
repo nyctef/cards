@@ -1,0 +1,15 @@
+thinking about possible approaches
+mostly OOP vs functional
+
+OOP: card.play(game_state) mutates the game state in whatever way it wants
+  - makes implementing undo/rewind tricky  
+    (event sourcing might be the solution?)
+  - means fewer things have to be explicitly modeled as data
+  - might make stacked game states (like in Possession) easier to implement
+    by intercepting calls?
+functional: playCard(card, game_state) -> (new_game_state, effects)
+  - basically the ELM architecture?
+  - undo is trivial since the old game state is unaffected
+  - could try to use persistent data structures to share data between old and
+    new game states
+
