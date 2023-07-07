@@ -1,33 +1,47 @@
+#![allow(unused)]
+
 use derive_more::Constructor;
 
 fn main() {
     println!("Hello, world!");
 }
-#[derive(Constructor, Debug)]
-struct Game {}
-impl Game {
-    fn add_player(&mut self, name: &str, player: &mut dyn Player) {
-        todo!()
+#[derive(Debug)]
+struct Game<'a> {
+    players: Vec<&'a mut dyn Player>,
+    // temporary
+    copper_count: u8,
+}
+impl<'a> Game<'a> {
+    fn new() -> Self {
+        Self {
+            players: Vec::new(),
+            copper_count: 0,
+        }
     }
 
-    fn play_one_turn(&self) {
-        todo!()
+    fn add_player(&mut self, name: &str, player: &'a mut dyn Player) {
+        self.players.push(player);
     }
 
+    fn play_one_turn(&mut self) {
+        self.copper_count -= 1;
+    }
+
+    fn populate_basic_kingdom(&mut self) {
+        self.copper_count = 60;
+    }
+
+    fn deal_starting_hands(&mut self) {
+        self.copper_count -= 7;
+    }
+
+    #[cfg(test)]
     fn debug_copper_supply_count(&self) -> u8 {
-        todo!()
-    }
-
-    fn populate_basic_kingdom(&self) {
-        todo!()
-    }
-
-    fn deal_starting_hands(&self) {
-        todo!()
+        self.copper_count
     }
 }
 
-trait Player {}
+trait Player: std::fmt::Debug {}
 
 #[derive(Constructor, Debug)]
 struct AlwaysBuyCopper {}
@@ -47,8 +61,16 @@ mod tests {
         game.populate_basic_kingdom();
         assert_eq!(60, game.debug_copper_supply_count());
         game.deal_starting_hands();
-        assert_eq!(53, game.debug_copper_supply_count(), "7 coppers dealt to one player");
+        assert_eq!(
+            53,
+            game.debug_copper_supply_count(),
+            "7 coppers dealt to one player"
+        );
         game.play_one_turn();
-        assert_eq!(52, game.debug_copper_supply_count(), "player should have bought one copper");
+        assert_eq!(
+            52,
+            game.debug_copper_supply_count(),
+            "player should have bought one copper"
+        );
     }
 }
