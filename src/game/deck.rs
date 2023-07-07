@@ -62,6 +62,12 @@ mod tests {
         let mut deck = Deck::<i32>::new();
         deck.add_range(&mut vec![1, 2, 3]);
         let cards = deck.draw(5);
-        assert!(matches!(cards, DrawResult::Partial { .. }))
+        assert_eq!(
+            cards,
+            DrawResult::Partial {
+                0: vec![1, 2, 3],
+                1: 2
+            }
+        )
     }
 }
