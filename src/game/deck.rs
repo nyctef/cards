@@ -19,7 +19,7 @@ where
         Deck { cards: vec![] }
     }
 
-    fn draw(&mut self, num_cards_requested: usize) -> DrawResult<C> {
+    pub fn draw(&mut self, num_cards_requested: usize) -> DrawResult<C> {
         let index = self.cards.len().saturating_sub(num_cards_requested);
         let cards = self.cards.split_off(index);
         if cards.len() == num_cards_requested {
@@ -30,11 +30,11 @@ where
         }
     }
 
-    fn add_at_top(&mut self, card: C) {
+    pub fn add_at_top(&mut self, card: C) {
         self.cards.insert(0, card)
     }
 
-    fn add_range(&mut self, cards: &mut Vec<C>) {
+    pub fn add_range(&mut self, cards: &mut Vec<C>) {
         self.cards.append(cards)
     }
 }
