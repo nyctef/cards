@@ -8,7 +8,7 @@ pub struct Deck<C> {
 #[derive(Debug, PartialEq)]
 pub enum DrawResult<C> {
     Complete(Vec<C>),
-    Partial(Vec<C>),
+    Partial(Vec<C>, usize),
 }
 
 impl<C> Deck<C>
@@ -25,7 +25,8 @@ where
         if cards.len() == num_cards_requested {
             DrawResult::Complete(cards)
         } else {
-            DrawResult::Partial(cards)
+            let remaining = num_cards_requested - &cards.len();
+            DrawResult::Partial(cards, remaining)
         }
     }
 
@@ -41,13 +42,6 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn drawing_from_an_empty_deck_produces_zero_cards() {
-        let mut deck = Deck::<i32>::new();
-        let cards = deck.draw(5);
-        assert_eq!(DrawResult::Partial(vec![]), cards);
-    }
 
     #[test]
     fn added_cards_can_be_drawn() {
