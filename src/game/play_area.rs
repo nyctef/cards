@@ -11,15 +11,17 @@ impl<C> PlayArea<C>
 where
     C: std::fmt::Debug,
 {
-    pub fn new() -> Self {
+    fn new() -> Self {
         PlayArea {
             deck: Deck::<C>::new(),
             hand: vec![],
         }
     }
 
-    pub fn populate_initial_cards(&mut self, mut cards: Vec<C>) {
-        self.deck.add_range(&mut cards);
+    pub fn from_initial_cards(mut cards: Vec<C>) -> Self {
+        let mut result = Self::new();
+        result.deck.add_range(&mut cards);
+        result
     }
 
     pub fn draw_hand(&mut self) {
@@ -41,8 +43,8 @@ mod tests {
 
     #[test]
     fn drawn_cards_go_into_hand() {
-        let mut play_area = PlayArea::<i32>::new();
-        play_area.populate_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        let mut play_area =
+            PlayArea::<i32>::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         play_area.draw_hand();
         assert_eq!(&vec![6, 7, 8, 9, 10], play_area.debug_inspect_hand());
     }
