@@ -49,7 +49,7 @@ struct AlwaysBuyCopper {}
 impl Player for AlwaysBuyCopper {}
 
 #[cfg(test)]
-mod tests {
+mod game_tests {
     use crate::{AlwaysBuyCopper, Game};
 
     #[test]
@@ -72,5 +72,61 @@ mod tests {
             game.debug_copper_supply_count(),
             "player should have bought one copper"
         );
+    }
+}
+
+struct TurnState {
+    money: u8,
+}
+
+impl TurnState {
+    fn new() -> Self {
+        Self { money: 0 }
+    }
+
+    #[cfg(test)]
+    fn debug_money(&self) -> u8 {
+        self.money
+    }
+}
+
+trait Card {
+    fn play(&self, turn_state: &mut TurnState);
+}
+
+struct Cards {
+    
+}
+impl Cards {
+    fn copper() -> impl Card {
+        BasicTreasure::new(1, "Copper")
+    }
+}
+
+#[derive(Debug, Constructor)]
+struct BasicTreasure {
+    money: u8,
+    // TODO: is it worth trying to give this a proper lifetime?
+    name: &'static str,
+}
+
+impl Card for BasicTreasure {
+    fn play(&self, turn_state: &mut TurnState) {
+        turn_state.money += self.money;
+    }
+}
+
+#[cfg(test)]
+mod card_tests {
+    use crate::{TurnState, Cards, Card};
+
+    #[test]
+    fn playing_a_copper_gives_1_money() {
+        let mut turn_state = TurnState::new();
+        assert_eq!(0, turn_state.debug_money());
+
+        let copper = Cards::copper();
+        copper.play(&mut turn_state);
+        assert_eq!(1, turn_state.debug_money());
     }
 }
