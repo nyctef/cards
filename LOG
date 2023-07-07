@@ -1,3 +1,38 @@
+thinking about how we'd test a game:
+
+- the first thing that happens is shuffling the deck and drawing five cards
+  - we need to make sure that the shuffle is deterministic in a test
+  - need some kind of seeded random
+  - just relying on the seed seems fragile, though - a slight change in the
+    shuffle algorithm, the randomness, the deck implementation or something
+    else could mean the test breaks
+  - plus it's not clear in a test how a seed like "5" means the first turns
+    are a 3-4 or 5-2 copper split.
+- so trying to rethink this from an OO perspective:
+  - what we really want is to be able to say "the player draws these exact
+    cards in this order"
+  - what we're missing is a Deck abstraction
+  - either the deck can be implemented as a proper random deck (with seeding
+    still required for undos/replays) or as a test deck which returns certain
+    cards in order.
+
+outstanding questions:
+
+- do we model the deck by itself, or is it worth pairing the deck and discard
+  pile together?
+
+-------------------------------------------------------------------------------
+
+a bit tough figuring out where to start with the unit tests
+
+jumped from a high-level game test to a card / turnstate test, but don't really
+know how to connect the two
+
+should probably back off from the second test and try to actually drive the
+design with more high-level tests?
+
+-------------------------------------------------------------------------------
+
 ideas for interesting things to try and model:
 
 - most basic place to start: just basic treasures and victory cards?
