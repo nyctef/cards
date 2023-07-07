@@ -1,6 +1,7 @@
 #![allow(unused)]
 
 mod cards;
+mod deck;
 mod players;
 mod turnstate;
 
