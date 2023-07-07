@@ -5,6 +5,12 @@ pub struct Deck<C> {
     cards: Vec<C>,
 }
 
+#[derive(Debug, PartialEq)]
+pub enum DrawResult<C> {
+    Complete(Vec<C>),
+    Partial(Vec<C>),
+}
+
 impl<C> Deck<C>
 where
     C: std::fmt::Debug,
@@ -13,13 +19,22 @@ where
         Deck { cards: vec![] }
     }
 
-    fn draw(&mut self, num_cards: usize) -> Vec<C> {
-        let index = self.cards.len().saturating_sub(num_cards);
-        self.cards.split_off(index)
+    fn draw(&mut self, num_cards_requested: usize) -> DrawResult<C> {
+        let index = self.cards.len().saturating_sub(num_cards_requested);
+        let cards = self.cards.split_off(index);
+        if cards.len() == num_cards_requested {
+            DrawResult::Complete(cards)
+        } else {
+            DrawResult::Partial(cards)
+        }
     }
 
     fn add_at_top(&mut self, card: C) {
         self.cards.insert(0, card)
+    }
+
+    fn add_range(&mut self, cards: &mut Vec<C>) {
+        self.cards.append(cards)
     }
 }
 
@@ -31,7 +46,7 @@ mod tests {
     fn drawing_from_an_empty_deck_produces_zero_cards() {
         let mut deck = Deck::<i32>::new();
         let cards = deck.draw(5);
-        assert_eq!(0, cards.len());
+        assert_eq!(DrawResult::Partial(vec![]), cards);
     }
 
     #[test]
@@ -42,9 +57,17 @@ mod tests {
         deck.add_at_top(3);
         let cards = deck.draw(3);
         assert_eq!(
-            vec![3, 2, 1],
+            DrawResult::Complete(vec![3, 2, 1]),
             cards,
             "Since each card was added to the top, they get drawn in reverse order"
         )
+    }
+
+    #[test]
+    fn if_there_arent_enough_cards_then_remaining_cards_get_drawn() {
+        let mut deck = Deck::<i32>::new();
+        deck.add_range(&mut vec![1, 2, 3]);
+        let cards = deck.draw(5);
+        assert!(matches!(cards, DrawResult::Partial { .. }))
     }
 }
