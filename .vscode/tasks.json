@@ -5,8 +5,10 @@
 			"type": "cargo",
 			"command": "test",
 			"problemMatcher": [
-				"$rustc",
-				"$rust-panic"
+				{
+					"base": "$rust-panic",
+					"severity": "info"
+				}
 			],
 			"group": {
 				"kind": "test",
