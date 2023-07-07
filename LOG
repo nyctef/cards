@@ -1,3 +1,33 @@
+ideas for interesting things to try and model:
+
+- most basic place to start: just basic treasures and victory cards?
+    - only need a buy phase
+- then maybe some basic actions
+    - +1 card +1 action
+    - chapel?
+- important thing: get good at printing out a log early
+- interesting thing to try: recursive cards / action stack?
+- interesting thing to try: attack cards
+    - giving players a chance to respond to cards
+    - callbacks like “some other player has revealed their cards”
+- interesting thing to try: duration cards
+    - actual duration cards which sit in the ‘set aside’ area until triggered
+    - implement cards like Wharf as fake duration cards? eg they leave some kind
+      of token in the ‘set aside’ area until triggered
+      - in fact making Token a first-class thing like Card could be cool
+        - unlike cards, tokens can be created and destroyed
+        - tokens can be placed on specific cards or supply piles
+        - tokens have some kind of effect which resolves once or multiple times
+    - interactivity: choice of which effects to trigger in order
+        - could just make this arbitrary to begin with
+- interesting thing to try: card which lowers all costs for duration of turn
+- interesting rules: https://wiki.dominionstrategy.com/index.php/Stop-moving_rule
+  and linked pages
+- fun cards to try implementing:
+    - extra-turn or skip-turn cards like outpost, lich or **possession**
+
+-------------------------------------------------------------------------------
+
 thinking about possible approaches
 mostly OOP vs functional
 
