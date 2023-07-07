@@ -1,3 +1,8 @@
+https://github.com/mitsuhiko/insta could be better for testing actual games as
+opposed to individual components.
+
+-------------------------------------------------------------------------------
+
 thinking about how we'd test a game:
 
 - the first thing that happens is shuffling the deck and drawing five cards
