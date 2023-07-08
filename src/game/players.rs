@@ -2,30 +2,45 @@ use derive_more::Constructor;
 
 use super::{play_area::PlayArea, Game};
 
-/** An agent is a thing that decides what to do */
-pub trait Agent: std::fmt::Debug {
-    fn buy_phase(&mut self, copper_count: &mut u8);
+pub enum BuyChoice {
+    Buy(CopperToken),
+    None,
 }
 
-pub trait Player: Agent + std::fmt::Debug {
-    fn give_initial_cards(&mut self, copper_count: u8);
-    fn action_phase(&mut self);
-    fn cleanup(&mut self);
+/** An agent is a thing that decides what to do */
+pub trait Agent: std::fmt::Debug {
+    fn action_phase(&mut self) -> ();
+    fn buy_phase(&mut self) -> BuyChoice;
 }
 
 #[derive(Debug, Clone)]
-struct CopperToken {}
+pub struct CopperToken {}
 
+/** A player is an entity that holds some cards. An Agent decides what actions the Player takes
+ * TODO: should Player just be replaced with PlayArea?
+ */
 #[derive(Debug)]
-pub struct AlwaysBuyCopper {
+pub struct Player {
     play_area: PlayArea<CopperToken>,
 }
 
-impl AlwaysBuyCopper {
+impl Player {
     pub fn new() -> Self {
-        AlwaysBuyCopper {
+        Player {
             play_area: PlayArea::new(),
         }
+    }
+    pub fn give_initial_cards(&mut self, copper_count: u8) {
+        self.play_area = PlayArea::from_initial_cards(vec![CopperToken {}; copper_count.into()]);
+    }
+
+    pub fn cleanup(&mut self) {
+        self.play_area.discard_hand();
+        self.play_area.draw_hand();
+    }
+
+    pub fn gain_card_to_discard_pile(&mut self, card: CopperToken) {
+        self.play_area.gain_card_to_discard_pile(card);
     }
 
     #[cfg(test)]
@@ -34,22 +49,12 @@ impl AlwaysBuyCopper {
     }
 }
 
-impl Player for AlwaysBuyCopper {
-    fn give_initial_cards(&mut self, copper_count: u8) {
-        self.play_area = PlayArea::from_initial_cards(vec![CopperToken {}; copper_count.into()]);
-    }
-
-    fn action_phase(&mut self) {}
-
-    fn cleanup(&mut self) {
-        self.play_area.discard_hand();
-        self.play_area.draw_hand();
-    }
-}
+#[derive(Debug, Constructor)]
+pub struct AlwaysBuyCopper {}
 
 impl Agent for AlwaysBuyCopper {
-    fn buy_phase(&mut self, copper_count: &mut u8) {
-        *copper_count -= 1;
-        self.play_area.gain_card_to_discard_pile(CopperToken {})
+    fn action_phase(&mut self) {}
+    fn buy_phase(&mut self) -> BuyChoice {
+        BuyChoice::Buy(CopperToken {})
     }
 }

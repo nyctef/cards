@@ -6,11 +6,11 @@ mod players;
 
 use derive_more::Constructor;
 
-use self::players::{AlwaysBuyCopper, Player};
+use self::players::{Agent, AlwaysBuyCopper, BuyChoice, CopperToken, Player};
 
 #[derive(Debug)]
 struct Game<'a> {
-    players: Vec<&'a mut dyn Player>,
+    players: Vec<(Player, &'a mut dyn Agent)>,
     // temporary
     copper_count: u8,
 }
@@ -22,14 +22,22 @@ impl<'a> Game<'a> {
         }
     }
 
-    fn add_player(&mut self, name: &str, player: &'a mut dyn Player) {
-        self.players.push(player);
+    fn add_player(&mut self, name: &str, agent: &'a mut dyn Agent) {
+        let player = Player::new();
+        self.players.push((player, agent));
     }
 
     fn play_one_turn(&mut self) {
-        for player in self.players.iter_mut() {
-            player.action_phase();
-            player.buy_phase(&mut self.copper_count);
+        for (player, agent) in self.players.iter_mut() {
+            let action_choice = agent.action_phase();
+            let buy_choice = agent.buy_phase();
+            match buy_choice {
+                BuyChoice::Buy(CopperToken { .. }) => {
+                    self.copper_count -= 1;
+                    player.gain_card_to_discard_pile(CopperToken {})
+                }
+                BuyChoice::None => {}
+            }
             player.cleanup();
         }
     }
@@ -39,7 +47,7 @@ impl<'a> Game<'a> {
     }
 
     fn deal_starting_hands(&mut self) {
-        for player in self.players.iter_mut() {
+        for (player, agent) in self.players.iter_mut() {
             player.give_initial_cards(7);
             self.copper_count -= 7;
             // cleanup here is a shorthand for "draw first five cards"
