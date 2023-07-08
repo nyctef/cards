@@ -6,12 +6,15 @@ mod players;
 
 use derive_more::Constructor;
 
-use self::players::{Agent, AlwaysBuyCopper, BuyChoice, CopperToken, Player};
+use self::{
+    play_area::PlayArea,
+    players::{Agent, AlwaysBuyCopper, BuyChoice, CopperToken},
+};
 use crate::logs::{GameEvent, GameLog};
 
 #[derive(Debug)]
 struct Game<'a> {
-    players: Vec<(&'a str, Player, &'a mut dyn Agent)>,
+    players: Vec<(&'a str, PlayArea<CopperToken>, &'a mut dyn Agent)>,
     // temporary
     copper_count: u8,
     log: &'a dyn GameLog,
@@ -26,12 +29,12 @@ impl<'a> Game<'a> {
     }
 
     fn add_player(&mut self, name: &'a str, agent: &'a mut dyn Agent) {
-        let player = Player::new();
+        let player = PlayArea::new();
         self.players.push((name, player, agent));
     }
 
     fn play_one_turn(&mut self) {
-        for (name, player, agent) in self.players.iter_mut() {
+        for (name, area, agent) in self.players.iter_mut() {
             let action_choice = agent.action_phase();
             let buy_choice = agent.buy_phase();
             match buy_choice {
@@ -39,11 +42,12 @@ impl<'a> Game<'a> {
                     self.log
                         .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
                     self.copper_count -= 1;
-                    player.gain_card_to_discard_pile(CopperToken {})
+                    area.gain_card_to_discard_pile(CopperToken {})
                 }
                 BuyChoice::None => {}
             }
-            player.cleanup();
+            area.discard_hand();
+            area.draw_hand();
         }
     }
 
@@ -52,11 +56,11 @@ impl<'a> Game<'a> {
     }
 
     fn deal_starting_hands(&mut self) {
-        for (name, player, agent) in self.players.iter_mut() {
-            player.give_initial_cards(7);
+        for (name, area, agent) in self.players.iter_mut() {
+            area.gain_cards_to_discard_pile(&mut vec![CopperToken {}; 7]);
             self.copper_count -= 7;
-            // cleanup here is a shorthand for "draw first five cards"
-            player.cleanup();
+
+            area.draw_hand();
         }
     }
 

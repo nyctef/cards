@@ -55,6 +55,10 @@ where
         self.discard.append(&mut self.hand);
     }
 
+    pub fn gain_cards_to_discard_pile(&mut self, cards: &mut Vec<C>) {
+        self.discard.append(cards)
+    }
+
     pub fn gain_card_to_discard_pile(&mut self, card: C) {
         self.discard.push(card)
     }
