@@ -1,6 +1,7 @@
 use core::num;
 use std::cmp::min;
 
+#[derive(Debug)]
 pub struct Deck<C> {
     cards: Vec<C>,
 }
@@ -36,6 +37,11 @@ where
 
     pub fn add_range(&mut self, cards: &mut Vec<C>) {
         self.cards.append(cards)
+    }
+
+    #[cfg(test)]
+    pub fn debug_len(&self) -> usize {
+        self.cards.len()
     }
 }
 

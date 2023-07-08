@@ -2,6 +2,7 @@
 
 use super::deck::{Deck, DrawResult};
 
+#[derive(Debug)]
 pub struct PlayArea<C> {
     deck: Deck<C>,
     hand: Vec<C>,
@@ -12,7 +13,7 @@ impl<C> PlayArea<C>
 where
     C: std::fmt::Debug,
 {
-    fn new() -> Self {
+    pub fn new() -> Self {
         PlayArea {
             deck: Deck::<C>::new(),
             hand: vec![],
@@ -57,6 +58,16 @@ where
     #[cfg(test)]
     pub fn debug_inspect_hand(&mut self) -> &Vec<C> {
         &self.hand
+    }
+
+    #[cfg(test)]
+    pub fn debug_total_card_count(&self) -> u8 {
+        (self.deck.debug_len() + self.hand.len() + self.discard.len()) as u8
+    }
+
+    #[cfg(test)]
+    pub fn gain_card_to_discard_pile(&mut self, card: C) {
+        self.discard.push(card)
     }
 }
 
