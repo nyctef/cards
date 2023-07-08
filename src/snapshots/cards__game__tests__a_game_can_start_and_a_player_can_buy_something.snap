@@ -2,4 +2,6 @@
 source: src/game.rs
 expression: log.dump()
 ---
+Todo("Player 1 draws [CopperToken, CopperToken, CopperToken, CopperToken, CopperToken]")
 Todo("Player 1 gained 1 copper")
+Todo("Player 1 draws [CopperToken, CopperToken, CopperToken, CopperToken, CopperToken]")

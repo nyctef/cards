@@ -63,8 +63,7 @@ where
         self.discard.push(card)
     }
 
-    #[cfg(test)]
-    pub fn debug_inspect_hand(&mut self) -> &Vec<C> {
+    pub fn inspect_hand(&mut self) -> &Vec<C> {
         &self.hand
     }
 
@@ -83,7 +82,7 @@ mod tests {
         let mut play_area =
             PlayArea::<i32>::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         play_area.draw_hand();
-        assert_eq!(&vec![6, 7, 8, 9, 10], play_area.debug_inspect_hand());
+        assert_eq!(&vec![6, 7, 8, 9, 10], play_area.inspect_hand());
     }
 
     #[test]
@@ -92,7 +91,7 @@ mod tests {
             PlayArea::<i32>::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         play_area.draw_hand();
         play_area.discard_hand();
-        assert!(play_area.debug_inspect_hand().is_empty());
+        assert!(play_area.inspect_hand().is_empty());
     }
 
     #[test]
@@ -103,13 +102,13 @@ mod tests {
         play_area.discard_hand();
         // attempt to draw another 5: get some of the original discarded cards
         play_area.draw_hand();
-        assert_eq!(&vec![1, 2, 5, 6, 7], play_area.debug_inspect_hand());
+        assert_eq!(&vec![1, 2, 5, 6, 7], play_area.inspect_hand());
     }
 
     #[test]
     fn can_attempt_to_draw_five_even_if_deck_contains_fewer_cards() {
         let mut play_area = PlayArea::<i32>::from_initial_cards(vec![1, 2, 3]);
         play_area.draw_hand();
-        assert_eq!(&vec![1, 2, 3], play_area.debug_inspect_hand());
+        assert_eq!(&vec![1, 2, 3], play_area.inspect_hand());
     }
 }

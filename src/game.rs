@@ -39,15 +39,20 @@ impl<'a> Game<'a> {
             let buy_choice = agent.buy_phase();
             match buy_choice {
                 BuyChoice::Buy(CopperToken { .. }) => {
+                    self.copper_count -= 1;
+                    area.gain_card_to_discard_pile(CopperToken {});
                     self.log
                         .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
-                    self.copper_count -= 1;
-                    area.gain_card_to_discard_pile(CopperToken {})
                 }
                 BuyChoice::None => {}
             }
             area.discard_hand();
             area.draw_hand();
+            self.log.record(GameEvent::Todo(format!(
+                "{} draws {:?}",
+                name,
+                area.inspect_hand()
+            )))
         }
     }
 
@@ -61,6 +66,11 @@ impl<'a> Game<'a> {
             self.copper_count -= 7;
 
             area.draw_hand();
+            self.log.record(GameEvent::Todo(format!(
+                "{} draws {:?}",
+                name,
+                area.inspect_hand()
+            )))
         }
     }
 
