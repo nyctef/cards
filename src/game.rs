@@ -81,6 +81,7 @@ mod tests {
         game.deal_starting_hands();
         game.play_one_turn();
 
-        insta::assert_snapshot!(log.dump())
+        insta::assert_snapshot!(log.dump());
+        insta::assert_debug_snapshot!(game.players);
     }
 }
