@@ -82,6 +82,6 @@ mod tests {
         game.play_one_turn();
 
         insta::assert_snapshot!(log.dump());
-        insta::assert_debug_snapshot!(game.players);
+        insta::assert_debug_snapshot!((game.players, game.copper_count));
     }
 }

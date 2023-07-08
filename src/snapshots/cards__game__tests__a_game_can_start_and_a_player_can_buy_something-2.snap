@@ -1,0 +1,30 @@
+---
+source: src/game.rs
+expression: "(game.players, game.copper_count)"
+---
+(
+    [
+        (
+            "Player 1",
+            PlayArea {
+                deck: Deck {
+                    cards: [
+                        CopperToken,
+                        CopperToken,
+                        CopperToken,
+                    ],
+                },
+                hand: [
+                    CopperToken,
+                    CopperToken,
+                    CopperToken,
+                    CopperToken,
+                    CopperToken,
+                ],
+                discard: [],
+            },
+            AlwaysBuyCopper,
+        ),
+    ],
+    52,
+)
