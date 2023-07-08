@@ -1,11 +1,15 @@
 use derive_more::Constructor;
 
-use super::play_area::PlayArea;
+use super::{play_area::PlayArea, Game};
 
-pub trait Player: std::fmt::Debug {
+/** An agent is a thing that decides what to do */
+pub trait Agent: std::fmt::Debug {
+    fn buy_phase(&mut self, copper_count: &mut u8);
+}
+
+pub trait Player: Agent + std::fmt::Debug {
     fn give_initial_cards(&mut self, copper_count: u8);
     fn action_phase(&mut self);
-    fn buy_phase(&mut self, copper_count: &mut u8);
     fn cleanup(&mut self);
 }
 
@@ -37,13 +41,15 @@ impl Player for AlwaysBuyCopper {
 
     fn action_phase(&mut self) {}
 
-    fn buy_phase(&mut self, copper_count: &mut u8) {
-        *copper_count -= 1;
-        self.play_area.gain_card_to_discard_pile(CopperToken {})
-    }
-
     fn cleanup(&mut self) {
         self.play_area.discard_hand();
         self.play_area.draw_hand();
+    }
+}
+
+impl Agent for AlwaysBuyCopper {
+    fn buy_phase(&mut self, copper_count: &mut u8) {
+        *copper_count -= 1;
+        self.play_area.gain_card_to_discard_pile(CopperToken {})
     }
 }

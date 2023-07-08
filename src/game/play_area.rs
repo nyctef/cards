@@ -55,6 +55,10 @@ where
         self.discard.append(&mut self.hand);
     }
 
+    pub fn gain_card_to_discard_pile(&mut self, card: C) {
+        self.discard.push(card)
+    }
+
     #[cfg(test)]
     pub fn debug_inspect_hand(&mut self) -> &Vec<C> {
         &self.hand
@@ -63,11 +67,6 @@ where
     #[cfg(test)]
     pub fn debug_total_card_count(&self) -> u8 {
         (self.deck.debug_len() + self.hand.len() + self.discard.len()) as u8
-    }
-
-    #[cfg(test)]
-    pub fn gain_card_to_discard_pile(&mut self, card: C) {
-        self.discard.push(card)
     }
 }
 
