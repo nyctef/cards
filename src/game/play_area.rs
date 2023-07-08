@@ -1,5 +1,7 @@
 // todo: not sure about the naming or structure here yet
 
+use crate::logs::{GameEvent, GameLog};
+
 use super::deck::{Deck, DrawResult};
 
 #[derive(Debug)]
@@ -35,11 +37,19 @@ where
         }
     }
 
-    pub fn draw_hand(&mut self) {
+    pub fn draw_hand(&mut self, log: &dyn GameLog) {
         let mut cards = self.deck.draw(5);
         match cards {
-            DrawResult::Complete(mut cards) => self.hand.append(&mut cards),
+            DrawResult::Complete(mut cards) => {
+                self.hand.append(&mut cards);
+                log.record(GameEvent::Todo(format!("draws 5 cards")))
+            }
             DrawResult::Partial(mut cards, remaining) => {
+                log.record(GameEvent::Todo(format!(
+                    "draws {} cards, shuffles their deck, and draws {} more",
+                    cards.len(),
+                    remaining
+                )));
                 self.hand.append(&mut cards);
                 // we didn't get all the cards we need, so shuffle the discard pile
                 // and turn it back into the deck:
@@ -76,12 +86,14 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::logs::tests::TestLog;
 
     #[test]
     fn drawn_cards_go_into_hand() {
         let mut play_area =
             PlayArea::<i32>::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-        play_area.draw_hand();
+        let log = TestLog::new();
+        play_area.draw_hand(&log);
         assert_eq!(&vec![6, 7, 8, 9, 10], play_area.inspect_hand());
     }
 
@@ -89,7 +101,8 @@ mod tests {
     fn discarded_cards_leave_hand() {
         let mut play_area =
             PlayArea::<i32>::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-        play_area.draw_hand();
+        let log = TestLog::new();
+        play_area.draw_hand(&log);
         play_area.discard_hand();
         assert!(play_area.inspect_hand().is_empty());
     }
@@ -98,17 +111,19 @@ mod tests {
     fn discarded_cards_are_recycled_into_hand() {
         let mut play_area = PlayArea::<i32>::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7]);
         // draw 5 and discard
-        play_area.draw_hand();
+        let log = TestLog::new();
+        play_area.draw_hand(&log);
         play_area.discard_hand();
         // attempt to draw another 5: get some of the original discarded cards
-        play_area.draw_hand();
+        play_area.draw_hand(&log);
         assert_eq!(&vec![1, 2, 5, 6, 7], play_area.inspect_hand());
     }
 
     #[test]
     fn can_attempt_to_draw_five_even_if_deck_contains_fewer_cards() {
         let mut play_area = PlayArea::<i32>::from_initial_cards(vec![1, 2, 3]);
-        play_area.draw_hand();
+        let log = TestLog::new();
+        play_area.draw_hand(&log);
         assert_eq!(&vec![1, 2, 3], play_area.inspect_hand());
     }
 }

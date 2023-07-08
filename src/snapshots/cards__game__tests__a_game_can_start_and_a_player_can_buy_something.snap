@@ -2,6 +2,6 @@
 source: src/game.rs
 expression: log.dump()
 ---
-Todo("Player 1 draws [CopperToken, CopperToken, CopperToken, CopperToken, CopperToken]")
+Todo("draws 0 cards, shuffles their deck, and draws 5 more")
 Todo("Player 1 gained 1 copper")
-Todo("Player 1 draws [CopperToken, CopperToken, CopperToken, CopperToken, CopperToken]")
+Todo("draws 2 cards, shuffles their deck, and draws 3 more")

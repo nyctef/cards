@@ -47,12 +47,7 @@ impl<'a> Game<'a> {
                 BuyChoice::None => {}
             }
             area.discard_hand();
-            area.draw_hand();
-            self.log.record(GameEvent::Todo(format!(
-                "{} draws {:?}",
-                name,
-                area.inspect_hand()
-            )))
+            area.draw_hand(self.log);
         }
     }
 
@@ -65,46 +60,16 @@ impl<'a> Game<'a> {
             area.gain_cards_to_discard_pile(&mut vec![CopperToken {}; 7]);
             self.copper_count -= 7;
 
-            area.draw_hand();
-            self.log.record(GameEvent::Todo(format!(
-                "{} draws {:?}",
-                name,
-                area.inspect_hand()
-            )))
+            area.draw_hand(self.log);
         }
-    }
-
-    #[cfg(test)]
-    fn debug_copper_supply_count(&self) -> u8 {
-        self.copper_count
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::logs::tests::TestLog;
     use std::cell::RefCell;
-
-    #[derive(Debug)]
-    struct TestLog {
-        messages: RefCell<Vec<String>>,
-    }
-    impl TestLog {
-        fn new() -> Self {
-            TestLog {
-                messages: vec![].into(),
-            }
-        }
-
-        fn dump(&self) -> String {
-            self.messages.borrow().join("\n")
-        }
-    }
-    impl GameLog for TestLog {
-        fn record(&self, event: GameEvent) {
-            self.messages.borrow_mut().push(format!("{:?}", event))
-        }
-    }
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
