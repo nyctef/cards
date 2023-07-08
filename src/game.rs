@@ -27,7 +27,11 @@ impl<'a> Game<'a> {
     }
 
     fn play_one_turn(&mut self) {
-        self.copper_count -= 1;
+        for player in self.players.iter_mut() {
+            player.action_phase();
+            player.buy_phase(&mut self.copper_count);
+            player.cleanup();
+        }
     }
 
     fn populate_basic_kingdom(&mut self) {

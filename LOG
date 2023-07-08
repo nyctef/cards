@@ -6,6 +6,10 @@ thinking about the design of play_area:
 - it feels maybe a little less OO that way, though? let's keep going with what
   we have and see what happens.
 
+game and play_area are still disjointed. Probably need to do a lot more work
+from the game side to try and join them up (or find more useful abstractions to
+build)
+
 -------------------------------------------------------------------------------
 
 https://github.com/mitsuhiko/insta could be better for testing actual games as
