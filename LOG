@@ -1,4 +1,17 @@
 TODO next:
+
+- replace Game.copper_count with some kind of "kingdom" or "supply" concept
+- might need a builder to easily set up different test scenarios
+  - eg what if there's no copper remaining?
+  - how do we present buy options to the agent?
+- give players some estates to begin with
+- think about adding other cards to buy
+  - expand default agent implementation to buy duchy if possible
+  - what happens when the agent can't afford it? How do we present that info?
+
+-------------------------------------------------------------------------------
+
+TODO next:
 - add input logs / output logs to the game
 - start using some snapshot testing
 
