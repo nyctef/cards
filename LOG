@@ -1,3 +1,28 @@
+TODO next:
+- add input logs / output logs to the game
+- start using some snapshot testing
+
+on the interaction between game and player:
+
+- think we need to split up the concept of "agent" (something that makes
+  decisions) vs "player" (an agent plus some cards)
+- how can borrows work for game.play_one_turn()?
+  - the function itself needs to borrow the game as &mut self
+  - but we need the agent to try and mutate the game state too
+  - play_one_turn can't pass another &mut self borrow to agent.do_actions()
+    since it's already got an exclusive borrow of itself.
+  - do we need to RefCell a lot to make these kinds of designs work?
+  - the easier thing to do would be to ask the agent to return an object
+    representing the decision (rather than the agent sending messages to the
+    game for its decisions) but that's moving more away from the OOP style.
+  - trying to be OOP does feel like we're fighting rust a fair bit - maybe
+    it's just not the best language for this style?
+
+seriously considering just falling back to more functional style in order
+to get stuff done.
+
+-------------------------------------------------------------------------------
+
 thinking about the design of play_area:
 - the abstraction we'd really like to have is something like "card supply" - ie
   a thing that we draw cards from each turn, and then put cards back into.
