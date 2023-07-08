@@ -39,7 +39,12 @@ impl<'a> Game<'a> {
     }
 
     fn deal_starting_hands(&mut self) {
-        self.copper_count -= 7;
+        for player in self.players.iter_mut() {
+            player.give_initial_cards(7);
+            self.copper_count -= 7;
+            // cleanup here is a shorthand for "draw first five cards"
+            player.cleanup();
+        }
     }
 
     #[cfg(test)]
@@ -59,6 +64,7 @@ mod tests {
         let mut player_1 = AlwaysBuyCopper::new();
         game.add_player("Player 1", &mut player_1);
         assert_eq!(0, game.debug_copper_supply_count());
+        // assert_eq!(0, player_1.debug_copper_count());
         game.populate_basic_kingdom();
         assert_eq!(60, game.debug_copper_supply_count());
         game.deal_starting_hands();

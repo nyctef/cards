@@ -10,6 +10,10 @@ game and play_area are still disjointed. Probably need to do a lot more work
 from the game side to try and join them up (or find more useful abstractions to
 build)
 
+https://wiki.dominionstrategy.com/index.php/Triggered_effects
+https://wiki.dominionstrategy.com/index.php/Turn
+https://wiki.dominionstrategy.com/index.php/Gameplay
+
 -------------------------------------------------------------------------------
 
 https://github.com/mitsuhiko/insta could be better for testing actual games as
