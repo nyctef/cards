@@ -1,3 +1,13 @@
+thinking about the design of play_area:
+- the abstraction we'd really like to have is something like "card supply" - ie
+  a thing that we draw cards from each turn, and then put cards back into.
+  That way it's easier to mock out saying "the player draws X cards in this
+  particular turn" for other cases.
+- it feels maybe a little less OO that way, though? let's keep going with what
+  we have and see what happens.
+
+-------------------------------------------------------------------------------
+
 https://github.com/mitsuhiko/insta could be better for testing actual games as
 opposed to individual components.
 
