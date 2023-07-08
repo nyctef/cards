@@ -7,32 +7,37 @@ mod players;
 use derive_more::Constructor;
 
 use self::players::{Agent, AlwaysBuyCopper, BuyChoice, CopperToken, Player};
+use crate::logs::{GameEvent, GameLog};
 
 #[derive(Debug)]
 struct Game<'a> {
-    players: Vec<(Player, &'a mut dyn Agent)>,
+    players: Vec<(&'a str, Player, &'a mut dyn Agent)>,
     // temporary
     copper_count: u8,
+    log: &'a dyn GameLog,
 }
 impl<'a> Game<'a> {
-    fn new() -> Self {
+    fn new(log: &'a dyn GameLog) -> Self {
         Self {
             players: Vec::new(),
             copper_count: 0,
+            log,
         }
     }
 
-    fn add_player(&mut self, name: &str, agent: &'a mut dyn Agent) {
+    fn add_player(&mut self, name: &'a str, agent: &'a mut dyn Agent) {
         let player = Player::new();
-        self.players.push((player, agent));
+        self.players.push((name, player, agent));
     }
 
     fn play_one_turn(&mut self) {
-        for (player, agent) in self.players.iter_mut() {
+        for (name, player, agent) in self.players.iter_mut() {
             let action_choice = agent.action_phase();
             let buy_choice = agent.buy_phase();
             match buy_choice {
                 BuyChoice::Buy(CopperToken { .. }) => {
+                    self.log
+                        .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
                     self.copper_count -= 1;
                     player.gain_card_to_discard_pile(CopperToken {})
                 }
@@ -47,7 +52,7 @@ impl<'a> Game<'a> {
     }
 
     fn deal_starting_hands(&mut self) {
-        for (player, agent) in self.players.iter_mut() {
+        for (name, player, agent) in self.players.iter_mut() {
             player.give_initial_cards(7);
             self.copper_count -= 7;
             // cleanup here is a shorthand for "draw first five cards"
@@ -63,29 +68,40 @@ impl<'a> Game<'a> {
 
 #[cfg(test)]
 mod tests {
-
     use super::*;
+    use std::cell::RefCell;
+
+    #[derive(Debug)]
+    struct TestLog {
+        messages: RefCell<Vec<String>>,
+    }
+    impl TestLog {
+        fn new() -> Self {
+            TestLog {
+                messages: vec![].into(),
+            }
+        }
+
+        fn dump(&self) -> String {
+            self.messages.borrow().join("\n")
+        }
+    }
+    impl GameLog for TestLog {
+        fn record(&self, event: GameEvent) {
+            self.messages.borrow_mut().push(format!("{:?}", event))
+        }
+    }
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
-        let mut game = Game::new();
+        let log = TestLog::new();
+        let mut game = Game::new(&log);
         let mut player_1 = AlwaysBuyCopper::new();
         game.add_player("Player 1", &mut player_1);
-        assert_eq!(0, game.debug_copper_supply_count());
-        // assert_eq!(0, player_1.debug_copper_count());
         game.populate_basic_kingdom();
-        assert_eq!(60, game.debug_copper_supply_count());
         game.deal_starting_hands();
-        assert_eq!(
-            53,
-            game.debug_copper_supply_count(),
-            "7 coppers dealt to one player"
-        );
         game.play_one_turn();
-        assert_eq!(
-            52,
-            game.debug_copper_supply_count(),
-            "player should have bought one copper"
-        );
+
+        insta::assert_snapshot!(log.dump())
     }
 }
