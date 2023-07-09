@@ -13,7 +13,7 @@ pub trait Agent: std::fmt::Debug {
     fn buy_phase(&mut self) -> BuyChoice;
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CopperToken {}
 
 #[derive(Debug, Constructor)]

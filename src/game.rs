@@ -4,26 +4,24 @@ mod deck;
 mod play_area;
 mod players;
 
-use derive_more::Constructor;
-
 use self::{
     play_area::PlayArea,
     players::{Agent, AlwaysBuyCopper, BuyChoice, CopperToken},
 };
 use crate::logs::{GameEvent, GameLog};
+use derive_more::Constructor;
 
 #[derive(Debug)]
 struct Game<'a> {
     players: Vec<(&'a str, PlayArea<CopperToken>, &'a mut dyn Agent)>,
-    // temporary
-    copper_count: u8,
+    supply: Vec<Vec<CopperToken>>,
     log: &'a dyn GameLog,
 }
 impl<'a> Game<'a> {
     fn new(log: &'a dyn GameLog) -> Self {
         Self {
-            players: Vec::new(),
-            copper_count: 0,
+            players: vec![],
+            supply: vec![],
             log,
         }
     }
@@ -33,14 +31,27 @@ impl<'a> Game<'a> {
         self.players.push((name, player, agent));
     }
 
+    fn buyable_cards(&self) -> Vec<&CopperToken> {
+        self.supply.iter().filter_map(|s| s.iter().last()).collect()
+    }
+
+    fn supply_pile_for(&self, card: &CopperToken) -> Option<&mut Vec<CopperToken>> {
+        self.supply.iter().filter(|s| s.last() == Some(card)).next()
+    }
+
     fn play_one_turn(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
             let action_choice = agent.action_phase();
             let buy_choice = agent.buy_phase();
             match buy_choice {
                 BuyChoice::Buy(CopperToken { .. }) => {
-                    self.copper_count -= 1;
-                    area.gain_card_to_discard_pile(CopperToken {});
+                    let supply_pile = self.supply_pile_for(&CopperToken {});
+                    let supply_pile = match supply_pile {
+                        Some(pile) => pile,
+                        None => todo!(),
+                    };
+                    let purchased_copper = supply_pile.pop().unwrap();
+                    area.gain_card_to_discard_pile(purchased_copper);
                     self.log
                         .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
                 }
@@ -52,13 +63,16 @@ impl<'a> Game<'a> {
     }
 
     fn populate_basic_kingdom(&mut self) {
-        self.copper_count = 60;
+        self.supply.push(vec![CopperToken {}; 60])
     }
 
     fn deal_starting_hands(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
-            area.gain_cards_to_discard_pile(&mut vec![CopperToken {}; 7]);
-            self.copper_count -= 7;
+            let copper_supply = self.supply_pile_for(&CopperToken {}).unwrap();
+            // TODO: some extension method here might be useful since we're doing this a lot
+            let split_index = copper_supply.len().saturating_sub(7);
+            let mut coppers = copper_supply.split_off(split_index);
+            area.gain_cards_to_discard_pile(&mut coppers);
 
             area.draw_hand(self.log);
         }
@@ -82,6 +96,6 @@ mod tests {
         game.play_one_turn();
 
         insta::assert_snapshot!(log.dump());
-        insta::assert_debug_snapshot!((game.players, game.copper_count));
+        insta::assert_debug_snapshot!((game.players, game.supply));
     }
 }
