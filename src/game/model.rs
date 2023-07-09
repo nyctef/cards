@@ -3,6 +3,11 @@ pub struct CardName {
     name: &'static str,
 }
 
+#[derive(PartialEq, Eq, Clone, Copy)]
+pub struct CardType {
+    name: &'static str,
+}
+
 impl std::fmt::Debug for CardName {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_fmt(format_args!("[{}]", self.name))
@@ -11,6 +16,7 @@ impl std::fmt::Debug for CardName {
 
 pub struct Card {
     pub name: CardName,
+    pub coins_cost: u8,
 }
 
 impl std::fmt::Debug for Card {
@@ -31,16 +37,19 @@ impl Cards {
     pub fn copper() -> Card {
         Card {
             name: CardNames::COPPER,
+            coins_cost: 0,
         }
     }
     pub fn duchy() -> Card {
         Card {
             name: CardNames::DUCHY,
+            coins_cost: 5,
         }
     }
     pub fn estate() -> Card {
         Card {
             name: CardNames::ESTATE,
+            coins_cost: 2,
         }
     }
 }

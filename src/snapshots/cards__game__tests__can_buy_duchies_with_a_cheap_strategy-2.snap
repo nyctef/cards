@@ -1,0 +1,45 @@
+---
+source: src/game.rs
+expression: "(game.players, game.supply)"
+---
+(
+    [
+        (
+            "Player 1",
+            PlayArea {
+                deck: [
+                    "1 [Duchy]",
+                    "3 [Copper]",
+                ],
+                hand: [
+                    [Copper],
+                    [Copper],
+                    [Copper],
+                    [Copper],
+                    [Estate],
+                ],
+                in_play: [],
+                discard: [
+                    [Copper],
+                    [Copper],
+                    [Copper],
+                    [Estate],
+                    [Estate],
+                    [Duchy],
+                ],
+            },
+            GreedyForDuchies,
+        ),
+    ],
+    Supply {
+        supply_piles: [
+            [],
+            [
+                "8 [Duchy]",
+            ],
+            [
+                "7 [Estate]",
+            ],
+        ],
+    },
+)

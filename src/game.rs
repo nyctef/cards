@@ -53,14 +53,14 @@ impl<'a> Game<'a> {
                 )));
             }
 
-            let buyable_cards = self.supply.buyable_cards();
+            let buyable_cards = self.supply.buyable_cards(player_counters.coins);
             let buy_choice = agent.buy_phase(&buyable_cards);
             match buy_choice {
                 BuyChoice::Buy(card) => {
-                    let purchased_copper = self.supply.take_one(card).expect("TODO");
-                    area.gain_card_to_discard_pile(purchased_copper);
+                    let purchased = self.supply.take_one(card).expect("TODO");
+                    area.gain_card_to_discard_pile(purchased);
                     self.log
-                        .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
+                        .record(GameEvent::Todo(format!("{} gained a {:?}", name, card)));
                 }
                 BuyChoice::None => {}
             }
@@ -97,7 +97,7 @@ impl<'a> Game<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::logs::tests::TestLog;
+    use crate::{game::players::GreedyForDuchies, logs::tests::TestLog};
     use std::cell::RefCell;
 
     #[test]
@@ -109,6 +109,22 @@ mod tests {
         game.populate_basic_kingdom();
         game.deal_starting_hands();
         game.play_one_turn();
+
+        insta::assert_snapshot!(log.dump());
+        insta::assert_debug_snapshot!((game.players, game.supply));
+    }
+
+    #[test]
+    fn can_buy_duchies_with_a_cheap_strategy() {
+        let log = TestLog::new();
+        let mut game = Game::new(&log);
+        let mut player_1 = GreedyForDuchies::new();
+        game.add_player("Player 1", &mut player_1);
+        game.populate_basic_kingdom();
+        game.deal_starting_hands();
+        for t in 0..5 {
+            game.play_one_turn();
+        }
 
         insta::assert_snapshot!(log.dump());
         insta::assert_debug_snapshot!((game.players, game.supply));

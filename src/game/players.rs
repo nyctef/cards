@@ -25,3 +25,27 @@ impl Agent for AlwaysBuyCopper {
             .unwrap_or(BuyChoice::None)
     }
 }
+
+#[derive(Debug, Constructor)]
+pub struct GreedyForDuchies {}
+
+impl Agent for GreedyForDuchies {
+    fn action_phase(&mut self) {}
+    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
+        if (buyable_cards
+            .iter()
+            .find(|c| **c == CardNames::DUCHY)
+            .is_some())
+        {
+            return BuyChoice::Buy(CardNames::DUCHY);
+        }
+        if (buyable_cards
+            .iter()
+            .find(|c| **c == CardNames::COPPER)
+            .is_some())
+        {
+            return BuyChoice::Buy(CardNames::COPPER);
+        }
+        return BuyChoice::None;
+    }
+}

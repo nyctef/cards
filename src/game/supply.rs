@@ -15,10 +15,10 @@ impl Supply {
         }
     }
 
-    pub fn buyable_cards(&self) -> Vec<CardName> {
+    pub fn buyable_cards(&self, coins: u8) -> Vec<CardName> {
         self.supply_piles
             .iter()
-            .filter_map(|s| s.peek().map(|c| c.name))
+            .filter_map(|s| s.peek().filter(|c| c.coins_cost <= coins).map(|c| c.name))
             .collect()
     }
 
