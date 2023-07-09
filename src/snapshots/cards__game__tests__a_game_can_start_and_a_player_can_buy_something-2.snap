@@ -15,6 +15,7 @@ expression: "(game.players, game.supply)"
                     [Copper],
                     [Copper],
                 ],
+                in_play: [],
                 discard: [
                     [Copper],
                     [Copper],

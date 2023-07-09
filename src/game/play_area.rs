@@ -59,6 +59,10 @@ impl PlayArea {
         self.discard.append(&mut self.hand);
     }
 
+    pub fn discard_in_play(&mut self) {
+        self.discard.append(&mut self.in_play);
+    }
+
     pub fn gain_cards_to_discard_pile(&mut self, cards: &mut Vec<Card>) {
         self.discard.append(cards)
     }
@@ -67,8 +71,15 @@ impl PlayArea {
         self.discard.push(card)
     }
 
-    pub fn inspect_hand(&mut self) -> &Vec<Card> {
-        &self.hand
+    pub fn inspect_hand(&mut self) -> Vec<CardName> {
+        self.hand.iter().map(|c| c.name).collect()
+    }
+
+    pub fn play_card(&mut self, name: CardName /*, TODO: ...? */) {
+        let card = self
+            .hand
+            .remove(self.hand.iter().position(|c| c.name == name).expect("TODO"));
+        self.in_play.push(card);
     }
 }
 

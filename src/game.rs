@@ -40,6 +40,14 @@ impl<'a> Game<'a> {
             let mut player_counters = PlayerCounters::new_turn();
             let action_choice = agent.action_phase();
 
+            for c in area
+                .inspect_hand()
+                .into_iter()
+                .filter(|c| *c == CardNames::COPPER)
+            {
+                area.play_card(c);
+            }
+
             let buyable_cards = self.supply.buyable_cards();
             let buy_choice = agent.buy_phase(&buyable_cards);
             match buy_choice {
@@ -51,6 +59,7 @@ impl<'a> Game<'a> {
                 }
                 BuyChoice::None => {}
             }
+            area.discard_in_play();
             area.discard_hand();
             area.draw_hand(self.log);
         }
