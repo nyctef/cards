@@ -7,7 +7,7 @@ mod players;
 mod supply;
 
 use self::{
-    model::{BuyChoice, Card, CardName, CardNames, Cards},
+    model::{BuyChoice, Card, CardName, CardNames, Cards, PlayerCounters},
     play_area::PlayArea,
     players::{Agent, AlwaysBuyCopper},
     supply::Supply,
@@ -37,6 +37,7 @@ impl<'a> Game<'a> {
 
     fn play_one_turn(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
+            let mut player_counters = PlayerCounters::new_turn();
             let action_choice = agent.action_phase();
 
             let buyable_cards = self.supply.buyable_cards();
