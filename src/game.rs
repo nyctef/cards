@@ -14,11 +14,11 @@ use crate::logs::{GameEvent, GameLog};
 use derive_more::Constructor;
 
 #[derive(Debug)]
-struct Supply<'a> {
-    supply_piles: Vec<Vec<Card<'a>>>,
+struct Supply {
+    supply_piles: Vec<Vec<Card>>,
 }
 
-impl Supply<'_> {
+impl Supply {
     fn new() -> Self {
         Supply {
             supply_piles: vec![],
@@ -50,8 +50,8 @@ impl Supply<'_> {
 
 #[derive(Debug)]
 struct Game<'a> {
-    players: Vec<(&'a str, PlayArea<Card<'a>>, &'a mut dyn Agent)>,
-    supply: Supply<'a>,
+    players: Vec<(&'a str, PlayArea<Card>, &'a mut dyn Agent)>,
+    supply: Supply,
     log: &'a dyn GameLog,
 }
 impl<'a> Game<'a> {
@@ -71,6 +71,7 @@ impl<'a> Game<'a> {
     fn play_one_turn(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
             let action_choice = agent.action_phase();
+
             let buyable_cards = self.supply.buyable_cards();
             let buy_choice = agent.buy_phase(&buyable_cards);
             match buy_choice {
@@ -99,7 +100,7 @@ impl<'a> Game<'a> {
         for (name, area, agent) in self.players.iter_mut() {
             // let copper_supply = self.supply.supply_pile_for(&CopperToken {}).unwrap();
             // TODO: clean this up
-            let copper_supply = self.supply.supply_piles.get(0).unwrap();
+            let copper_supply = self.supply.supply_piles.get_mut(0).unwrap();
             // TODO: some extension method here might be useful since we're doing this a lot
             // maybe a CardPile abstraction over Vec?
             let split_index = copper_supply.len().saturating_sub(7);
