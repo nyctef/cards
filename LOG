@@ -1,3 +1,11 @@
+switching to CardName over &Card for identifying cards seems to work for now
+
+- but what about when we really need to point at a specific instance of a card
+  rather than a card with a given name? eg for cases like buying Sirens
+- let's not worry about that for now
+
+-------------------------------------------------------------------------------
+
 having fun with lifetimes and Supply
 - initially I wanted to have Supply.buyable_cards() return a vec of &Card which
   could be used to pick a card, and then a second method which took a &Card and
