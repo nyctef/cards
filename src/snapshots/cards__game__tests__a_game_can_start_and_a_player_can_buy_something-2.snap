@@ -8,11 +8,7 @@ expression: "(game.players, game.supply)"
             "Player 1",
             PlayArea {
                 deck: Deck {
-                    cards: [
-                        [Copper],
-                        [Copper],
-                        [Copper],
-                    ],
+                    cards: [],
                 },
                 hand: [
                     [Copper],
@@ -21,7 +17,14 @@ expression: "(game.players, game.supply)"
                     [Copper],
                     [Copper],
                 ],
-                discard: [],
+                discard: [
+                    [Copper],
+                    [Copper],
+                    [Copper],
+                    [Estate],
+                    [Estate],
+                    [Estate],
+                ],
             },
             AlwaysBuyCopper,
         ),
@@ -31,6 +34,27 @@ expression: "(game.players, game.supply)"
             [
                 [Copper],
                 [Copper],
+            ],
+            [
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+                [Duchy],
+            ],
+            [
+                [Estate],
+                [Estate],
+                [Estate],
+                [Estate],
+                [Estate],
+                [Estate],
+                [Estate],
             ],
         ],
     },

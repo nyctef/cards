@@ -9,12 +9,6 @@ impl std::fmt::Debug for CardName {
     }
 }
 
-impl From<&'static str> for CardName {
-    fn from(value: &'static str) -> Self {
-        CardName { name: value }
-    }
-}
-
 pub struct Card {
     pub name: CardName,
 }
@@ -27,16 +21,26 @@ impl std::fmt::Debug for Card {
 
 pub struct CardNames {}
 impl CardNames {
-    pub fn copper() -> CardName {
-        "Copper".into()
-    }
+    pub const COPPER: CardName = CardName { name: "Copper" };
+    pub const ESTATE: CardName = CardName { name: "Estate" };
+    pub const DUCHY: CardName = CardName { name: "Duchy" };
 }
 
 pub struct Cards {}
 impl Cards {
     pub fn copper() -> Card {
         Card {
-            name: CardNames::copper(),
+            name: CardNames::COPPER,
+        }
+    }
+    pub fn duchy() -> Card {
+        Card {
+            name: CardNames::DUCHY,
+        }
+    }
+    pub fn estate() -> Card {
+        Card {
+            name: CardNames::ESTATE,
         }
     }
 }

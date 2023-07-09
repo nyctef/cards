@@ -4,4 +4,4 @@ expression: log.dump()
 ---
 Todo("draws 0 cards, shuffles their deck, and draws 5 more")
 Todo("Player 1 gained 1 copper")
-Todo("draws 2 cards, shuffles their deck, and draws 3 more")
+Todo("draws 5 cards")
