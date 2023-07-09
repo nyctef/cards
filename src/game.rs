@@ -43,7 +43,7 @@ impl<'a> Game<'a> {
             let buy_choice = agent.buy_phase(&buyable_cards);
             match buy_choice {
                 BuyChoice::Buy(card) => {
-                    let purchased_copper = self.supply.take_from_supply(card).expect("TODO");
+                    let purchased_copper = self.supply.take_one(card).expect("TODO");
                     area.gain_card_to_discard_pile(purchased_copper);
                     self.log
                         .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
@@ -69,9 +69,9 @@ impl<'a> Game<'a> {
 
     fn deal_starting_hands(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
-            let mut coppers = self.supply.take_n(CardNames::COPPER, 7);
+            let mut coppers = self.supply.take_up_to_n(CardNames::COPPER, 7);
             area.gain_cards_to_discard_pile(&mut coppers);
-            let mut estates = self.supply.take_n(CardNames::ESTATE, 3);
+            let mut estates = self.supply.take_up_to_n(CardNames::ESTATE, 3);
             area.gain_cards_to_discard_pile(&mut estates);
 
             area.draw_hand(self.log);

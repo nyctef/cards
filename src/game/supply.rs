@@ -1,8 +1,11 @@
-use super::model::{Card, CardName};
+use super::{
+    card_pile::CardPile,
+    model::{Card, CardName},
+};
 
 #[derive(Debug)]
 pub struct Supply {
-    supply_piles: Vec<Vec<Card>>,
+    supply_piles: Vec<CardPile<Card>>,
 }
 
 impl Supply {
@@ -15,28 +18,27 @@ impl Supply {
     pub fn buyable_cards(&self) -> Vec<CardName> {
         self.supply_piles
             .iter()
-            .filter_map(|s| s.iter().last().map(|c| c.name))
+            .filter_map(|s| s.peek().map(|c| c.name))
             .collect()
     }
 
-    fn supply_pile_for(&mut self, card: CardName) -> Option<&mut Vec<Card>> {
+    fn supply_pile_for(&mut self, card: CardName) -> Option<&mut CardPile<Card>> {
         self.supply_piles
             .iter_mut()
-            .filter(|s| s.last().map(|c| c.name) == Some(card))
+            .filter(|s| s.peek().map(|c| c.name) == Some(card))
             .next()
     }
 
-    pub fn take_from_supply(&mut self, card: CardName) -> Option<Card> {
-        self.supply_pile_for(card).and_then(|p| p.pop())
+    pub fn take_one(&mut self, card: CardName) -> Option<Card> {
+        self.take_up_to_n(card, 1).into_iter().next()
     }
 
     pub fn add(&mut self, vec: Vec<Card>) {
-        self.supply_piles.push(vec);
+        self.supply_piles.push(vec.into());
     }
 
-    pub fn take_n(&mut self, card: CardName, n: usize) -> Vec<Card> {
+    pub fn take_up_to_n(&mut self, card: CardName, n: usize) -> Vec<Card> {
         let pile = self.supply_pile_for(card).expect("TODO");
-        let split_index = pile.len().saturating_sub(n);
-        pile.split_off(split_index)
+        pile.take_up_to_n(n)
     }
 }

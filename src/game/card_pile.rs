@@ -1,7 +1,6 @@
 use core::num;
 use std::cmp::min;
 
-#[derive(Debug)]
 pub struct CardPile<C> {
     cards: Vec<C>,
 }
@@ -43,6 +42,25 @@ where
 
     pub fn add_range(&mut self, cards: &mut Vec<C>) {
         self.cards.append(cards)
+    }
+
+    pub fn peek(&self) -> Option<&C> {
+        self.cards.last()
+    }
+}
+
+impl<C> From<Vec<C>> for CardPile<C> {
+    fn from(value: Vec<C>) -> Self {
+        CardPile { cards: value }
+    }
+}
+
+impl<C> std::fmt::Debug for CardPile<C>
+where
+    C: std::fmt::Debug,
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_list().entries(&self.cards).finish()
     }
 }
 
