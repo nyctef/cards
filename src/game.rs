@@ -17,7 +17,7 @@ use derive_more::Constructor;
 
 #[derive(Debug)]
 struct Game<'a> {
-    players: Vec<(&'a str, PlayArea<Card>, &'a mut dyn Agent)>,
+    players: Vec<(&'a str, PlayArea, &'a mut dyn Agent)>,
     supply: Supply,
     log: &'a dyn GameLog,
 }

@@ -5,7 +5,7 @@ use super::{
 
 #[derive(Debug)]
 pub struct Supply {
-    supply_piles: Vec<CardPile<Card>>,
+    supply_piles: Vec<CardPile>,
 }
 
 impl Supply {
@@ -22,7 +22,7 @@ impl Supply {
             .collect()
     }
 
-    fn supply_pile_for(&mut self, card: CardName) -> Option<&mut CardPile<Card>> {
+    fn supply_pile_for(&mut self, card: CardName) -> Option<&mut CardPile> {
         self.supply_piles
             .iter_mut()
             .filter(|s| s.peek().map(|c| c.name) == Some(card))
