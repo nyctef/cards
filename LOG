@@ -1,3 +1,20 @@
+having fun with lifetimes and Supply
+- initially I wanted to have Supply.buyable_cards() return a vec of &Card which
+  could be used to pick a card, and then a second method which took a &Card and
+  actually gave you ownership of that Card out of the supply.
+- however there doesn't seem to be a nice way to make the lifetimes work here,
+  since the initial list of &Cards requires one borrow of the Supply, and the
+  second call is going to require a second (mutable) borrow.
+- briefly tried something like the HashMap.entry() api, but I guess this
+  doesn't work for addressing more than one entry at a time?
+
+revised design to try next:
+
+- instead of &Card, use some Copy+Eq CardDescriptor struct to name cards
+- then a Card becomes a CardDescriptor plus some behaviors
+
+-------------------------------------------------------------------------------
+
 TODO next:
 
 - replace Game.copper_count with some kind of "kingdom" or "supply" concept
