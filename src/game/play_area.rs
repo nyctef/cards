@@ -30,15 +30,8 @@ where
         result
     }
 
-    fn ignore_draw_result(res: DrawResult<C>) -> Vec<C> {
-        match res {
-            DrawResult::Complete(c) => c,
-            DrawResult::Partial(c, _) => c,
-        }
-    }
-
     pub fn draw_hand(&mut self, log: &dyn GameLog) {
-        let mut cards = self.deck.draw(5);
+        let mut cards = self.deck.take_n(5);
         match cards {
             DrawResult::Complete(mut cards) => {
                 self.hand.append(&mut cards);
@@ -55,7 +48,7 @@ where
                 // and turn it back into the deck:
                 // todo: shuffle
                 self.deck.add_range(&mut self.discard);
-                let mut remaining_cards = Self::ignore_draw_result(self.deck.draw(remaining));
+                let mut remaining_cards = self.deck.take_up_to_n(remaining);
                 self.hand.append(&mut remaining_cards)
             }
         }

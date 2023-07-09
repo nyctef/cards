@@ -20,15 +20,21 @@ where
         CardPile { cards: vec![] }
     }
 
-    pub fn draw(&mut self, num_cards_requested: usize) -> DrawResult<C> {
-        let index = self.cards.len().saturating_sub(num_cards_requested);
-        let cards = self.cards.split_off(index);
-        if cards.len() == num_cards_requested {
+    /** Try to draw `n` cards, and return whether we were successful */
+    pub fn take_n(&mut self, n: usize) -> DrawResult<C> {
+        let cards = self.take_up_to_n(n);
+        if cards.len() == n {
             DrawResult::Complete(cards)
         } else {
-            let remaining = num_cards_requested - &cards.len();
+            let remaining = n - &cards.len();
             DrawResult::Partial(cards, remaining)
         }
+    }
+
+    /** Try to draw `n` cards, and just return fewer if there weren't enough */
+    pub fn take_up_to_n(&mut self, n: usize) -> Vec<C> {
+        let index = self.cards.len().saturating_sub(n);
+        self.cards.split_off(index)
     }
 
     pub fn add_at_top(&mut self, card: C) {
@@ -50,7 +56,7 @@ mod tests {
         deck.add_at_top(1);
         deck.add_at_top(2);
         deck.add_at_top(3);
-        let cards = deck.draw(3);
+        let cards = deck.take_n(3);
         assert_eq!(
             DrawResult::Complete(vec![3, 2, 1]),
             cards,
@@ -62,7 +68,7 @@ mod tests {
     fn if_there_arent_enough_cards_then_remaining_cards_get_drawn() {
         let mut deck = CardPile::<i32>::new();
         deck.add_range(&mut vec![1, 2, 3]);
-        let cards = deck.draw(5);
+        let cards = deck.take_n(5);
         assert_eq!(
             cards,
             DrawResult::Partial {
