@@ -7,7 +7,7 @@ expression: "(game.players, game.supply)"
         (
             "Player 1",
             PlayArea {
-                deck: Deck {
+                deck: CardPile {
                     cards: [],
                 },
                 hand: [

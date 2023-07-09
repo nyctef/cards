@@ -2,11 +2,11 @@
 
 use crate::logs::{GameEvent, GameLog};
 
-use super::deck::{Deck, DrawResult};
+use super::card_pile::{CardPile, DrawResult};
 
 #[derive(Debug)]
 pub struct PlayArea<C> {
-    deck: Deck<C>,
+    deck: CardPile<C>,
     hand: Vec<C>,
     discard: Vec<C>,
 }
@@ -17,7 +17,7 @@ where
 {
     pub fn new() -> Self {
         PlayArea {
-            deck: Deck::<C>::new(),
+            deck: CardPile::<C>::new(),
             hand: vec![],
             discard: vec![],
         }

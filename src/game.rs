@@ -1,6 +1,6 @@
 #![allow(unused)]
 
-mod deck;
+mod card_pile;
 mod model;
 mod play_area;
 mod players;

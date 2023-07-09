@@ -2,7 +2,7 @@ use core::num;
 use std::cmp::min;
 
 #[derive(Debug)]
-pub struct Deck<C> {
+pub struct CardPile<C> {
     cards: Vec<C>,
 }
 
@@ -12,12 +12,12 @@ pub enum DrawResult<C> {
     Partial(Vec<C>, usize),
 }
 
-impl<C> Deck<C>
+impl<C> CardPile<C>
 where
     C: std::fmt::Debug,
 {
     pub fn new() -> Self {
-        Deck { cards: vec![] }
+        CardPile { cards: vec![] }
     }
 
     pub fn draw(&mut self, num_cards_requested: usize) -> DrawResult<C> {
@@ -46,7 +46,7 @@ mod tests {
 
     #[test]
     fn added_cards_can_be_drawn() {
-        let mut deck = Deck::<i32>::new();
+        let mut deck = CardPile::<i32>::new();
         deck.add_at_top(1);
         deck.add_at_top(2);
         deck.add_at_top(3);
@@ -60,7 +60,7 @@ mod tests {
 
     #[test]
     fn if_there_arent_enough_cards_then_remaining_cards_get_drawn() {
-        let mut deck = Deck::<i32>::new();
+        let mut deck = CardPile::<i32>::new();
         deck.add_range(&mut vec![1, 2, 3]);
         let cards = deck.draw(5);
         assert_eq!(
