@@ -1,3 +1,12 @@
+TODO next:
+
+- implement some kind of win condition
+- make a couple more bots
+- implement the CLI layer (and remove #![allow(unused)])
+- have some fun pitting bots against each other in repeated games
+
+-------------------------------------------------------------------------------
+
 switching to CardName over &Card for identifying cards seems to work for now
 
 - but what about when we really need to point at a specific instance of a card
