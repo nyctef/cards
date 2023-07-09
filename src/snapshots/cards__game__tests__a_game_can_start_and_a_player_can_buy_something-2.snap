@@ -1,6 +1,6 @@
 ---
 source: src/game.rs
-expression: "(game.players, game.copper_count)"
+expression: "(game.players, game.supply)"
 ---
 (
     [
@@ -26,5 +26,12 @@ expression: "(game.players, game.copper_count)"
             AlwaysBuyCopper,
         ),
     ],
-    52,
+    Supply {
+        supply_piles: [
+            [
+                CopperToken,
+                CopperToken,
+            ],
+        ],
+    },
 )

@@ -37,6 +37,10 @@ impl Supply {
             .next()
     }
 
+    fn take_from_supply(&mut self, card: &CopperToken) -> Option<CopperToken> {
+        self.supply_pile_for(&CopperToken {}).and_then(|p| p.pop())
+    }
+
     fn add(&mut self, vec: Vec<CopperToken>) {
         self.supply_piles.push(vec);
     }
@@ -68,12 +72,8 @@ impl<'a> Game<'a> {
             let buy_choice = agent.buy_phase();
             match buy_choice {
                 BuyChoice::Buy(CopperToken { .. }) => {
-                    let supply_pile = self.supply.supply_pile_for(&CopperToken {});
-                    let supply_pile = match supply_pile {
-                        Some(pile) => pile,
-                        None => todo!(),
-                    };
-                    let purchased_copper = supply_pile.pop().unwrap();
+                    let purchased_copper =
+                        self.supply.take_from_supply(&CopperToken {}).expect("TODO");
                     area.gain_card_to_discard_pile(purchased_copper);
                     self.log
                         .record(GameEvent::Todo(format!("{} gained 1 copper", name)));
@@ -86,7 +86,9 @@ impl<'a> Game<'a> {
     }
 
     fn populate_basic_kingdom(&mut self) {
-        self.supply.add(vec![CopperToken {}; 60])
+        // TODO technically this should be 60
+        // need more test-specific builders
+        self.supply.add(vec![CopperToken {}; 10])
     }
 
     fn deal_starting_hands(&mut self) {
