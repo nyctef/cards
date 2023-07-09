@@ -12,16 +12,47 @@ use crate::logs::{GameEvent, GameLog};
 use derive_more::Constructor;
 
 #[derive(Debug)]
+struct Supply {
+    supply_piles: Vec<Vec<CopperToken>>,
+}
+
+impl Supply {
+    fn new() -> Self {
+        Supply {
+            supply_piles: vec![],
+        }
+    }
+
+    fn buyable_cards(&self) -> Vec<&CopperToken> {
+        self.supply_piles
+            .iter()
+            .filter_map(|s| s.iter().last())
+            .collect()
+    }
+
+    fn supply_pile_for(&mut self, card: &CopperToken) -> Option<&mut Vec<CopperToken>> {
+        self.supply_piles
+            .iter_mut()
+            .filter(|s| s.last() == Some(card))
+            .next()
+    }
+
+    fn add(&mut self, vec: Vec<CopperToken>) {
+        self.supply_piles.push(vec);
+    }
+}
+
+#[derive(Debug)]
 struct Game<'a> {
     players: Vec<(&'a str, PlayArea<CopperToken>, &'a mut dyn Agent)>,
-    supply: Vec<Vec<CopperToken>>,
+    supply: Supply,
     log: &'a dyn GameLog,
 }
 impl<'a> Game<'a> {
     fn new(log: &'a dyn GameLog) -> Self {
         Self {
             players: vec![],
-            supply: vec![],
+            supply: Supply::new(),
             log,
         }
     }
@@ -31,21 +62,13 @@ impl<'a> Game<'a> {
         self.players.push((name, player, agent));
     }
 
-    fn buyable_cards(&self) -> Vec<&CopperToken> {
-        self.supply.iter().filter_map(|s| s.iter().last()).collect()
-    }
-
-    fn supply_pile_for(&self, card: &CopperToken) -> Option<&mut Vec<CopperToken>> {
-        self.supply.iter().filter(|s| s.last() == Some(card)).next()
-    }
-
     fn play_one_turn(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
             let action_choice = agent.action_phase();
             let buy_choice = agent.buy_phase();
             match buy_choice {
                 BuyChoice::Buy(CopperToken { .. }) => {
-                    let supply_pile = self.supply_pile_for(&CopperToken {});
+                    let supply_pile = self.supply.supply_pile_for(&CopperToken {});
                     let supply_pile = match supply_pile {
                         Some(pile) => pile,
                         None => todo!(),
@@ -63,12 +86,12 @@ impl<'a> Game<'a> {
     }
 
     fn populate_basic_kingdom(&mut self) {
-        self.supply.push(vec![CopperToken {}; 60])
+        self.supply.add(vec![CopperToken {}; 60])
     }
 
     fn deal_starting_hands(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
-            let copper_supply = self.supply_pile_for(&CopperToken {}).unwrap();
+            let copper_supply = self.supply.supply_pile_for(&CopperToken {}).unwrap();
             // TODO: some extension method here might be useful since we're doing this a lot
             let split_index = copper_supply.len().saturating_sub(7);
             let mut coppers = copper_supply.split_off(split_index);
