@@ -6,7 +6,7 @@ mod play_area;
 mod players;
 
 use self::{
-    model::{BuyChoice, Card, CardName, Cards},
+    model::{BuyChoice, Card, CardName, CardNames, Cards},
     play_area::PlayArea,
     players::{Agent, AlwaysBuyCopper},
 };
@@ -98,9 +98,7 @@ impl<'a> Game<'a> {
 
     fn deal_starting_hands(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
-            // let copper_supply = self.supply.supply_pile_for(&CopperToken {}).unwrap();
-            // TODO: clean this up
-            let copper_supply = self.supply.supply_piles.get_mut(0).unwrap();
+            let copper_supply = self.supply.supply_pile_for(CardNames::copper()).unwrap();
             // TODO: some extension method here might be useful since we're doing this a lot
             // maybe a CardPile abstraction over Vec?
             let split_index = copper_supply.len().saturating_sub(7);
