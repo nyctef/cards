@@ -25,8 +25,7 @@ impl Supply {
     fn supply_pile_for(&mut self, card: CardName) -> Option<&mut CardPile> {
         self.supply_piles
             .iter_mut()
-            .filter(|s| s.peek().map(|c| c.name) == Some(card))
-            .next()
+            .find(|s| s.peek().map(|c| c.name) == Some(card))
     }
 
     pub fn take_one(&mut self, card: CardName) -> Option<Card> {

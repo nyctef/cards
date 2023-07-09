@@ -20,8 +20,7 @@ impl Agent for AlwaysBuyCopper {
     fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
         buyable_cards
             .iter()
-            .filter(|c| **c == CardNames::COPPER)
-            .next()
+            .find(|c| **c == CardNames::COPPER)
             .map(|c| BuyChoice::Buy(*c))
             .unwrap_or(BuyChoice::None)
     }
