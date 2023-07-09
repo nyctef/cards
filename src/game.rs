@@ -46,6 +46,11 @@ impl<'a> Game<'a> {
                 .filter(|c| *c == CardNames::COPPER)
             {
                 area.play_card(c);
+                player_counters.coins += 1;
+                self.log.record(GameEvent::Todo(format!(
+                    "{:?} {} played a copper",
+                    player_counters, name
+                )));
             }
 
             let buyable_cards = self.supply.buyable_cards();
