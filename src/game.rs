@@ -69,17 +69,9 @@ impl<'a> Game<'a> {
 
     fn deal_starting_hands(&mut self) {
         for (name, area, agent) in self.players.iter_mut() {
-            let copper_supply = self.supply.supply_pile_for(CardNames::COPPER).unwrap();
-            // TODO: some extension method here might be useful since we're doing this a lot
-            // maybe a CardPile abstraction over Vec?
-            let split_index = copper_supply.len().saturating_sub(7);
-            let mut coppers = copper_supply.split_off(split_index);
+            let mut coppers = self.supply.take_n(CardNames::COPPER, 7);
             area.gain_cards_to_discard_pile(&mut coppers);
-            let estate_supply = self.supply.supply_pile_for(CardNames::ESTATE).unwrap();
-            // TODO: some extension method here might be useful since we're doing this a lot
-            // maybe a CardPile abstraction over Vec?
-            let split_index = estate_supply.len().saturating_sub(3);
-            let mut estates = estate_supply.split_off(split_index);
+            let mut estates = self.supply.take_n(CardNames::ESTATE, 3);
             area.gain_cards_to_discard_pile(&mut estates);
 
             area.draw_hand(self.log);

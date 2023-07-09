@@ -19,7 +19,7 @@ impl Supply {
             .collect()
     }
 
-    pub fn supply_pile_for(&mut self, card: CardName) -> Option<&mut Vec<Card>> {
+    fn supply_pile_for(&mut self, card: CardName) -> Option<&mut Vec<Card>> {
         self.supply_piles
             .iter_mut()
             .filter(|s| s.last().map(|c| c.name) == Some(card))
@@ -32,5 +32,11 @@ impl Supply {
 
     pub fn add(&mut self, vec: Vec<Card>) {
         self.supply_piles.push(vec);
+    }
+
+    pub fn take_n(&mut self, card: CardName, n: usize) -> Vec<Card> {
+        let pile = self.supply_pile_for(card).expect("TODO");
+        let split_index = pile.len().saturating_sub(n);
+        pile.split_off(split_index)
     }
 }
