@@ -76,11 +76,6 @@ where
     pub fn inspect_hand(&mut self) -> &Vec<C> {
         &self.hand
     }
-
-    #[cfg(test)]
-    pub fn debug_total_card_count(&self) -> u8 {
-        (self.deck.debug_len() + self.hand.len() + self.discard.len()) as u8
-    }
 }
 
 #[cfg(test)]

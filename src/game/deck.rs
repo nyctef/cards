@@ -38,11 +38,6 @@ where
     pub fn add_range(&mut self, cards: &mut Vec<C>) {
         self.cards.append(cards)
     }
-
-    #[cfg(test)]
-    pub fn debug_len(&self) -> usize {
-        self.cards.len()
-    }
 }
 
 #[cfg(test)]
