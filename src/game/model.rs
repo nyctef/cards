@@ -1,25 +1,53 @@
-// TODO: Card equality: do we want the option of just finding some card
-// with the same name vs actually trying to track specific instances of
-// a card with an ID or something?
-#[derive(Debug, PartialEq, Eq)]
-pub struct Card {
+#[derive(PartialEq, Eq, Clone, Copy)]
+pub struct CardName {
     name: &'static str,
+}
+
+impl std::fmt::Debug for CardName {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_fmt(format_args!("[{}]", self.name))
+    }
+}
+
+impl From<&'static str> for CardName {
+    fn from(value: &'static str) -> Self {
+        CardName { name: value }
+    }
+}
+
+pub struct Card {
+    pub name: CardName,
+}
+
+impl std::fmt::Debug for Card {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        self.name.fmt(f)
+    }
+}
+
+pub struct CardNames {}
+impl CardNames {
+    pub fn copper() -> CardName {
+        "Copper".into()
+    }
 }
 
 pub struct Cards {}
 impl Cards {
     pub fn copper() -> Card {
-        Card { name: "Copper" }
+        Card {
+            name: CardNames::copper(),
+        }
     }
 }
 
 impl Card {
     pub fn get_name(&self) -> &str {
-        self.name
+        self.name.name
     }
 }
 
-pub enum BuyChoice<'a> {
-    Buy(&'a Card),
+pub enum BuyChoice {
+    Buy(CardName),
     None,
 }

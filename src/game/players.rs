@@ -1,7 +1,7 @@
 use derive_more::Constructor;
 
 use super::{
-    model::{BuyChoice, Card},
+    model::{BuyChoice, Card, CardName, CardNames, Cards},
     play_area::PlayArea,
     Game,
 };
@@ -9,7 +9,7 @@ use super::{
 /** An agent is a thing that decides what to do */
 pub trait Agent: std::fmt::Debug {
     fn action_phase(&mut self) -> ();
-    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<&'card Card>) -> BuyChoice<'card>;
+    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice;
 }
 
 #[derive(Debug, Constructor)]
@@ -17,12 +17,12 @@ pub struct AlwaysBuyCopper {}
 
 impl Agent for AlwaysBuyCopper {
     fn action_phase(&mut self) {}
-    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<&'card Card>) -> BuyChoice<'card> {
+    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
         buyable_cards
             .iter()
-            .filter(|c| c.get_name() == "Copper")
+            .filter(|c| **c == CardNames::copper())
             .next()
-            .map(|c| BuyChoice::Buy(c))
+            .map(|c| BuyChoice::Buy(*c))
             .unwrap_or(BuyChoice::None)
     }
 }

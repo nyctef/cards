@@ -6,7 +6,7 @@ mod play_area;
 mod players;
 
 use self::{
-    model::{BuyChoice, Card, Cards},
+    model::{BuyChoice, Card, CardName, Cards},
     play_area::PlayArea,
     players::{Agent, AlwaysBuyCopper},
 };
@@ -25,21 +25,21 @@ impl Supply {
         }
     }
 
-    fn buyable_cards(&self) -> Vec<&Card> {
+    fn buyable_cards(&self) -> Vec<CardName> {
         self.supply_piles
             .iter()
-            .filter_map(|s| s.iter().last())
+            .filter_map(|s| s.iter().last().map(|c| c.name))
             .collect()
     }
 
-    fn supply_pile_for(&mut self, card: &Card) -> Option<&mut Vec<Card>> {
+    fn supply_pile_for(&mut self, card: CardName) -> Option<&mut Vec<Card>> {
         self.supply_piles
             .iter_mut()
-            .filter(|s| s.last() == Some(card))
+            .filter(|s| s.last().map(|c| c.name) == Some(card))
             .next()
     }
 
-    fn take_from_supply(&mut self, card: &Card) -> Option<Card> {
+    fn take_from_supply(&mut self, card: CardName) -> Option<Card> {
         self.supply_pile_for(card).and_then(|p| p.pop())
     }
 

@@ -9,17 +9,17 @@ expression: "(game.players, game.supply)"
             PlayArea {
                 deck: Deck {
                     cards: [
-                        CopperToken,
-                        CopperToken,
-                        CopperToken,
+                        [Copper],
+                        [Copper],
+                        [Copper],
                     ],
                 },
                 hand: [
-                    CopperToken,
-                    CopperToken,
-                    CopperToken,
-                    CopperToken,
-                    CopperToken,
+                    [Copper],
+                    [Copper],
+                    [Copper],
+                    [Copper],
+                    [Copper],
                 ],
                 discard: [],
             },
@@ -29,8 +29,8 @@ expression: "(game.players, game.supply)"
     Supply {
         supply_piles: [
             [
-                CopperToken,
-                CopperToken,
+                [Copper],
+                [Copper],
             ],
         ],
     },
