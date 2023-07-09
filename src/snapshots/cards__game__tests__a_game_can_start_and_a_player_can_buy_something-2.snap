@@ -31,29 +31,13 @@ expression: "(game.players, game.supply)"
     Supply {
         supply_piles: [
             [
-                [Copper],
-                [Copper],
+                "2 [Copper]",
             ],
             [
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
-                [Duchy],
+                "10 [Duchy]",
             ],
             [
-                [Estate],
-                [Estate],
-                [Estate],
-                [Estate],
-                [Estate],
-                [Estate],
-                [Estate],
+                "7 [Estate]",
             ],
         ],
     },

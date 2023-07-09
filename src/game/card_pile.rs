@@ -1,4 +1,5 @@
 use core::num;
+use itertools::Itertools;
 use std::cmp::min;
 
 use super::model::Card;
@@ -56,7 +57,14 @@ impl From<Vec<Card>> for CardPile {
 
 impl std::fmt::Debug for CardPile {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_list().entries(&self.cards).finish()
+        let runs = &self.cards.iter().group_by(|c| c.name);
+
+        f.debug_list()
+            .entries(
+                runs.into_iter()
+                    .map(|(k, g)| format!("{} {:?}", g.count(), k)),
+            )
+            .finish()
     }
 }
 
