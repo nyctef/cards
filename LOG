@@ -1,3 +1,15 @@
+it's slowly starting to come together! finally working on some win conditions.
+returning iterators from functions is kinda complicated
+
+TODO next:
+
+- implement silvers so that someone can actually win in a reasonable amount of
+  time
+- implement deck shuffling to make things interesting
+- then carry on with the below TODOs
+
+-------------------------------------------------------------------------------
+
 TODO next:
 
 - implement some kind of win condition
