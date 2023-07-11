@@ -37,7 +37,9 @@ impl Supply {
     }
 
     pub fn take_up_to_n(&mut self, card: CardName, n: usize) -> Vec<Card> {
-        let pile = self.supply_pile_for(card).expect("TODO");
+        let pile = self
+            .supply_pile_for(card)
+            .expect(format!("Missing supply pile for {:?}", card).as_str());
         pile.take_up_to_n(n)
     }
 }

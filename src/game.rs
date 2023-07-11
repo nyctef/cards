@@ -79,12 +79,14 @@ impl<'a> Game<'a> {
         // TODO technically this should be 60
         // need more test-specific builders
 
+        self.populate_supply(|| Cards::copper(), 60);
+        self.populate_supply(|| Cards::estate(), 12);
+        self.populate_supply(|| Cards::duchy(), 12);
+    }
+
+    fn populate_supply(&mut self, printer: impl Fn() -> Card, count: u8) {
         self.supply
-            .add((0..10).into_iter().map(|_| Cards::copper()).collect());
-        self.supply
-            .add((0..10).into_iter().map(|_| Cards::duchy()).collect());
-        self.supply
-            .add((0..10).into_iter().map(|_| Cards::estate()).collect());
+            .add((0..count).into_iter().map(|_| printer()).collect());
     }
 
     fn deal_starting_hands(&mut self) {
@@ -162,7 +164,8 @@ mod tests {
         let mut game = Game::new(&log);
         let mut player_1 = AlwaysBuyCopper::new();
         game.add_player("Player 1", &mut player_1);
-        game.populate_basic_kingdom();
+        game.populate_supply(|| Cards::copper(), 10);
+        game.populate_supply(|| Cards::estate(), 3);
         game.deal_starting_hands();
         game.play_one_turn();
 
@@ -176,7 +179,9 @@ mod tests {
         let mut game = Game::new(&log);
         let mut player_1 = GreedyForDuchies::new();
         game.add_player("Player 1", &mut player_1);
-        game.populate_basic_kingdom();
+        game.populate_supply(|| Cards::copper(), 10);
+        game.populate_supply(|| Cards::estate(), 3);
+        game.populate_supply(|| Cards::duchy(), 3);
         game.deal_starting_hands();
         for t in 0..5 {
             game.play_one_turn();
@@ -188,7 +193,6 @@ mod tests {
 
     #[test]
     fn one_player_beats_another_buy_eventually_buying_enough_duchies() {
-        // TODO: put more coppers into the supply so there's enough for both players
         // TODO: make sure the game ends via supply running out rather than turn limit
         // TODO: introduce (seeded) randomness by shuffling the player's decks
         // TODO: print number of turns (per player) in results

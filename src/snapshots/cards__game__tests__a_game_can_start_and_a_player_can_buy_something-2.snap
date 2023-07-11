@@ -33,12 +33,7 @@ expression: "(game.players, game.supply)"
             [
                 "2 [Copper]",
             ],
-            [
-                "10 [Duchy]",
-            ],
-            [
-                "7 [Estate]",
-            ],
+            [],
         ],
     },
 )
