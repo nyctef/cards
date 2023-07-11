@@ -6,6 +6,8 @@ mod play_area;
 mod players;
 mod supply;
 
+use std::fmt::{Display, Formatter};
+
 use self::{
     model::{BuyChoice, Card, CardName, CardNames, Cards, PlayerCounters},
     play_area::PlayArea,
@@ -14,12 +16,14 @@ use self::{
 };
 use crate::logs::{GameEvent, GameLog};
 use derive_more::Constructor;
+use itertools::Itertools;
 
 #[derive(Debug)]
 struct Game<'a> {
     players: Vec<(&'a str, PlayArea, &'a mut dyn Agent)>,
     supply: Supply,
     log: &'a dyn GameLog,
+    max_turns: u8,
 }
 impl<'a> Game<'a> {
     fn new(log: &'a dyn GameLog) -> Self {
@@ -27,6 +31,7 @@ impl<'a> Game<'a> {
             players: vec![],
             supply: Supply::new(),
             log,
+            max_turns: 100,
         }
     }
 
@@ -92,6 +97,57 @@ impl<'a> Game<'a> {
             area.draw_hand(self.log);
         }
     }
+
+    fn has_ended(&mut self) -> bool {
+        // TODO
+        self.max_turns -= 1;
+        self.max_turns <= 0
+    }
+
+    fn collect_cards_and_get_results(&mut self) -> PlayerResults {
+        let mut results = vec![];
+        // we could totally do this in a nondestructive way with references to
+        // player cards rather than actually moving the card objects around,
+        // but this way seems more fun
+        for (name, area, _) in self.players.iter_mut() {
+            let mut player_cards = area.take_all_cards();
+            player_cards.sort_by_key(|c| c.name);
+            // TODO
+            // let score = self.calculate_score(&player_cards);
+            let score = 0;
+            results.push(PlayerResult::new(name, player_cards, score));
+        }
+        PlayerResults { 0: results }
+    }
+}
+
+#[derive(Debug, Constructor)]
+struct PlayerResult<'a> {
+    name: &'a str,
+    cards: Vec<Card>,
+    score: u8,
+}
+
+impl Display for PlayerResult<'_> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        writeln!(f, "{}: {} points", self.name, self.score)?;
+        for (name, cards) in &self.cards.iter().group_by(|c| c.name) {
+            writeln!(f, "  {:?} x{}", name, cards.count())?
+        }
+        Ok(())
+    }
+}
+
+// create a newtype since we can't directly impl Display for Vec
+// https://github.com/apolitical/impl-display-for-vec
+struct PlayerResults<'a>(pub Vec<PlayerResult<'a>>);
+impl Display for PlayerResults<'_> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        for result in &self.0 {
+            writeln!(f, "{}", result)?;
+        }
+        Ok(())
+    }
 }
 
 #[cfg(test)]
@@ -128,5 +184,29 @@ mod tests {
 
         insta::assert_snapshot!(log.dump());
         insta::assert_debug_snapshot!((game.players, game.supply));
+    }
+
+    #[test]
+    fn one_player_beats_another_buy_eventually_buying_enough_duchies() {
+        // TODO: put more coppers into the supply so there's enough for both players
+        // TODO: make sure the game ends via supply running out rather than turn limit
+        // TODO: introduce (seeded) randomness by shuffling the player's decks
+        // TODO: print number of turns (per player) in results
+        // TODO: print the game end reason to the log
+        let log = TestLog::new();
+        let mut game = Game::new(&log);
+        let mut player_1 = GreedyForDuchies::new();
+        let mut player_2 = AlwaysBuyCopper::new();
+        game.add_player("P1 [GFD]", &mut player_1);
+        game.add_player("P2 [ABC]", &mut player_2);
+        game.populate_basic_kingdom();
+        game.deal_starting_hands();
+        while !game.has_ended() {
+            game.play_one_turn();
+        }
+        let results = game.collect_cards_and_get_results();
+
+        insta::assert_snapshot!(log.dump());
+        insta::assert_display_snapshot!(results);
     }
 }

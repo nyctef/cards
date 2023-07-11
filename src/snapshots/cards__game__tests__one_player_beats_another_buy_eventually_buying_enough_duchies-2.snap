@@ -1,0 +1,14 @@
+---
+source: src/game.rs
+expression: game.collect_cards_and_get_results()
+---
+P1 [GFD]: 0 points
+  [Copper] x7
+  [Duchy] x3
+  [Estate] x3
+
+P2 [ABC]: 0 points
+  [Copper] x3
+  [Estate] x3
+
+

@@ -1,4 +1,4 @@
-#[derive(PartialEq, Eq, Clone, Copy)]
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub struct CardName {
     name: &'static str,
 }

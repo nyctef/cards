@@ -81,6 +81,14 @@ impl PlayArea {
             .remove(self.hand.iter().position(|c| c.name == name).expect("TODO"));
         self.in_play.push(card);
     }
+
+    pub fn take_all_cards(&mut self) -> Vec<Card> {
+        let mut res = vec![];
+        res.append(&mut self.deck.take_all());
+        res.append(&mut self.hand);
+        res.append(&mut self.discard);
+        res
+    }
 }
 
 /*

@@ -47,6 +47,10 @@ impl CardPile {
     pub fn peek(&self) -> Option<&Card> {
         self.cards.last()
     }
+
+    pub fn take_all(&mut self) -> Vec<Card> {
+        self.cards.drain(..).collect()
+    }
 }
 
 impl From<Vec<Card>> for CardPile {
