@@ -3,20 +3,38 @@ pub struct CardName {
     name: &'static str,
 }
 
-#[derive(PartialEq, Eq, Clone, Copy)]
-pub struct CardType {
-    name: &'static str,
-}
-
 impl std::fmt::Debug for CardName {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_fmt(format_args!("[{}]", self.name))
     }
 }
 
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
+pub struct CardType {
+    name: &'static str,
+}
+
+pub struct CardTypes {}
+impl CardTypes {
+    pub const ACTION: CardType = CardType { name: "Action" };
+    pub const TREASURE: CardType = CardType { name: "Treasure" };
+    pub const VICTORY: CardType = CardType { name: "Victory" };
+}
+
 pub struct Card {
     pub name: CardName,
     pub coins_cost: u8,
+    types: Vec<CardType>,
+}
+
+impl Card {
+    pub fn get_name(&self) -> &str {
+        self.name.name
+    }
+
+    pub fn get_types(&self) -> impl Iterator<Item = CardType> + '_ {
+        self.types.iter().cloned()
+    }
 }
 
 impl std::fmt::Debug for Card {
@@ -38,25 +56,22 @@ impl Cards {
         Card {
             name: CardNames::COPPER,
             coins_cost: 0,
+            types: vec![CardTypes::TREASURE],
         }
     }
     pub fn duchy() -> Card {
         Card {
             name: CardNames::DUCHY,
             coins_cost: 5,
+            types: vec![CardTypes::VICTORY],
         }
     }
     pub fn estate() -> Card {
         Card {
             name: CardNames::ESTATE,
             coins_cost: 2,
+            types: vec![CardTypes::VICTORY],
         }
-    }
-}
-
-impl Card {
-    pub fn get_name(&self) -> &str {
-        self.name.name
     }
 }
 

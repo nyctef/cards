@@ -51,6 +51,10 @@ impl CardPile {
     pub fn take_all(&mut self) -> Vec<Card> {
         self.cards.drain(..).collect()
     }
+
+    pub fn is_empty(&self) -> bool {
+        self.cards.is_empty()
+    }
 }
 
 impl From<Vec<Card>> for CardPile {

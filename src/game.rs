@@ -105,6 +105,12 @@ impl<'a> Game<'a> {
         // TODO
         self.max_turns -= 1;
         self.max_turns <= 0
+            || self
+                .supply
+                .empty_supply_piles()
+                // TODO: check for type == victory rather than just by name
+                // TODO: check for 3/4 empty supply piles
+                .any(|s| s == CardNames::DUCHY)
     }
 
     fn collect_cards_and_get_results(&mut self) -> PlayerResults {
