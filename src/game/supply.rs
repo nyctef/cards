@@ -15,11 +15,10 @@ impl Supply {
         }
     }
 
-    pub fn buyable_cards(&self, coins: u8) -> Vec<CardName> {
+    pub fn buyable_cards(&self, coins: u8) -> impl Iterator<Item = CardName> + '_ {
         self.supply_piles
             .iter()
-            .filter_map(|s| s.peek().filter(|c| c.coins_cost <= coins).map(|c| c.name))
-            .collect()
+            .filter_map(move |s| s.peek().filter(|c| c.coins_cost <= coins).map(|c| c.name))
     }
 
     fn supply_pile_for(&mut self, card: CardName) -> Option<&mut CardPile> {

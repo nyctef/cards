@@ -71,8 +71,8 @@ impl PlayArea {
         self.discard.push(card)
     }
 
-    pub fn inspect_hand(&mut self) -> Vec<CardName> {
-        self.hand.iter().map(|c| c.name).collect()
+    pub fn inspect_hand(&self) -> impl Iterator<Item = CardName> + '_ {
+        self.hand.iter().map(|c| c.name)
     }
 
     pub fn play_card(&mut self, name: CardName /*, TODO: ...? */) {

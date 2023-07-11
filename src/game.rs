@@ -49,6 +49,7 @@ impl<'a> Game<'a> {
                 .inspect_hand()
                 .into_iter()
                 .filter(|c| *c == CardNames::COPPER)
+                .collect_vec()
             {
                 area.play_card(c);
                 player_counters.coins += 1;
@@ -59,7 +60,7 @@ impl<'a> Game<'a> {
             }
 
             let buyable_cards = self.supply.buyable_cards(player_counters.coins);
-            let buy_choice = agent.buy_phase(&buyable_cards);
+            let buy_choice = agent.buy_phase(&buyable_cards.collect());
             match buy_choice {
                 BuyChoice::Buy(card) => {
                     let purchased = self.supply.take_one(card).expect("TODO");
