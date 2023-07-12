@@ -126,12 +126,14 @@ impl<'a> Game<'a> {
         for (name, area, _) in self.players.iter_mut() {
             let mut player_cards = area.take_all_cards();
             player_cards.sort_by_key(|c| c.name);
-            // TODO
-            // let score = self.calculate_score(&player_cards);
-            let score = 0;
+            let score = Self::calculate_score(&player_cards);
             results.push(PlayerResult::new(name, player_cards, score));
         }
         PlayerResults { 0: results }
+    }
+
+    fn calculate_score(player_cards: &[Card]) -> u8 {
+        player_cards.iter().map(|c| c.vp_value).sum()
     }
 
     fn play_to_end(&mut self) -> PlayerResults {
