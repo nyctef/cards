@@ -127,6 +127,15 @@ impl<'a> Game<'a> {
         }
         PlayerResults { 0: results }
     }
+
+    fn play_to_end(&mut self) -> PlayerResults {
+        self.deal_starting_hands();
+
+        while !self.has_ended() {
+            self.play_one_turn();
+        }
+        self.collect_cards_and_get_results()
+    }
 }
 
 #[derive(Debug, Constructor)]
@@ -210,11 +219,8 @@ mod tests {
         game.add_player("P1 [GFD]", &mut player_1);
         game.add_player("P2 [ABC]", &mut player_2);
         game.populate_basic_kingdom();
-        game.deal_starting_hands();
-        while !game.has_ended() {
-            game.play_one_turn();
-        }
-        let results = game.collect_cards_and_get_results();
+
+        let results = game.play_to_end();
 
         insta::assert_snapshot!(log.dump());
         insta::assert_display_snapshot!(results);
