@@ -32,19 +32,11 @@ pub struct GreedyForDuchies {}
 impl Agent for GreedyForDuchies {
     fn action_phase(&mut self) {}
     fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
-        if (buyable_cards
-            .iter()
-            .find(|c| **c == CardNames::DUCHY)
-            .is_some())
-        {
-            return BuyChoice::Buy(CardNames::DUCHY);
-        }
-        if (buyable_cards
-            .iter()
-            .find(|c| **c == CardNames::COPPER)
-            .is_some())
-        {
-            return BuyChoice::Buy(CardNames::COPPER);
+        let priorities = [CardNames::DUCHY, CardNames::COPPER];
+        for p in priorities {
+            if buyable_cards.iter().find(|c| **c == p).is_some() {
+                return BuyChoice::Buy(p);
+            }
         }
         return BuyChoice::None;
     }
