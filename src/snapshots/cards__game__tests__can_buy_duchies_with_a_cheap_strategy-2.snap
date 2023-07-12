@@ -28,7 +28,13 @@ expression: "(game.players, game.supply)"
                     [Duchy],
                 ],
             },
-            GreedyForDuchies,
+            BuyPriority {
+                priorities: [
+                    [Duchy],
+                    [Silver],
+                    [Copper],
+                ],
+            },
         ),
     ],
     Supply {

@@ -13,31 +13,27 @@ pub trait Agent: std::fmt::Debug {
 }
 
 #[derive(Debug, Constructor)]
-pub struct AlwaysBuyCopper {}
-
-impl Agent for AlwaysBuyCopper {
-    fn action_phase(&mut self) {}
-    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
-        buyable_cards
-            .iter()
-            .find(|c| **c == CardNames::COPPER)
-            .map(|c| BuyChoice::Buy(*c))
-            .unwrap_or(BuyChoice::None)
-    }
+struct BuyPriority {
+    priorities: Vec<CardName>,
 }
-
-#[derive(Debug, Constructor)]
-pub struct GreedyForDuchies {}
-
-impl Agent for GreedyForDuchies {
+impl Agent for BuyPriority {
     fn action_phase(&mut self) {}
     fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
-        let priorities = [CardNames::DUCHY, CardNames::SILVER, CardNames::COPPER];
-        for p in priorities {
-            if buyable_cards.iter().find(|c| **c == p).is_some() {
-                return BuyChoice::Buy(p);
+        for p in &self.priorities {
+            if buyable_cards.iter().find(|c| *c == p).is_some() {
+                return BuyChoice::Buy(*p);
             }
         }
         return BuyChoice::None;
+    }
+}
+
+pub struct Agents {}
+impl Agents {
+    pub fn always_buy_copper() -> impl Agent {
+        BuyPriority::new(vec![CardNames::COPPER])
+    }
+    pub fn greedy_for_duchies() -> impl Agent {
+        BuyPriority::new(vec![CardNames::DUCHY, CardNames::SILVER, CardNames::COPPER])
     }
 }

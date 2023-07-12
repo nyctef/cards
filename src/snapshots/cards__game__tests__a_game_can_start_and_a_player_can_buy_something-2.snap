@@ -25,7 +25,11 @@ expression: "(game.players, game.supply)"
                     [Estate],
                 ],
             },
-            AlwaysBuyCopper,
+            BuyPriority {
+                priorities: [
+                    [Copper],
+                ],
+            },
         ),
     ],
     Supply {

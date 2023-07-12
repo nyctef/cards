@@ -11,7 +11,7 @@ use std::fmt::{Display, Formatter};
 use self::{
     model::{BuyChoice, Card, CardName, CardNames, CardTypes, Cards, PlayerCounters},
     play_area::PlayArea,
-    players::{Agent, AlwaysBuyCopper},
+    players::Agent,
     supply::Supply,
 };
 use crate::logs::{GameEvent, GameLog};
@@ -178,14 +178,14 @@ impl Display for PlayerResults<'_> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{game::players::GreedyForDuchies, logs::tests::TestLog};
+    use crate::{game::players::Agents, logs::tests::TestLog};
     use std::cell::RefCell;
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
         let log = TestLog::new();
         let mut game = Game::new(&log);
-        let mut player_1 = AlwaysBuyCopper::new();
+        let mut player_1 = Agents::always_buy_copper();
         game.add_player("Player 1", &mut player_1);
         game.populate_supply(|| Cards::copper(), 10);
         game.populate_supply(|| Cards::estate(), 3);
@@ -200,7 +200,7 @@ mod tests {
     fn can_buy_duchies_with_a_cheap_strategy() {
         let log = TestLog::new();
         let mut game = Game::new(&log);
-        let mut player_1 = GreedyForDuchies::new();
+        let mut player_1 = Agents::greedy_for_duchies();
         game.add_player("Player 1", &mut player_1);
         game.populate_supply(|| Cards::copper(), 10);
         game.populate_supply(|| Cards::estate(), 3);
@@ -222,8 +222,8 @@ mod tests {
         // TODO: print the game end reason to the log
         let log = TestLog::new();
         let mut game = Game::new(&log);
-        let mut player_1 = GreedyForDuchies::new();
-        let mut player_2 = AlwaysBuyCopper::new();
+        let mut player_1 = Agents::greedy_for_duchies();
+        let mut player_2 = Agents::always_buy_copper();
         game.add_player("P1 [GFD]", &mut player_1);
         game.add_player("P2 [ABC]", &mut player_2);
         game.populate_basic_kingdom();
