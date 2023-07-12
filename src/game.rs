@@ -77,10 +77,9 @@ impl<'a> Game<'a> {
     }
 
     fn populate_basic_kingdom(&mut self) {
-        // TODO technically this should be 60
-        // need more test-specific builders
-
         self.populate_supply(|| Cards::copper(), 60);
+        self.populate_supply(|| Cards::silver(), 40);
+        self.populate_supply(|| Cards::gold(), 30);
         self.populate_supply(|| Cards::estate(), 12);
         self.populate_supply(|| Cards::duchy(), 12);
     }
