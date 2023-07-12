@@ -9,7 +9,7 @@ mod supply;
 use std::fmt::{Display, Formatter};
 
 use self::{
-    model::{BuyChoice, Card, CardName, CardNames, Cards, PlayerCounters},
+    model::{BuyChoice, Card, CardName, CardNames, CardTypes, Cards, PlayerCounters},
     play_area::PlayArea,
     players::{Agent, AlwaysBuyCopper},
     supply::Supply,
@@ -48,14 +48,14 @@ impl<'a> Game<'a> {
             for c in area
                 .inspect_hand()
                 .into_iter()
-                .filter(|c| *c == CardNames::COPPER)
+                .filter(|c| c.get_types().find(|t| *t == CardTypes::TREASURE).is_some())
+                .map(|c| c.name)
                 .collect_vec()
             {
-                area.play_card(c);
-                player_counters.coins += 1;
+                area.play_card(c, &mut player_counters);
                 self.log.record(GameEvent::Todo(format!(
-                    "{:?} {} played a copper",
-                    player_counters, name
+                    "{:?} {} played a {:?}",
+                    player_counters, name, c
                 )));
             }
 

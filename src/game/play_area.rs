@@ -2,7 +2,7 @@
 
 use super::{
     card_pile::{CardPile, DrawResult},
-    model::{Card, CardName},
+    model::{Card, CardName, PlayerCounters},
 };
 use crate::logs::{GameEvent, GameLog};
 
@@ -71,14 +71,15 @@ impl PlayArea {
         self.discard.push(card)
     }
 
-    pub fn inspect_hand(&self) -> impl Iterator<Item = CardName> + '_ {
-        self.hand.iter().map(|c| c.name)
+    pub fn inspect_hand(&self) -> impl Iterator<Item = &Card> + '_ {
+        self.hand.iter()
     }
 
-    pub fn play_card(&mut self, name: CardName /*, TODO: ...? */) {
+    pub fn play_card(&mut self, name: CardName, counters: &mut PlayerCounters) {
         let card = self
             .hand
             .remove(self.hand.iter().position(|c| c.name == name).expect("TODO"));
+        counters.coins += card.treasure_value;
         self.in_play.push(card);
     }
 

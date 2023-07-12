@@ -24,6 +24,8 @@ impl CardTypes {
 pub struct Card {
     pub name: CardName,
     pub coins_cost: u8,
+    pub treasure_value: u8,
+    pub vp_value: u8,
     types: Vec<CardType>,
 }
 
@@ -46,32 +48,48 @@ impl std::fmt::Debug for Card {
 pub struct CardNames {}
 impl CardNames {
     pub const COPPER: CardName = CardName { name: "Copper" };
+    pub const SILVER: CardName = CardName { name: "Silver" };
+    pub const GOLD: CardName = CardName { name: "Gold" };
     pub const ESTATE: CardName = CardName { name: "Estate" };
     pub const DUCHY: CardName = CardName { name: "Duchy" };
 }
 
 pub struct Cards {}
 impl Cards {
-    pub fn copper() -> Card {
+    fn basic_treasure(coins_cost: u8, treasure_value: u8, name: CardName) -> Card {
         Card {
-            name: CardNames::COPPER,
-            coins_cost: 0,
+            name,
+            coins_cost,
+            treasure_value,
+            vp_value: 0,
             types: vec![CardTypes::TREASURE],
         }
     }
-    pub fn duchy() -> Card {
+
+    fn basic_victory(coins_cost: u8, vp_value: u8, name: CardName) -> Card {
         Card {
-            name: CardNames::DUCHY,
-            coins_cost: 5,
+            name,
+            coins_cost,
+            treasure_value: 0,
+            vp_value,
             types: vec![CardTypes::VICTORY],
         }
     }
+
+    pub fn copper() -> Card {
+        Self::basic_treasure(0, 1, CardNames::COPPER)
+    }
+    pub fn silver() -> Card {
+        Self::basic_treasure(3, 2, CardNames::SILVER)
+    }
+    pub fn gold() -> Card {
+        Self::basic_treasure(6, 3, CardNames::GOLD)
+    }
     pub fn estate() -> Card {
-        Card {
-            name: CardNames::ESTATE,
-            coins_cost: 2,
-            types: vec![CardTypes::VICTORY],
-        }
+        Self::basic_victory(2, 1, CardNames::ESTATE)
+    }
+    pub fn duchy() -> Card {
+        Self::basic_victory(5, 3, CardNames::DUCHY)
     }
 }
 
