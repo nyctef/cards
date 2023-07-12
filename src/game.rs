@@ -41,6 +41,7 @@ impl<'a> Game<'a> {
     }
 
     fn play_one_turn(&mut self) {
+        self.max_turns -= 1;
         for (name, area, agent) in self.players.iter_mut() {
             let mut player_counters = PlayerCounters::new_turn();
             let action_choice = agent.action_phase();
@@ -72,6 +73,11 @@ impl<'a> Game<'a> {
             }
             area.discard_in_play();
             area.discard_hand();
+
+            if Self::has_ended(self.max_turns, &self.supply) {
+                return;
+            }
+
             area.draw_hand(self.log);
         }
     }
@@ -100,12 +106,12 @@ impl<'a> Game<'a> {
         }
     }
 
-    fn has_ended(&mut self) -> bool {
-        // TODO
-        self.max_turns -= 1;
-        self.max_turns <= 0
-            || self
-                .supply
+    /** Annoyingly we can't just take &self here, since we want to call this from another method:
+     * https://stackoverflow.com/a/32405737
+     */
+    fn has_ended(max_turns: u8, supply: &Supply) -> bool {
+        max_turns <= 0
+            || supply
                 .empty_supply_piles()
                 // TODO: check for type == victory rather than just by name
                 // TODO: check for 3/4 empty supply piles
@@ -131,7 +137,7 @@ impl<'a> Game<'a> {
     fn play_to_end(&mut self) -> PlayerResults {
         self.deal_starting_hands();
 
-        while !self.has_ended() {
+        while !Self::has_ended(self.max_turns, &self.supply) {
             self.play_one_turn();
         }
         self.collect_cards_and_get_results()
