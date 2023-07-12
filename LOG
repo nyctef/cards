@@ -1,3 +1,12 @@
+Constantly running into issues where it'd really make sense to just give up and
+make cards themselves implement Copy. In particular, often running into
+situations where we have a CardName but we want to filter cards based on type
+or something similar. We could move more and more properties from Card into
+CardName (effectively turning it into more of a CardDescriptor) but at what
+point does Card just become a thin wrapper around CardName plus ownership?
+
+-------------------------------------------------------------------------------
+
 it's slowly starting to come together! finally working on some win conditions.
 returning iterators from functions is kinda complicated
 
