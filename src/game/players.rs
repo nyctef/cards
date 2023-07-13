@@ -8,8 +8,8 @@ use super::{
 
 /** An agent is a thing that decides what to do */
 pub trait Agent: std::fmt::Debug {
-    fn action_phase(&mut self) -> ();
-    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice;
+    fn action_phase(&mut self);
+    fn buy_phase(&mut self, buyable_cards: &[CardName]) -> BuyChoice;
 }
 
 #[derive(Debug, Constructor)]
@@ -18,13 +18,13 @@ struct BuyPriority {
 }
 impl Agent for BuyPriority {
     fn action_phase(&mut self) {}
-    fn buy_phase<'card>(&mut self, buyable_cards: &Vec<CardName>) -> BuyChoice {
+    fn buy_phase<'card>(&mut self, buyable_cards: &[CardName]) -> BuyChoice {
         for p in &self.priorities {
-            if buyable_cards.iter().find(|c| *c == p).is_some() {
+            if buyable_cards.iter().any(|c| c == p) {
                 return BuyChoice::Buy(*p);
             }
         }
-        return BuyChoice::None;
+        BuyChoice::None
     }
 }
 

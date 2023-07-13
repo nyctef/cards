@@ -1,4 +1,5 @@
 #![allow(unused)]
+#![allow(clippy::expect_fun_call)]
 
 mod card_pile;
 mod model;
@@ -44,12 +45,12 @@ impl<'a> Game<'a> {
         self.max_turns -= 1;
         for (name, area, agent) in self.players.iter_mut() {
             let mut player_counters = PlayerCounters::new_turn();
-            let action_choice = agent.action_phase();
+            // TODO: implement actions
+            agent.action_phase();
 
             for c in area
                 .inspect_hand()
-                .into_iter()
-                .filter(|c| c.get_types().find(|t| *t == CardTypes::TREASURE).is_some())
+                .filter(|c| c.get_types().any(|t| t == CardTypes::TREASURE))
                 .map(|c| c.name)
                 .collect_vec()
             {
@@ -61,7 +62,7 @@ impl<'a> Game<'a> {
             }
 
             let buyable_cards = self.supply.buyable_cards(player_counters.coins);
-            let buy_choice = agent.buy_phase(&buyable_cards.collect());
+            let buy_choice = agent.buy_phase(&buyable_cards.collect_vec());
             match buy_choice {
                 BuyChoice::Buy(card) => {
                     let purchased = self.supply.take_one(card).expect("TODO");
@@ -83,16 +84,16 @@ impl<'a> Game<'a> {
     }
 
     fn populate_basic_kingdom(&mut self) {
-        self.populate_supply(|| Cards::copper(), 60);
-        self.populate_supply(|| Cards::silver(), 40);
-        self.populate_supply(|| Cards::gold(), 30);
-        self.populate_supply(|| Cards::estate(), 12);
-        self.populate_supply(|| Cards::duchy(), 12);
+        self.populate_supply(Cards::copper, 60);
+        self.populate_supply(Cards::silver, 40);
+        self.populate_supply(Cards::gold, 30);
+        self.populate_supply(Cards::estate, 12);
+        self.populate_supply(Cards::duchy, 12);
     }
 
     fn populate_supply(&mut self, printer: impl Fn() -> Card, count: u8) {
         self.supply
-            .add((0..count).into_iter().map(|_| printer()).collect());
+            .add((0..count).map(|_| printer()).collect());
     }
 
     fn deal_starting_hands(&mut self) {
@@ -110,7 +111,7 @@ impl<'a> Game<'a> {
      * https://stackoverflow.com/a/32405737
      */
     fn has_ended(max_turns: u8, supply: &Supply) -> bool {
-        max_turns <= 0
+        max_turns == 0
             || supply
                 .empty_supply_piles()
                 // TODO: check for type == victory rather than just by name
@@ -129,7 +130,7 @@ impl<'a> Game<'a> {
             let score = Self::calculate_score(&player_cards);
             results.push(PlayerResult::new(name, player_cards, score));
         }
-        PlayerResults { 0: results }
+        PlayerResults(results)
     }
 
     fn calculate_score(player_cards: &[Card]) -> u8 {
@@ -187,8 +188,8 @@ mod tests {
         let mut game = Game::new(&log);
         let mut player_1 = Agents::always_buy_copper();
         game.add_player("Player 1", &mut player_1);
-        game.populate_supply(|| Cards::copper(), 10);
-        game.populate_supply(|| Cards::estate(), 3);
+        game.populate_supply(Cards::copper, 10);
+        game.populate_supply(Cards::estate, 3);
         game.deal_starting_hands();
         game.play_one_turn();
 
@@ -202,9 +203,9 @@ mod tests {
         let mut game = Game::new(&log);
         let mut player_1 = Agents::greedy_for_duchies();
         game.add_player("Player 1", &mut player_1);
-        game.populate_supply(|| Cards::copper(), 10);
-        game.populate_supply(|| Cards::estate(), 3);
-        game.populate_supply(|| Cards::duchy(), 3);
+        game.populate_supply(Cards::copper, 10);
+        game.populate_supply(Cards::estate, 3);
+        game.populate_supply(Cards::duchy, 3);
         game.deal_starting_hands();
         for t in 0..5 {
             game.play_one_turn();

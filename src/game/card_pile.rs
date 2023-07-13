@@ -25,7 +25,7 @@ impl CardPile {
         if cards.len() == n {
             DrawResult::Complete(cards)
         } else {
-            let remaining = n - &cards.len();
+            let remaining = n - cards.len();
             DrawResult::Partial(cards, remaining)
         }
     }
