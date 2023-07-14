@@ -26,9 +26,11 @@ impl Agent for BuyPriority {
 
 pub struct Agents {}
 impl Agents {
+    #[allow(dead_code)]
     pub fn always_buy_copper() -> impl Agent {
         BuyPriority::new(vec![CardNames::COPPER])
     }
+    #[allow(dead_code)]
     pub fn greedy_for_duchies() -> impl Agent {
         BuyPriority::new(vec![CardNames::DUCHY, CardNames::SILVER, CardNames::COPPER])
     }
