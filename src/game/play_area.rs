@@ -1,5 +1,3 @@
-// todo: not sure about the naming or structure here yet
-
 use super::{
     card_pile::{CardPile, DrawResult},
     model::{Card, CardName, PlayerCounters},
@@ -10,28 +8,23 @@ use crate::{
 };
 
 #[derive(Debug)]
-pub struct PlayArea {
+pub struct PlayArea<'a> {
     deck: CardPile,
     hand: Vec<Card>,
     in_play: Vec<Card>,
     discard: Vec<Card>,
+    shuffler: &'a dyn Shuffler<Card>,
 }
 
-impl PlayArea {
-    pub fn new() -> Self {
+impl<'p> PlayArea<'p> {
+    pub fn new(shuffler: &'p dyn Shuffler<Card>) -> Self {
         PlayArea {
             deck: CardPile::new(),
             hand: vec![],
             in_play: vec![],
             discard: vec![],
+            shuffler,
         }
-    }
-
-    pub fn from_initial_cards(mut cards: Vec<Card>) -> Self {
-        let mut result = Self::new();
-        // todo: shuffle
-        result.deck.add_range(&mut cards);
-        result
     }
 
     pub fn draw_hand(&mut self, log: &dyn GameLog) {
@@ -52,7 +45,7 @@ impl PlayArea {
                 // and turn it back into the deck:
                 assert!(self.deck.is_empty() && self.in_play.is_empty());
 
-                let mut shuffled = NoShuffle::new().shuffle(&mut self.discard);
+                let mut shuffled = self.shuffler.shuffle(&mut self.discard);
 
                 self.deck.add_range(&mut shuffled);
                 let mut remaining_cards = self.deck.take_up_to_n(remaining);

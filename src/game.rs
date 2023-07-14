@@ -14,6 +14,7 @@ use self::{
     model::{BuyChoice, Card, CardName, CardNames, CardTypes, Cards, PlayerCounters},
     play_area::PlayArea,
     players::Agent,
+    shuffler::Shuffler,
     supply::Supply,
 };
 use crate::logs::{GameEvent, GameLog};
@@ -22,24 +23,26 @@ use itertools::Itertools;
 
 #[derive(Debug)]
 struct Game<'a> {
-    players: Vec<(&'a str, PlayArea, &'a mut dyn Agent)>,
+    players: Vec<(&'a str, PlayArea<'a>, &'a mut dyn Agent)>,
     supply: Supply,
     log: &'a dyn GameLog,
     max_turns: u8,
+    shuffler: Box<dyn Shuffler<Card>>,
 }
 impl<'a> Game<'a> {
-    fn new(log: &'a dyn GameLog) -> Self {
+    fn new(log: &'a dyn GameLog, shuffler: Box<dyn Shuffler<Card>>) -> Self {
         Self {
             players: vec![],
             supply: Supply::new(),
             log,
             max_turns: 100,
+            shuffler,
         }
     }
 
-    fn add_player(&mut self, name: &'a str, agent: &'a mut dyn Agent) {
-        let player = PlayArea::new();
-        self.players.push((name, player, agent));
+    fn add_player(&'a mut self, name: &'a str, agent: &'a mut dyn Agent) {
+        let area = PlayArea::new(self.shuffler.as_ref());
+        self.players.push((name, area, agent));
     }
 
     fn play_one_turn(&mut self) {
@@ -179,13 +182,19 @@ impl Display for PlayerResults<'_> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{game::players::Agents, logs::tests::TestLog};
+    use crate::{
+        game::{
+            players::Agents,
+            shuffler::{NoShuffle, RandomShuffler},
+        },
+        logs::tests::TestLog,
+    };
     use std::cell::RefCell;
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
         let log = TestLog::new();
-        let mut game = Game::new(&log);
+        let mut game = Game::new(&log, Box::new(NoShuffle::new()));
         let mut player_1 = Agents::always_buy_copper();
         game.add_player("Player 1", &mut player_1);
         game.populate_supply(Cards::copper, 10);
@@ -200,7 +209,7 @@ mod tests {
     #[test]
     fn can_buy_duchies_with_a_cheap_strategy() {
         let log = TestLog::new();
-        let mut game = Game::new(&log);
+        let mut game = Game::new(&log, Box::new(NoShuffle::new()));
         let mut player_1 = Agents::greedy_for_duchies();
         game.add_player("Player 1", &mut player_1);
         game.populate_supply(Cards::copper, 10);
@@ -217,12 +226,10 @@ mod tests {
 
     #[test]
     fn one_player_beats_another_buy_eventually_buying_enough_duchies() {
-        // TODO: make sure the game ends via supply running out rather than turn limit
-        // TODO: introduce (seeded) randomness by shuffling the player's decks
         // TODO: print number of turns (per player) in results
         // TODO: print the game end reason to the log
         let log = TestLog::new();
-        let mut game = Game::new(&log);
+        let mut game = Game::new(&log, Box::new(RandomShuffler::new(1234)));
         let mut player_1 = Agents::greedy_for_duchies();
         let mut player_2 = Agents::always_buy_copper();
         game.add_player("P1 [GFD]", &mut player_1);
