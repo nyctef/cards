@@ -1,3 +1,58 @@
+First milestone: got something useful running in main.rs
+Next milestone: get some actions working
+
+Random digression: could the game logic work in a way that doesn't block on
+agent input? (eg if we wanted to implement a server-based UI)
+- eg a coroutine like `let agent_response = yield request;`
+  - doesn't seem like rust supports this directly yet
+  - is it possible to hack this together using async/await?
+- could implement something like how azure durable functions work (I think)
+  where the function actually exits at awaits, and then re-runs past previous
+  awaits with cached responses.
+- or maybe we just end up implementing the state machine manually ourselves?
+
+ultimately the answer is probably to go back to the pure functional redux/elm
+style architecture
+
+TODO next:
+
+- Look into improving logging - GameEvent::Todo needs replacing
+  - Some kind of span/context for nested events?
+  - could use tracing crates as an inspiration, but they're probably not
+    worth trying to use directly
+    - agents may want to inspect the current context stack to help make
+      decisions (or maybe they just look at the cards in play?)
+- Decide if the tests in play_area and card_pile are worth keeping
+- Start thinking about how we implement actions
+- Think about which actions might be interesting to try
+  - Village+Smithy4 should be relatively simple, and sets up a new strategy
+  - Chapel: requires a back-and-forth with the agent
+    - game asks agent which card to play
+    - agent responds with Chapel (or nothing)
+    - game asks which cards to trash
+      - possibly a generic trash request with selection of cards, plus
+        a min/max count of cards that need to and/or can be trashed?
+    - agent responds with list of cards
+    - some basic intelligence required from the agent: trash lower-value
+    treasures but only if the deck has enough higher-value treasures
+  - Moat: might be a relatively simple one to start with?
+    - especially if we ignore the 'reaction' part at first
+  - Harbinger: requires a novel kind of interaction (asking the agent for a
+    card it likes from the discard)
+- More complex cards which should start being a challenge to model:
+  - Attacks like Bandit/Witch (and reactions like Moat)
+  - Throne Room with replaying cards and stacked states (Throne Throne Room)
+    - Throne Room has a bunch of edge cases described on the wiki
+    - start thinking about if we can unit test these in a more focused way
+      - do we just rely on log-based snapshot testing for this kind of thing?
+  - Library does some interesting things with intermediate card locations
+    ("set aside") and a new kind of agent interaction ("do you want to discard
+    this?")
+
+
+
+-------------------------------------------------------------------------------
+
 Constantly running into issues where it'd really make sense to just give up and
 make cards themselves implement Copy. In particular, often running into
 situations where we have a CardName but we want to filter cards based on type
