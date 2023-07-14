@@ -1,11 +1,10 @@
-#![allow(unused)]
 #![allow(clippy::expect_fun_call)]
 
 mod card_pile;
 mod model;
 mod play_area;
-mod players;
-mod shuffler;
+pub mod players;
+pub mod shuffler;
 mod supply;
 
 use std::fmt::{Display, Formatter};
@@ -22,14 +21,14 @@ use derive_more::Constructor;
 use itertools::Itertools;
 
 #[derive(Debug)]
-struct Game<'a> {
+pub struct Game<'a> {
     players: Vec<(&'a str, PlayArea<'a>, &'a mut dyn Agent)>,
     supply: Supply,
     log: &'a dyn GameLog,
     max_turns: u8,
 }
 impl<'a> Game<'a> {
-    fn new(log: &'a dyn GameLog) -> Self {
+    pub fn new(log: &'a dyn GameLog) -> Self {
         Self {
             players: vec![],
             supply: Supply::new(),
@@ -38,7 +37,7 @@ impl<'a> Game<'a> {
         }
     }
 
-    fn add_player(
+    pub fn add_player(
         &mut self,
         name: &'a str,
         agent: &'a mut dyn Agent,
@@ -90,7 +89,7 @@ impl<'a> Game<'a> {
         }
     }
 
-    fn populate_basic_kingdom(&mut self) {
+    pub fn populate_basic_kingdom(&mut self) {
         self.populate_supply(Cards::copper, 60);
         self.populate_supply(Cards::silver, 40);
         self.populate_supply(Cards::gold, 30);
@@ -143,7 +142,7 @@ impl<'a> Game<'a> {
         player_cards.iter().map(|c| c.vp_value).sum()
     }
 
-    fn play_to_end(&mut self) -> PlayerResults {
+    pub fn play_to_end(&mut self) -> PlayerResults {
         self.deal_starting_hands();
 
         while !Self::has_ended(self.max_turns, &self.supply) {
@@ -154,7 +153,7 @@ impl<'a> Game<'a> {
 }
 
 #[derive(Debug, Constructor)]
-struct PlayerResult<'a> {
+pub struct PlayerResult<'a> {
     name: &'a str,
     cards: Vec<Card>,
     score: u8,
@@ -172,7 +171,7 @@ impl Display for PlayerResult<'_> {
 
 // create a newtype since we can't directly impl Display for Vec
 // https://github.com/apolitical/impl-display-for-vec
-struct PlayerResults<'a>(pub Vec<PlayerResult<'a>>);
+pub struct PlayerResults<'a>(pub Vec<PlayerResult<'a>>);
 impl Display for PlayerResults<'_> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         for result in &self.0 {

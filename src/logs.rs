@@ -1,3 +1,5 @@
+use derive_more::Constructor;
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum GameEvent {
     Todo(String),
@@ -8,11 +10,17 @@ pub trait GameLog: std::fmt::Debug {
 }
 
 #[derive(Debug)]
-struct ConsoleLog {}
+struct ConsoleLog;
 impl GameLog for ConsoleLog {
     fn record(&self, event: GameEvent) {
         println!("{:?}", event)
     }
+}
+
+#[derive(Debug, Constructor)]
+pub struct NullLog;
+impl GameLog for NullLog {
+    fn record(&self, _event: GameEvent) {}
 }
 
 #[cfg(test)]
