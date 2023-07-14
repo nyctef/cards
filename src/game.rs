@@ -3,6 +3,7 @@
 mod card_pile;
 mod model;
 mod play_area;
+mod player_counters;
 pub mod players;
 pub mod shuffler;
 mod supply;
@@ -10,8 +11,9 @@ mod supply;
 use std::fmt::{Display, Formatter};
 
 use self::{
-    model::{BuyChoice, Card, CardNames, CardTypes, Cards, PlayerCounters},
+    model::{BuyChoice, Card, CardNames, CardTypes, Cards},
     play_area::PlayArea,
+    player_counters::PlayerCounters,
     players::Agent,
     shuffler::Shuffler,
     supply::Supply,

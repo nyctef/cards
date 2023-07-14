@@ -1,6 +1,7 @@
 use super::{
     card_pile::{CardPile, DrawResult},
-    model::{Card, CardName, PlayerCounters},
+    model::{Card, CardName},
+    player_counters::PlayerCounters,
 };
 use crate::{
     game::shuffler::Shuffler,
