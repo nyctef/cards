@@ -1,6 +1,7 @@
 #![allow(clippy::expect_fun_call)]
 
 mod card_pile;
+pub mod logs;
 mod model;
 mod play_area;
 mod player_counters;
@@ -11,6 +12,7 @@ mod supply;
 use std::fmt::{Display, Formatter};
 
 use self::{
+    logs::{GameEvent, GameLog},
     model::{BuyChoice, Card, CardNames, CardTypes, Cards},
     play_area::PlayArea,
     player_counters::PlayerCounters,
@@ -18,7 +20,6 @@ use self::{
     shuffler::Shuffler,
     supply::Supply,
 };
-use crate::logs::{GameEvent, GameLog};
 use derive_more::Constructor;
 use itertools::Itertools;
 
@@ -186,12 +187,10 @@ impl Display for PlayerResults<'_> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{
-        game::{
-            players::Agents,
-            shuffler::{NoShuffle, RandomShuffler},
-        },
+    use crate::game::{
         logs::tests::TestLog,
+        players::Agents,
+        shuffler::{NoShuffle, RandomShuffler},
     };
 
     #[test]

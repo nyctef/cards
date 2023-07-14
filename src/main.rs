@@ -1,8 +1,6 @@
-use game::{players::Agents, shuffler::RandomShuffler, Game};
-use logs::NullLog;
+use game::{logs::NullLog, players::Agents, shuffler::RandomShuffler, Game};
 
 mod game;
-mod logs;
 
 fn main() {
     let log = NullLog::new();

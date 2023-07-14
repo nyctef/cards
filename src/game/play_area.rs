@@ -4,8 +4,8 @@ use super::{
     player_counters::PlayerCounters,
 };
 use crate::{
+    game::logs::{GameEvent, GameLog},
     game::shuffler::Shuffler,
-    logs::{GameEvent, GameLog},
 };
 
 #[derive(Debug)]
