@@ -4,7 +4,10 @@ use super::{
     card_pile::{CardPile, DrawResult},
     model::{Card, CardName, PlayerCounters},
 };
-use crate::logs::{GameEvent, GameLog};
+use crate::{
+    game::shuffler::{NoShuffle, Shuffler},
+    logs::{GameEvent, GameLog},
+};
 
 #[derive(Debug)]
 pub struct PlayArea {
@@ -47,8 +50,11 @@ impl PlayArea {
                 self.hand.append(&mut cards);
                 // we didn't get all the cards we need, so shuffle the discard pile
                 // and turn it back into the deck:
-                // todo: shuffle
-                self.deck.add_range(&mut self.discard);
+                assert!(self.deck.is_empty() && self.in_play.is_empty());
+
+                let mut shuffled = NoShuffle::new().shuffle(&mut self.discard);
+
+                self.deck.add_range(&mut shuffled);
                 let mut remaining_cards = self.deck.take_up_to_n(remaining);
                 self.hand.append(&mut remaining_cards)
             }

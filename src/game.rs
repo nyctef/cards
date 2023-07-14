@@ -5,6 +5,7 @@ mod card_pile;
 mod model;
 mod play_area;
 mod players;
+mod shuffler;
 mod supply;
 
 use std::fmt::{Display, Formatter};
@@ -92,8 +93,7 @@ impl<'a> Game<'a> {
     }
 
     fn populate_supply(&mut self, printer: impl Fn() -> Card, count: u8) {
-        self.supply
-            .add((0..count).map(|_| printer()).collect());
+        self.supply.add((0..count).map(|_| printer()).collect());
     }
 
     fn deal_starting_hands(&mut self) {
