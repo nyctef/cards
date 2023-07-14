@@ -10,7 +10,7 @@ mod supply;
 use std::fmt::{Display, Formatter};
 
 use self::{
-    model::{BuyChoice, Card, CardName, CardNames, CardTypes, Cards, PlayerCounters},
+    model::{BuyChoice, Card, CardNames, CardTypes, Cards, PlayerCounters},
     play_area::PlayArea,
     players::Agent,
     shuffler::Shuffler,
@@ -102,7 +102,7 @@ impl<'a> Game<'a> {
     }
 
     fn deal_starting_hands(&mut self) {
-        for (name, area, agent) in self.players.iter_mut() {
+        for (_, area, _) in self.players.iter_mut() {
             let mut coppers = self.supply.take_up_to_n(CardNames::COPPER, 7);
             area.gain_cards_to_discard_pile(&mut coppers);
             let mut estates = self.supply.take_up_to_n(CardNames::ESTATE, 3);
@@ -191,12 +191,11 @@ mod tests {
         },
         logs::tests::TestLog,
     };
-    use std::cell::RefCell;
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
         let log = TestLog::new();
-        let mut shuffler = NoShuffle::new();
+        let shuffler = NoShuffle::new();
         let mut game = Game::new(&log);
         let mut player_1 = Agents::always_buy_copper();
         game.add_player("Player 1", &mut player_1, &shuffler);
@@ -212,7 +211,7 @@ mod tests {
     #[test]
     fn can_buy_duchies_with_a_cheap_strategy() {
         let log = TestLog::new();
-        let mut shuffler = NoShuffle::new();
+        let shuffler = NoShuffle::new();
         let mut game = Game::new(&log);
         let mut player_1 = Agents::greedy_for_duchies();
         game.add_player("Player 1", &mut player_1, &shuffler);
@@ -220,7 +219,7 @@ mod tests {
         game.populate_supply(Cards::estate, 3);
         game.populate_supply(Cards::duchy, 3);
         game.deal_starting_hands();
-        for t in 0..5 {
+        for _ in 0..5 {
             game.play_one_turn();
         }
 

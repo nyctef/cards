@@ -1,6 +1,4 @@
-use core::num;
 use itertools::Itertools;
-use std::cmp::min;
 
 use super::model::Card;
 
@@ -34,10 +32,6 @@ impl CardPile {
     pub fn take_up_to_n(&mut self, n: usize) -> Vec<Card> {
         let index = self.cards.len().saturating_sub(n);
         self.cards.split_off(index)
-    }
-
-    pub fn add_at_top(&mut self, card: Card) {
-        self.cards.insert(0, card)
     }
 
     pub fn add_range(&mut self, cards: &mut Vec<Card>) {

@@ -1,10 +1,6 @@
 use derive_more::Constructor;
 
-use super::{
-    model::{BuyChoice, Card, CardName, CardNames, Cards},
-    play_area::PlayArea,
-    Game,
-};
+use super::model::{BuyChoice, CardName, CardNames};
 
 /** An agent is a thing that decides what to do */
 pub trait Agent: std::fmt::Debug {

@@ -16,6 +16,7 @@ pub struct CardType {
 
 pub struct CardTypes {}
 impl CardTypes {
+    #[allow(dead_code)] // TODO start implementing some actions
     pub const ACTION: CardType = CardType { name: "Action" };
     pub const TREASURE: CardType = CardType { name: "Treasure" };
     pub const VICTORY: CardType = CardType { name: "Victory" };
@@ -30,10 +31,6 @@ pub struct Card {
 }
 
 impl Card {
-    pub fn get_name(&self) -> &str {
-        self.name.name
-    }
-
     pub fn get_types(&self) -> impl Iterator<Item = CardType> + '_ {
         self.types.iter().cloned()
     }

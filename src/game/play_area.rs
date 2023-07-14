@@ -3,7 +3,7 @@ use super::{
     model::{Card, CardName, PlayerCounters},
 };
 use crate::{
-    game::shuffler::{NoShuffle, Shuffler},
+    game::shuffler::Shuffler,
     logs::{GameEvent, GameLog},
 };
 
@@ -28,7 +28,7 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn draw_hand(&mut self, log: &dyn GameLog) {
-        let mut cards = self.deck.take_n(5);
+        let cards = self.deck.take_n(5);
         match cards {
             DrawResult::Complete(mut cards) => {
                 self.hand.append(&mut cards);
