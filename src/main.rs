@@ -6,7 +6,7 @@ mod logs;
 
 fn main() {
     let log = NullLog::new();
-    let shuffler = RandomShuffler::new(1234);
+    let shuffler = RandomShuffler::unseeded();
     let mut game = Game::new(&log);
     let mut player_1 = Agents::greedy_for_duchies();
     let mut player_2 = Agents::always_buy_copper();

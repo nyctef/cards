@@ -15,9 +15,16 @@ pub struct RandomShuffler {
     rng: RefCell<StdRng>,
 }
 impl RandomShuffler {
+    #[cfg(test)]
     pub fn new(seed: u64) -> Self {
         RandomShuffler {
             rng: StdRng::seed_from_u64(seed).into(),
+        }
+    }
+
+    pub fn unseeded() -> Self {
+        RandomShuffler {
+            rng: StdRng::from_entropy().into(),
         }
     }
 }
