@@ -49,6 +49,7 @@ impl CardNames {
     pub const GOLD: CardName = CardName { name: "Gold" };
     pub const ESTATE: CardName = CardName { name: "Estate" };
     pub const DUCHY: CardName = CardName { name: "Duchy" };
+    pub const PROVINCE: CardName = CardName { name: "Province" };
 }
 
 pub struct Cards {}
@@ -87,6 +88,9 @@ impl Cards {
     }
     pub fn duchy() -> Card {
         Self::basic_victory(5, 3, CardNames::DUCHY)
+    }
+    pub fn province() -> Card {
+        Self::basic_victory(8, 6, CardNames::PROVINCE)
     }
 }
 

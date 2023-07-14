@@ -98,6 +98,7 @@ impl<'a> Game<'a> {
         self.populate_supply(Cards::gold, 30);
         self.populate_supply(Cards::estate, 12);
         self.populate_supply(Cards::duchy, 12);
+        self.populate_supply(Cards::province, 12);
     }
 
     fn populate_supply(&mut self, printer: impl Fn() -> Card, count: u8) {
@@ -124,7 +125,7 @@ impl<'a> Game<'a> {
                 .empty_supply_piles()
                 // TODO: check for type == victory rather than just by name
                 // TODO: check for 3/4 empty supply piles
-                .any(|s| s == CardNames::DUCHY)
+                .any(|s| s == CardNames::PROVINCE)
     }
 
     fn collect_cards_and_get_results(&mut self) -> PlayerResults {

@@ -32,6 +32,15 @@ impl Agents {
     }
     #[allow(dead_code)]
     pub fn greedy_for_duchies() -> impl Agent {
-        BuyPriority::new(vec![CardNames::DUCHY, CardNames::SILVER, CardNames::COPPER])
+        BuyPriority::new(vec![
+            CardNames::DUCHY,
+            CardNames::PROVINCE,
+            CardNames::SILVER,
+            CardNames::COPPER,
+        ])
+    }
+    #[allow(dead_code)]
+    pub fn silver_test() -> impl Agent {
+        BuyPriority::new(vec![CardNames::PROVINCE, CardNames::SILVER])
     }
 }
