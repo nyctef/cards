@@ -27,21 +27,24 @@ struct Game<'a> {
     supply: Supply,
     log: &'a dyn GameLog,
     max_turns: u8,
-    shuffler: Box<dyn Shuffler<Card>>,
 }
 impl<'a> Game<'a> {
-    fn new(log: &'a dyn GameLog, shuffler: Box<dyn Shuffler<Card>>) -> Self {
+    fn new(log: &'a dyn GameLog) -> Self {
         Self {
             players: vec![],
             supply: Supply::new(),
             log,
             max_turns: 100,
-            shuffler,
         }
     }
 
-    fn add_player(&'a mut self, name: &'a str, agent: &'a mut dyn Agent) {
-        let area = PlayArea::new(self.shuffler.as_ref());
+    fn add_player(
+        &mut self,
+        name: &'a str,
+        agent: &'a mut dyn Agent,
+        shuffler: &'a dyn Shuffler<Card>,
+    ) {
+        let area = PlayArea::new(shuffler);
         self.players.push((name, area, agent));
     }
 
@@ -194,9 +197,10 @@ mod tests {
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
         let log = TestLog::new();
-        let mut game = Game::new(&log, Box::new(NoShuffle::new()));
+        let mut shuffler = NoShuffle::new();
+        let mut game = Game::new(&log);
         let mut player_1 = Agents::always_buy_copper();
-        game.add_player("Player 1", &mut player_1);
+        game.add_player("Player 1", &mut player_1, &shuffler);
         game.populate_supply(Cards::copper, 10);
         game.populate_supply(Cards::estate, 3);
         game.deal_starting_hands();
@@ -209,9 +213,10 @@ mod tests {
     #[test]
     fn can_buy_duchies_with_a_cheap_strategy() {
         let log = TestLog::new();
-        let mut game = Game::new(&log, Box::new(NoShuffle::new()));
+        let mut shuffler = NoShuffle::new();
+        let mut game = Game::new(&log);
         let mut player_1 = Agents::greedy_for_duchies();
-        game.add_player("Player 1", &mut player_1);
+        game.add_player("Player 1", &mut player_1, &shuffler);
         game.populate_supply(Cards::copper, 10);
         game.populate_supply(Cards::estate, 3);
         game.populate_supply(Cards::duchy, 3);
@@ -229,11 +234,13 @@ mod tests {
         // TODO: print number of turns (per player) in results
         // TODO: print the game end reason to the log
         let log = TestLog::new();
-        let mut game = Game::new(&log, Box::new(RandomShuffler::new(1234)));
+        // let shuffler = RandomShuffler::new(1234);
+        let shuffler = NoShuffle::new();
+        let mut game = Game::new(&log);
         let mut player_1 = Agents::greedy_for_duchies();
         let mut player_2 = Agents::always_buy_copper();
-        game.add_player("P1 [GFD]", &mut player_1);
-        game.add_player("P2 [ABC]", &mut player_2);
+        game.add_player("P1 [GFD]", &mut player_1, &shuffler);
+        game.add_player("P2 [ABC]", &mut player_2, &shuffler);
         game.populate_basic_kingdom();
 
         let results = game.play_to_end();

@@ -24,6 +24,7 @@ expression: "(game.players, game.supply)"
                     [Estate],
                     [Estate],
                 ],
+                shuffler: NoShuffle,
             },
             BuyPriority {
                 priorities: [
