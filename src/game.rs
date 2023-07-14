@@ -234,8 +234,7 @@ mod tests {
         // TODO: print number of turns (per player) in results
         // TODO: print the game end reason to the log
         let log = TestLog::new();
-        // let shuffler = RandomShuffler::new(1234);
-        let shuffler = NoShuffle::new();
+        let shuffler = RandomShuffler::new(1234);
         let mut game = Game::new(&log);
         let mut player_1 = Agents::greedy_for_duchies();
         let mut player_2 = Agents::always_buy_copper();
