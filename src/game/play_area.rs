@@ -90,49 +90,102 @@ impl<'p> PlayArea<'p> {
     }
 }
 
-/*
-
 #[cfg(test)]
 mod tests {
+    use itertools::Itertools;
+    use std::rc::Rc;
+
     use super::*;
-    use crate::logs::tests::TestLog;
+    use crate::game::{
+        logs::tests::TestLog,
+        model::{CardNames, Cards},
+        shuffler::NoShuffle,
+    };
+
+    fn from_initial_cards(mut cards: Vec<Card>) -> PlayArea<'static> {
+        let shuffler = Box::leak(Box::new(NoShuffle::new()));
+        let mut area = PlayArea::new(shuffler);
+        area.gain_cards_to_discard_pile(&mut cards);
+        area
+    }
+
+    fn standard_cards() -> Vec<Card> {
+        let cards = vec![
+            Cards::copper(),
+            Cards::copper(),
+            Cards::copper(),
+            Cards::copper(),
+            Cards::copper(),
+            Cards::copper(),
+            Cards::copper(),
+            Cards::estate(),
+            Cards::estate(),
+            Cards::estate(),
+        ];
+        cards
+    }
+
+    fn make_log() -> GameLog {
+        GameLog::new(Rc::new(TestLog::new()))
+    }
 
     #[test]
     fn drawn_cards_go_into_hand() {
-        let mut play_area = PlayArea::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-        let log = TestLog::new();
-        play_area.draw_hand(&log);
-        assert_eq!(&vec![6, 7, 8, 9, 10], play_area.inspect_hand());
+        let cards = standard_cards();
+        let mut play_area = from_initial_cards(cards);
+        play_area.draw_hand(&make_log());
+        assert_eq!(
+            vec![
+                CardNames::COPPER,
+                CardNames::COPPER,
+                CardNames::ESTATE,
+                CardNames::ESTATE,
+                CardNames::ESTATE,
+            ],
+            play_area.inspect_hand().map(|c| c.name).collect_vec()
+        );
     }
 
     #[test]
     fn discarded_cards_leave_hand() {
-        let mut play_area = PlayArea::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-        let log = TestLog::new();
-        play_area.draw_hand(&log);
+        let mut play_area = from_initial_cards(standard_cards());
+        play_area.draw_hand(&make_log());
         play_area.discard_hand();
-        assert!(play_area.inspect_hand().is_empty());
+        assert_eq!(0, play_area.inspect_hand().count());
     }
 
     #[test]
     fn discarded_cards_are_recycled_into_hand() {
-        let mut play_area = PlayArea::from_initial_cards(vec![1, 2, 3, 4, 5, 6, 7]);
+        let mut cards = vec![];
+        cards.append(&mut (0..5).map(|_| Cards::copper()).collect_vec());
+        cards.append(&mut (0..2).map(|_| Cards::estate()).collect_vec());
+
+        let mut play_area = from_initial_cards(cards);
         // draw 5 and discard
-        let log = TestLog::new();
-        play_area.draw_hand(&log);
+        play_area.draw_hand(&make_log());
         play_area.discard_hand();
         // attempt to draw another 5: get some of the original discarded cards
-        play_area.draw_hand(&log);
-        assert_eq!(&vec![1, 2, 5, 6, 7], play_area.inspect_hand());
+        play_area.draw_hand(&make_log());
+        assert_eq!(
+            vec![
+                CardNames::COPPER,
+                CardNames::COPPER,
+                CardNames::COPPER,
+                CardNames::ESTATE,
+                CardNames::ESTATE,
+            ],
+            play_area.inspect_hand().map(|c| c.name).collect_vec()
+        );
     }
 
     #[test]
     fn can_attempt_to_draw_five_even_if_deck_contains_fewer_cards() {
-        let mut play_area = PlayArea::from_initial_cards(vec![1, 2, 3]);
-        let log = TestLog::new();
-        play_area.draw_hand(&log);
-        assert_eq!(&vec![1, 2, 3], play_area.inspect_hand());
+        let mut cards = vec![];
+        cards.append(&mut (0..3).map(|_| Cards::copper()).collect_vec());
+        let mut play_area = from_initial_cards(cards);
+
+        play_area.draw_hand(&make_log());
+
+        assert_eq!(3, play_area.inspect_hand().count());
     }
 }
-
-*/
