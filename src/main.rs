@@ -1,3 +1,5 @@
+use std::rc::Rc;
+
 use game::{
     logs::{GameLog, NullLog},
     players::Agents,
@@ -8,7 +10,7 @@ use game::{
 mod game;
 
 fn main() {
-    let log = GameLog::new(Box::new(NullLog::new()));
+    let log = GameLog::new(Rc::new(NullLog::new()));
     let shuffler = RandomShuffler::unseeded();
     let mut game = Game::new(log);
     let mut player_1 = Agents::greedy_for_duchies();

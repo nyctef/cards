@@ -53,8 +53,9 @@ impl<'a> Game<'a> {
     fn play_one_turn(&mut self) {
         self.max_turns -= 1;
         for (name, area, agent) in self.players.iter_mut() {
-            self.log
-                // TODO: either name name 'static, or figure out something better here
+            let _span = self
+                .log
+                // TODO: either make name 'static, or figure out something better here
                 .enter_turn(Box::leak(name.to_string().into_boxed_str()));
 
             let mut player_counters = PlayerCounters::new_turn();
@@ -188,6 +189,8 @@ impl Display for PlayerResults<'_> {
 
 #[cfg(test)]
 mod tests {
+    use std::rc::Rc;
+
     use super::*;
     use crate::game::{
         logs::tests::TestLog,
@@ -197,8 +200,8 @@ mod tests {
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
-        let testlog = TestLog::new();
-        let log = GameLog::new(Box::new(testlog));
+        let testlog = Rc::new(TestLog::new());
+        let log = GameLog::new(testlog.clone());
         let shuffler = NoShuffle::new();
         let mut game = Game::new(log);
         let mut player_1 = Agents::always_buy_copper();
@@ -214,8 +217,8 @@ mod tests {
 
     #[test]
     fn can_buy_duchies_with_a_cheap_strategy() {
-        let testlog = TestLog::new();
-        let log = GameLog::new(Box::new(testlog));
+        let testlog = Rc::new(TestLog::new());
+        let log = GameLog::new(testlog.clone());
         let shuffler = NoShuffle::new();
         let mut game = Game::new(log);
         let mut player_1 = Agents::greedy_for_duchies();
@@ -236,8 +239,8 @@ mod tests {
     fn one_player_beats_another_buy_eventually_buying_enough_duchies() {
         // TODO: print number of turns (per player) in results
         // TODO: print the game end reason to the log
-        let testlog = TestLog::new();
-        let log = GameLog::new(Box::new(testlog));
+        let testlog = Rc::new(TestLog::new());
+        let log = GameLog::new(testlog.clone());
         let shuffler = RandomShuffler::new(1234);
         let mut game = Game::new(log);
         let mut player_1 = Agents::greedy_for_duchies();

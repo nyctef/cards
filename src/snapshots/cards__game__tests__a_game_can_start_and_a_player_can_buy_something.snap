@@ -1,12 +1,12 @@
 ---
 source: src/game.rs
-expression: log.dump()
+expression: testlog.dump()
 ---
 DrawCards(0)
 Shuffle
 DrawCards(5)
-TurnStart("Player 1")
-CardPlayed([Copper], [1A 1B 1C])
-CardPlayed([Copper], [1A 1B 2C])
-CardBoughtGained([Copper])
-DrawCards(5)
+"Player 1"
+  CardPlayed([Copper], [1A 1B 1C])
+  CardPlayed([Copper], [1A 1B 2C])
+  CardBoughtGained([Copper])
+  DrawCards(5)

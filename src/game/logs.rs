@@ -1,7 +1,7 @@
+use derive_more::Constructor;
 use std::{cell::RefCell, ops::Deref, rc::Rc};
 
-use derive_more::Constructor;
-
+use self::span_details_are_private::*;
 use super::{model::CardName, player_counters::PlayerCounters};
 
 #[derive(Debug, PartialEq, Eq)]
@@ -22,10 +22,8 @@ pub struct GameLog {
     inner: Rc<dyn GameLogInner>,
 }
 impl GameLog {
-    pub fn new(inner: Box<dyn GameLogInner>) -> Self {
-        GameLog {
-            inner: Rc::from(inner),
-        }
+    pub fn new(inner: Rc<dyn GameLogInner>) -> Self {
+        GameLog { inner: inner }
     }
     pub fn record(&self, event: GameEvent) {
         self.inner.record(event)
@@ -41,24 +39,32 @@ impl std::fmt::Debug for GameLog {
     }
 }
 
-#[derive(Debug)]
-struct SpanId(u64);
+/** I think this is what https://github.com/rust-lang/rust/issues/34537 wants us to do? */
+mod span_details_are_private {
+    use derive_more::Constructor;
+    use std::rc::Rc;
 
-#[derive(Constructor)]
-pub struct GameLogSpan {
-    id: SpanId,
-    log: Rc<dyn GameLogInner>,
-}
+    use super::GameLogInner;
 
-impl std::fmt::Debug for GameLogSpan {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_fmt(format_args!("Span({})", self.id.0))
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Constructor)]
+    pub struct SpanId(u64);
+
+    #[derive(Constructor)]
+    pub struct GameLogSpan {
+        id: SpanId,
+        log: Rc<dyn GameLogInner>,
     }
-}
 
-impl Drop for GameLogSpan {
-    fn drop(&mut self) {
-        self.log.exit_span(self.id)
+    impl std::fmt::Debug for GameLogSpan {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_fmt(format_args!("Span({})", self.id.0))
+        }
+    }
+
+    impl Drop for GameLogSpan {
+        fn drop(&mut self) {
+            self.log.exit_span(self.id)
+        }
     }
 }
 
@@ -68,18 +74,18 @@ struct ConsoleLog {
 }
 impl GameLogInner for ConsoleLog {
     fn record(&self, event: GameEvent) {
-        // string with indent count of spaces:
+        // TODO: is there a nicer way to build `indent` here?
         let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
         println!("{}{:?}", indent, event)
     }
 
     fn enter_span(&self, name: &'static str) -> SpanId {
         *self.indent.borrow_mut() += 1;
-        SpanId(self.indent.borrow().clone())
+        SpanId::new(self.indent.borrow().clone())
     }
 
     fn exit_span(&self, id: SpanId) {
-        debug_assert!(id.0 == *self.indent.borrow().deref());
+        debug_assert!(id == SpanId::new(*self.indent.borrow().deref()));
         *self.indent.borrow_mut() -= 1;
     }
 }
@@ -88,10 +94,10 @@ impl GameLogInner for ConsoleLog {
 pub struct NullLog;
 impl GameLogInner for NullLog {
     fn record(&self, _event: GameEvent) {}
-    fn enter_span(&self, name: &'static str) -> SpanId {
-        SpanId(0)
+    fn enter_span(&self, _name: &'static str) -> SpanId {
+        SpanId::new(0)
     }
-    fn exit_span(&self, id: SpanId) {}
+    fn exit_span(&self, _id: SpanId) {}
 }
 
 #[cfg(test)]
@@ -102,29 +108,41 @@ pub mod tests {
     #[derive(Debug)]
     pub struct TestLog {
         messages: RefCell<Vec<String>>,
+        indent: RefCell<u64>,
     }
     impl TestLog {
         pub fn new() -> Self {
             TestLog {
                 messages: vec![].into(),
+                indent: 0.into(),
             }
         }
 
         pub fn dump(&self) -> String {
             self.messages.borrow().join("\n")
         }
+
+        fn print(&self, event: impl std::fmt::Debug) {
+            let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
+            self.messages
+                .borrow_mut()
+                .push(format!("{}{:?}", indent, event))
+        }
     }
     impl GameLogInner for TestLog {
         fn record(&self, event: GameEvent) {
-            self.messages.borrow_mut().push(format!("{:?}", event))
+            // TODO: is there a nicer way to build `indent` here?
+            self.print(event);
         }
 
         fn enter_span(&self, name: &'static str) -> SpanId {
-            todo!()
+            self.print(format!("{}", name));
+            *self.indent.borrow_mut() += 1;
+            SpanId::new(0)
         }
 
         fn exit_span(&self, id: SpanId) {
-            todo!()
+            *self.indent.borrow_mut() -= 1;
         }
     }
 }
