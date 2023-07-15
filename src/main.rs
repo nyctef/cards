@@ -1,11 +1,16 @@
-use game::{logs::NullLog, players::Agents, shuffler::RandomShuffler, Game};
+use game::{
+    logs::{GameLog, NullLog},
+    players::Agents,
+    shuffler::RandomShuffler,
+    Game,
+};
 
 mod game;
 
 fn main() {
-    let log = NullLog::new();
+    let log = GameLog::new(Box::new(NullLog::new()));
     let shuffler = RandomShuffler::unseeded();
-    let mut game = Game::new(&log);
+    let mut game = Game::new(log);
     let mut player_1 = Agents::greedy_for_duchies();
     let mut player_2 = Agents::silver_test();
     game.add_player("P1 [GFD]", &mut player_1, &shuffler);

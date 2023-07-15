@@ -27,11 +27,11 @@ use itertools::Itertools;
 pub struct Game<'a> {
     players: Vec<(&'a str, PlayArea<'a>, &'a mut dyn Agent)>,
     supply: Supply,
-    log: &'a dyn GameLog,
+    log: GameLog,
     max_turns: u8,
 }
 impl<'a> Game<'a> {
-    pub fn new(log: &'a dyn GameLog) -> Self {
+    pub fn new(log: GameLog) -> Self {
         Self {
             players: vec![],
             supply: Supply::new(),
@@ -53,7 +53,10 @@ impl<'a> Game<'a> {
     fn play_one_turn(&mut self) {
         self.max_turns -= 1;
         for (name, area, agent) in self.players.iter_mut() {
-            self.log.record(GameEvent::TurnStart(name.to_owned()));
+            self.log
+                // TODO: either name name 'static, or figure out something better here
+                .enter_turn(Box::leak(name.to_string().into_boxed_str()));
+
             let mut player_counters = PlayerCounters::new_turn();
             // TODO: implement actions
             agent.action_phase();
@@ -86,7 +89,7 @@ impl<'a> Game<'a> {
                 return;
             }
 
-            area.draw_hand(self.log);
+            area.draw_hand(&self.log);
         }
     }
 
@@ -110,7 +113,7 @@ impl<'a> Game<'a> {
             let mut estates = self.supply.take_up_to_n(CardNames::ESTATE, 3);
             area.gain_cards_to_discard_pile(&mut estates);
 
-            area.draw_hand(self.log);
+            area.draw_hand(&self.log);
         }
     }
 
@@ -194,9 +197,10 @@ mod tests {
 
     #[test]
     fn a_game_can_start_and_a_player_can_buy_something() {
-        let log = TestLog::new();
+        let testlog = TestLog::new();
+        let log = GameLog::new(Box::new(testlog));
         let shuffler = NoShuffle::new();
-        let mut game = Game::new(&log);
+        let mut game = Game::new(log);
         let mut player_1 = Agents::always_buy_copper();
         game.add_player("Player 1", &mut player_1, &shuffler);
         game.populate_supply(Cards::copper, 10);
@@ -204,15 +208,16 @@ mod tests {
         game.deal_starting_hands();
         game.play_one_turn();
 
-        insta::assert_snapshot!(log.dump());
+        insta::assert_snapshot!(testlog.dump());
         insta::assert_debug_snapshot!((game.players, game.supply));
     }
 
     #[test]
     fn can_buy_duchies_with_a_cheap_strategy() {
-        let log = TestLog::new();
+        let testlog = TestLog::new();
+        let log = GameLog::new(Box::new(testlog));
         let shuffler = NoShuffle::new();
-        let mut game = Game::new(&log);
+        let mut game = Game::new(log);
         let mut player_1 = Agents::greedy_for_duchies();
         game.add_player("Player 1", &mut player_1, &shuffler);
         game.populate_supply(Cards::copper, 10);
@@ -223,7 +228,7 @@ mod tests {
             game.play_one_turn();
         }
 
-        insta::assert_snapshot!(log.dump());
+        insta::assert_snapshot!(testlog.dump());
         insta::assert_debug_snapshot!((game.players, game.supply));
     }
 
@@ -231,9 +236,10 @@ mod tests {
     fn one_player_beats_another_buy_eventually_buying_enough_duchies() {
         // TODO: print number of turns (per player) in results
         // TODO: print the game end reason to the log
-        let log = TestLog::new();
+        let testlog = TestLog::new();
+        let log = GameLog::new(Box::new(testlog));
         let shuffler = RandomShuffler::new(1234);
-        let mut game = Game::new(&log);
+        let mut game = Game::new(log);
         let mut player_1 = Agents::greedy_for_duchies();
         let mut player_2 = Agents::always_buy_copper();
         game.add_player("P1 [GFD]", &mut player_1, &shuffler);
@@ -242,7 +248,7 @@ mod tests {
 
         let results = game.play_to_end();
 
-        insta::assert_snapshot!(log.dump());
+        insta::assert_snapshot!(testlog.dump());
         insta::assert_display_snapshot!(results);
     }
 }

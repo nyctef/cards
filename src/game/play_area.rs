@@ -28,7 +28,7 @@ impl<'p> PlayArea<'p> {
         }
     }
 
-    pub fn draw_hand(&mut self, log: &dyn GameLog) {
+    pub fn draw_hand(&mut self, log: &GameLog) {
         let cards = self.deck.take_n(5);
         match cards {
             DrawResult::Complete(mut cards) => {
