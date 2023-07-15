@@ -53,44 +53,47 @@ impl<'a> Game<'a> {
     fn play_one_turn(&mut self) {
         self.max_turns -= 1;
         for (name, area, agent) in self.players.iter_mut() {
-            let _span = self
-                .log
-                // TODO: either make name 'static, or figure out something better here
-                .enter_turn(Box::leak(name.to_string().into_boxed_str()));
+            let _span = self.log.enter_turn(name);
 
             let mut player_counters = PlayerCounters::new_turn();
             // TODO: implement actions
             agent.action_phase();
 
-            for c in area
-                .inspect_hand()
-                .filter(|c| c.get_types().any(|t| t == CardTypes::TREASURE))
-                .map(|c| c.name)
-                .collect_vec()
             {
-                area.play_card(c, &mut player_counters);
-                self.log
-                    .record(GameEvent::CardPlayed(c, player_counters.clone()));
+                let _span = self.log.enter_buy_phase();
+                for c in area
+                    .inspect_hand()
+                    .filter(|c| c.get_types().any(|t| t == CardTypes::TREASURE))
+                    .map(|c| c.name)
+                    .collect_vec()
+                {
+                    area.play_card(c, &mut player_counters);
+                    self.log
+                        .record(GameEvent::CardPlayed(c, player_counters.clone()));
+                }
+
+                let buyable_cards = self.supply.buyable_cards(player_counters.coins);
+                let buy_choice = agent.buy_phase(&buyable_cards.collect_vec());
+                match buy_choice {
+                    BuyChoice::Buy(card) => {
+                        let purchased = self.supply.take_one(card).expect("TODO");
+                        area.gain_card_to_discard_pile(purchased);
+                        self.log.record(GameEvent::CardBoughtGained(card));
+                    }
+                    BuyChoice::None => {}
+                }
             }
 
-            let buyable_cards = self.supply.buyable_cards(player_counters.coins);
-            let buy_choice = agent.buy_phase(&buyable_cards.collect_vec());
-            match buy_choice {
-                BuyChoice::Buy(card) => {
-                    let purchased = self.supply.take_one(card).expect("TODO");
-                    area.gain_card_to_discard_pile(purchased);
-                    self.log.record(GameEvent::CardBoughtGained(card));
-                }
-                BuyChoice::None => {}
+            {
+                let _span = self.log.enter_cleanup();
+                area.discard_in_play();
+                area.discard_hand();
+                area.draw_hand(&self.log);
             }
-            area.discard_in_play();
-            area.discard_hand();
 
             if Self::has_ended(self.max_turns, &self.supply) {
                 return;
             }
-
-            area.draw_hand(&self.log);
         }
     }
 

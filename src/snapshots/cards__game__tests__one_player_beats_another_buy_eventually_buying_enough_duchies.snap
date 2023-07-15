@@ -8,1012 +8,1303 @@ DrawCards(5)
 DrawCards(0)
 Shuffle
 DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(0)
-  Shuffle
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(0)
-  Shuffle
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Copper])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(4)
-  Shuffle
-  DrawCards(1)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(4)
-  Shuffle
-  DrawCards(1)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Duchy])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(4)
-  Shuffle
-  DrawCards(1)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(4)
-  Shuffle
-  DrawCards(1)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardPlayed([Copper], [1A 1B 6C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardPlayed([Copper], [1A 1B 6C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardPlayed([Copper], [1A 1B 6C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Duchy])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Duchy])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardPlayed([Copper], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Copper], [1A 1B 7C])
-  CardBoughtGained([Silver])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardPlayed([Silver], [1A 1B 7C])
-  CardPlayed([Silver], [1A 1B 9C])
-  CardBoughtGained([Province])
-  DrawCards(4)
-  Shuffle
-  DrawCards(1)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(4)
-  Shuffle
-  DrawCards(1)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardPlayed([Silver], [1A 1B 10C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardPlayed([Silver], [1A 1B 10C])
-  CardBoughtGained([Province])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(2)
-  Shuffle
-  DrawCards(3)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Copper], [1A 1B 7C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardPlayed([Copper], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Silver], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardBoughtGained([Silver])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(0)
-  Shuffle
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  DrawCards(1)
-  Shuffle
-  DrawCards(4)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Copper], [1A 1B 7C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  CardPlayed([Copper], [1A 1B 5C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Silver], [1A 1B 5C])
-  CardPlayed([Silver], [1A 1B 7C])
-  CardPlayed([Silver], [1A 1B 9C])
-  CardBoughtGained([Province])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  DrawCards(5)
-"P2 [ABC]"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardPlayed([Copper], [1A 1B 3C])
-  CardPlayed([Copper], [1A 1B 4C])
-  DrawCards(5)
-"P1 [GFD]"
-  CardPlayed([Silver], [1A 1B 2C])
-  CardPlayed([Silver], [1A 1B 4C])
-  CardPlayed([Silver], [1A 1B 6C])
-  CardPlayed([Silver], [1A 1B 8C])
-  CardBoughtGained([Province])
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(0)
+    Shuffle
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(0)
+    Shuffle
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(4)
+    Shuffle
+    DrawCards(1)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(4)
+    Shuffle
+    DrawCards(1)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(4)
+    Shuffle
+    DrawCards(1)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(4)
+    Shuffle
+    DrawCards(1)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Duchy])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(4)
+    Shuffle
+    DrawCards(1)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(4)
+    Shuffle
+    DrawCards(1)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Silver], [1A 1B 10C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Silver], [1A 1B 10C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(2)
+    Shuffle
+    DrawCards(3)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Silver])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(0)
+    Shuffle
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P2 [ABC]
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: P1 [GFD]
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)

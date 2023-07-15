@@ -14,7 +14,9 @@ pub enum GameEvent {
 
 pub trait GameLogInner {
     fn record(&self, event: GameEvent);
-    fn enter_span(&self, name: &'static str) -> SpanId;
+    // TODO: a more generic way of storing key-value pairs in data
+    // like Attributes in the tracing crate
+    fn enter_span<'a>(&self, span_name: &'static str, data: &'a str) -> SpanId;
     fn exit_span(&self, id: SpanId);
 }
 
@@ -28,8 +30,18 @@ impl GameLog {
     pub fn record(&self, event: GameEvent) {
         self.inner.record(event)
     }
-    pub fn enter_turn(&self, name: &'static str) -> GameLogSpan {
-        GameLogSpan::new(self.inner.enter_span(name), self.inner.clone())
+    pub fn enter_turn<'a>(&self, player_name: &'a str) -> GameLogSpan {
+        GameLogSpan::new(
+            self.inner.enter_span("turn", player_name),
+            self.inner.clone(),
+        )
+    }
+    pub fn enter_cleanup(&self) -> GameLogSpan {
+        GameLogSpan::new(self.inner.enter_span("cleanup", ""), self.inner.clone())
+    }
+
+    pub fn enter_buy_phase(&self) -> GameLogSpan {
+        GameLogSpan::new(self.inner.enter_span("buy phase", ""), self.inner.clone())
     }
 }
 
@@ -74,12 +86,11 @@ struct ConsoleLog {
 }
 impl GameLogInner for ConsoleLog {
     fn record(&self, event: GameEvent) {
-        // TODO: is there a nicer way to build `indent` here?
-        let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
-        println!("{}{:?}", indent, event)
+        self.print(format!("{:?}", event));
     }
 
-    fn enter_span(&self, name: &'static str) -> SpanId {
+    fn enter_span<'a>(&self, name: &'static str, data: &'a str) -> SpanId {
+        self.print(format!("{}: {}", name, data));
         *self.indent.borrow_mut() += 1;
         SpanId::new(self.indent.borrow().clone())
     }
@@ -90,11 +101,19 @@ impl GameLogInner for ConsoleLog {
     }
 }
 
+impl ConsoleLog {
+    fn print(&self, str: String) {
+        // TODO: is there a nicer way to build `indent` here?
+        let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
+        println!("{}{}", indent, str)
+    }
+}
+
 #[derive(Debug, Constructor)]
 pub struct NullLog;
 impl GameLogInner for NullLog {
     fn record(&self, _event: GameEvent) {}
-    fn enter_span(&self, _name: &'static str) -> SpanId {
+    fn enter_span<'a>(&self, _name: &'static str, data: &'a str) -> SpanId {
         SpanId::new(0)
     }
     fn exit_span(&self, _id: SpanId) {}
@@ -122,21 +141,21 @@ pub mod tests {
             self.messages.borrow().join("\n")
         }
 
-        fn print(&self, event: impl std::fmt::Debug) {
+        fn print(&self, str: String) {
+            // TODO: is there a nicer way to build `indent` here?
             let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
             self.messages
                 .borrow_mut()
-                .push(format!("{}{:?}", indent, event))
+                .push(format!("{}{}", indent, str))
         }
     }
     impl GameLogInner for TestLog {
         fn record(&self, event: GameEvent) {
-            // TODO: is there a nicer way to build `indent` here?
-            self.print(event);
+            self.print(format!("{:?}", event));
         }
 
-        fn enter_span(&self, name: &'static str) -> SpanId {
-            self.print(format!("{}", name));
+        fn enter_span<'a>(&self, name: &'static str, data: &'a str) -> SpanId {
+            self.print(format!("{}: {}", name, data));
             *self.indent.borrow_mut() += 1;
             SpanId::new(0)
         }

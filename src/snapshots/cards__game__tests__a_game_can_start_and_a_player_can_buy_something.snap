@@ -5,8 +5,10 @@ expression: testlog.dump()
 DrawCards(0)
 Shuffle
 DrawCards(5)
-"Player 1"
-  CardPlayed([Copper], [1A 1B 1C])
-  CardPlayed([Copper], [1A 1B 2C])
-  CardBoughtGained([Copper])
-  DrawCards(5)
+turn: Player 1
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardBoughtGained([Copper])
+  cleanup: 
+    DrawCards(5)
