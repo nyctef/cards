@@ -70,38 +70,33 @@ impl std::fmt::Debug for CardPile {
     }
 }
 
-/* TODO
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::game::model::{CardNames, Cards};
 
     #[test]
     fn added_cards_can_be_drawn() {
         let mut deck = CardPile::new();
-        deck.add_at_top(1);
-        deck.add_at_top(2);
-        deck.add_at_top(3);
-        let cards = deck.take_n(3);
-        assert_eq!(
-            DrawResult::Complete(vec![3, 2, 1]),
-            cards,
-            "Since each card was added to the top, they get drawn in reverse order"
-        )
+        deck.add_range(&mut vec![Cards::copper()]);
+        deck.add_range(&mut vec![Cards::silver()]);
+        deck.add_range(&mut vec![Cards::gold()]);
+
+        // since the cards were added one at a time, they get drawn in reverse order
+        assert_eq!(CardNames::GOLD, deck.peek().unwrap().name);
+        let _ = deck.take_n(1);
+        assert_eq!(CardNames::SILVER, deck.peek().unwrap().name);
+        let _ = deck.take_n(1);
+        assert_eq!(CardNames::COPPER, deck.peek().unwrap().name);
     }
 
     #[test]
     fn if_there_arent_enough_cards_then_remaining_cards_get_drawn() {
         let mut deck = CardPile::new();
-        deck.add_range(&mut vec![1, 2, 3]);
+        deck.add_range(&mut vec![Cards::copper(), Cards::silver(), Cards::gold()]);
+
         let cards = deck.take_n(5);
-        assert_eq!(
-            cards,
-            DrawResult::Partial {
-                0: vec![1, 2, 3],
-                1: 2
-            }
-        )
+
+        assert!(matches!(cards, DrawResult::Partial(_, 2)));
     }
 }
-
-*/
