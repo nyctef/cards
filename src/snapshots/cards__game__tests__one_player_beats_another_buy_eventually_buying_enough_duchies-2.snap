@@ -2,14 +2,15 @@
 source: src/game.rs
 expression: results
 ---
-P1 [GFD]: 39 points
-  [Copper] x7
+P1 [GFD]: 111 points
+  [Copper] x8
   [Duchy] x12
   [Estate] x3
-  [Silver] x11
+  [Province] x12
+  [Silver] x40
 
 P2 [ABC]: 3 points
-  [Copper] x29
+  [Copper] x52
   [Estate] x3
 
 

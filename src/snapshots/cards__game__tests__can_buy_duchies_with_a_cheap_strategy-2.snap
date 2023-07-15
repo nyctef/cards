@@ -32,6 +32,7 @@ expression: "(game.players, game.supply)"
             BuyPriority {
                 priorities: [
                     [Duchy],
+                    [Province],
                     [Silver],
                     [Copper],
                 ],
