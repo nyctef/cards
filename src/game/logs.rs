@@ -1,8 +1,14 @@
 use derive_more::Constructor;
 
+use super::{model::CardName, player_counters::PlayerCounters};
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum GameEvent {
-    Todo(String),
+    TurnStart(String),
+    CardPlayed(CardName, PlayerCounters),
+    CardBoughtGained(CardName),
+    DrawCards(usize),
+    Shuffle(),
 }
 
 pub trait GameLog: std::fmt::Debug {

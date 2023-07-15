@@ -53,6 +53,7 @@ impl<'a> Game<'a> {
     fn play_one_turn(&mut self) {
         self.max_turns -= 1;
         for (name, area, agent) in self.players.iter_mut() {
+            self.log.record(GameEvent::TurnStart(name.to_owned()));
             let mut player_counters = PlayerCounters::new_turn();
             // TODO: implement actions
             agent.action_phase();
@@ -64,10 +65,8 @@ impl<'a> Game<'a> {
                 .collect_vec()
             {
                 area.play_card(c, &mut player_counters);
-                self.log.record(GameEvent::Todo(format!(
-                    "{:?} {} played a {:?}",
-                    player_counters, name, c
-                )));
+                self.log
+                    .record(GameEvent::CardPlayed(c, player_counters.clone()));
             }
 
             let buyable_cards = self.supply.buyable_cards(player_counters.coins);
@@ -76,8 +75,7 @@ impl<'a> Game<'a> {
                 BuyChoice::Buy(card) => {
                     let purchased = self.supply.take_one(card).expect("TODO");
                     area.gain_card_to_discard_pile(purchased);
-                    self.log
-                        .record(GameEvent::Todo(format!("{} gained a {:?}", name, card)));
+                    self.log.record(GameEvent::CardBoughtGained(card));
                 }
                 BuyChoice::None => {}
             }

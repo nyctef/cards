@@ -33,22 +33,20 @@ impl<'p> PlayArea<'p> {
         match cards {
             DrawResult::Complete(mut cards) => {
                 self.hand.append(&mut cards);
-                log.record(GameEvent::Todo(format!("draws 5 cards")))
+                log.record(GameEvent::DrawCards(5));
             }
             DrawResult::Partial(mut cards, remaining) => {
-                log.record(GameEvent::Todo(format!(
-                    "draws {} cards, shuffles their deck, and draws {} more",
-                    cards.len(),
-                    remaining
-                )));
+                log.record(GameEvent::DrawCards(cards.len()));
                 self.hand.append(&mut cards);
                 // we didn't get all the cards we need, so shuffle the discard pile
                 // and turn it back into the deck:
                 assert!(self.deck.is_empty() && self.in_play.is_empty());
 
+                log.record(GameEvent::Shuffle());
                 let mut shuffled = self.shuffler.shuffle(&mut self.discard);
 
                 self.deck.add_range(&mut shuffled);
+                log.record(GameEvent::DrawCards(remaining));
                 let mut remaining_cards = self.deck.take_up_to_n(remaining);
                 self.hand.append(&mut remaining_cards)
             }

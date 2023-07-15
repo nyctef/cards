@@ -2,8 +2,11 @@
 source: src/game.rs
 expression: log.dump()
 ---
-Todo("draws 0 cards, shuffles their deck, and draws 5 more")
-Todo("[1A 1B 1C] Player 1 played a [Copper]")
-Todo("[1A 1B 2C] Player 1 played a [Copper]")
-Todo("Player 1 gained a [Copper]")
-Todo("draws 5 cards")
+DrawCards(0)
+Shuffle
+DrawCards(5)
+TurnStart("Player 1")
+CardPlayed([Copper], [1A 1B 1C])
+CardPlayed([Copper], [1A 1B 2C])
+CardBoughtGained([Copper])
+DrawCards(5)

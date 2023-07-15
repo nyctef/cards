@@ -1,3 +1,4 @@
+#[derive(Clone, PartialEq, Eq)]
 pub struct PlayerCounters {
     pub actions: u8,
     pub buys: u8,
