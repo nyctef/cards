@@ -19,7 +19,7 @@ struct BuyPriority {
 }
 impl Agent for BuyPriority {
     fn action_phase(&mut self) {}
-    fn buy_phase<'card>(&mut self, buyable_cards: &[CardName]) -> BuyChoice {
+    fn buy_phase(&mut self, buyable_cards: &[CardName]) -> BuyChoice {
         for p in &self.priorities {
             if buyable_cards.iter().any(|c| c == p) {
                 return BuyChoice::Buy(*p);
