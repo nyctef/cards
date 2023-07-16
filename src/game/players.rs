@@ -120,12 +120,13 @@ impl Agents {
     pub fn big_money_splash_smithys() -> impl Agent {
         BoundedPriorities::new(
             vec![
-                (CardNames::PROVINCE, 12),
+                (CardNames::PROVINCE, 100),
                 (CardNames::SMITHY, 2),
-                (CardNames::GOLD, 12),
-                (CardNames::SILVER, 3),
+                // (CardNames::VILLAGE, 2),
+                (CardNames::GOLD, 100),
+                (CardNames::SILVER, 100),
             ],
-            vec![CardNames::SMITHY],
+            vec![CardNames::VILLAGE, CardNames::SMITHY],
         )
     }
 }
