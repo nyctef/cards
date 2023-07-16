@@ -32,7 +32,7 @@ impl std::fmt::Debug for SpanData<'_> {
 
 pub trait GameLogInner {
     fn record(&self, event: GameEvent);
-    fn enter_span<'a>(&self, span_name: &'static str, data: SpanData<'a>) -> SpanId;
+    fn enter_span(&self, span_name: &'static str, data: SpanData) -> SpanId;
     fn exit_span(&self, id: SpanId);
 }
 
@@ -41,7 +41,7 @@ pub struct GameLog {
 }
 impl GameLog {
     pub fn new(inner: Rc<dyn GameLogInner>) -> Self {
-        GameLog { inner: inner }
+        GameLog { inner }
     }
     pub fn record(&self, event: GameEvent) {
         self.inner.record(event)
@@ -51,7 +51,7 @@ impl GameLog {
             ("player_name", &player_name),
             ("turn_counter", &turn_counter),
         ];
-        let data = SpanData(&data);
+        let data = SpanData(data);
         GameLogSpan::new(self.inner.enter_span("turn", data), self.inner.clone())
     }
     pub fn enter_action_phase(&self) -> GameLogSpan {
@@ -118,10 +118,10 @@ impl GameLogInner for ConsoleLog {
         self.print(format!("{:?}", event));
     }
 
-    fn enter_span<'a>(&self, name: &'static str, data: SpanData<'a>) -> SpanId {
+    fn enter_span(&self, name: &'static str, data: SpanData) -> SpanId {
         self.print(format!("{}: {:?}", name, data));
         *self.indent.borrow_mut() += 1;
-        SpanId::new(self.indent.borrow().clone())
+        SpanId::new(*self.indent.borrow())
     }
 
     fn exit_span(&self, id: SpanId) {
@@ -142,7 +142,7 @@ impl ConsoleLog {
 pub struct NullLog;
 impl GameLogInner for NullLog {
     fn record(&self, _event: GameEvent) {}
-    fn enter_span<'a>(&self, _name: &'static str, _data: SpanData<'a>) -> SpanId {
+    fn enter_span(&self, _name: &'static str, _data: SpanData) -> SpanId {
         SpanId::new(0)
     }
     fn exit_span(&self, _id: SpanId) {}
