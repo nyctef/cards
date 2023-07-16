@@ -1,6 +1,7 @@
 use super::{
     card_pile::{CardPile, DrawResult},
     cards::{Card, CardName},
+    effects::CardEffect,
     player_counters::PlayerCounters,
 };
 use crate::{
@@ -82,15 +83,13 @@ impl<'p> PlayArea<'p> {
         );
 
         match card.effect {
-            super::effects::CardEffect::None => {}
-            super::effects::CardEffect::Sequence(_) => todo!(),
-            super::effects::CardEffect::AddActions(_) => todo!(),
-            super::effects::CardEffect::AddBuys(_) => todo!(),
-            super::effects::CardEffect::AddCoins(treasure_value) => {
-                counters.coins += treasure_value
-            }
-            super::effects::CardEffect::DrawCards(_) => todo!(),
-            super::effects::CardEffect::TrashCardsFromHand(_) => todo!(),
+            CardEffect::None => {}
+            CardEffect::Sequence(_) => todo!(),
+            CardEffect::AddActions(_) => todo!(),
+            CardEffect::AddBuys(_) => todo!(),
+            CardEffect::AddCoins(treasure_value) => counters.coins += treasure_value,
+            CardEffect::DrawCards(_) => todo!(),
+            CardEffect::TrashCardsFromHand(_) => todo!(),
         }
 
         self.in_play.push(card);
