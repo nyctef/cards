@@ -110,8 +110,13 @@ mod span_details_are_private {
 }
 
 #[derive(Debug)]
-struct ConsoleLog {
+pub struct ConsoleLog {
     indent: RefCell<u64>,
+}
+impl ConsoleLog {
+    pub fn new() -> Self {
+        ConsoleLog { indent: 0.into() }
+    }
 }
 impl GameLogInner for ConsoleLog {
     fn record(&self, event: GameEvent) {

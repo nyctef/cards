@@ -64,4 +64,11 @@ impl Agents {
     pub fn silver_test() -> impl Agent {
         BasicPriorities::new(vec![CardNames::PROVINCE, CardNames::SILVER], vec![])
     }
+    #[allow(dead_code)]
+    pub fn simple_big_money() -> impl Agent {
+        BasicPriorities::new(
+            vec![CardNames::PROVINCE, CardNames::GOLD, CardNames::SILVER],
+            vec![],
+        )
+    }
 }
