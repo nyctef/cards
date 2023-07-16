@@ -6,6 +6,7 @@ DrawCards(0)
 Shuffle
 DrawCards(5)
 turn: player_name="Player 1", turn_counter=1
+  action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
@@ -13,6 +14,7 @@ turn: player_name="Player 1", turn_counter=1
   cleanup: 
     DrawCards(5)
 turn: player_name="Player 1", turn_counter=2
+  action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
@@ -25,6 +27,7 @@ turn: player_name="Player 1", turn_counter=2
     Shuffle
     DrawCards(5)
 turn: player_name="Player 1", turn_counter=3
+  action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
@@ -35,6 +38,7 @@ turn: player_name="Player 1", turn_counter=3
   cleanup: 
     DrawCards(5)
 turn: player_name="Player 1", turn_counter=4
+  action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardBoughtGained([Copper])
@@ -43,6 +47,7 @@ turn: player_name="Player 1", turn_counter=4
     Shuffle
     DrawCards(3)
 turn: player_name="Player 1", turn_counter=5
+  action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])

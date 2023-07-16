@@ -6,6 +6,7 @@ DrawCards(0)
 Shuffle
 DrawCards(5)
 turn: player_name="Player 1", turn_counter=1
+  action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])

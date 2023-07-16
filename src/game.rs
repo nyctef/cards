@@ -58,11 +58,16 @@ impl<'a> Game<'a> {
             let _span = self.log.enter_turn(name, self.turn_counter);
 
             let mut player_counters = PlayerCounters::new_turn();
-            // TODO: implement actions
-            agent.action_phase();
+
+            {
+                let _span = self.log.enter_action_phase();
+                agent.action_phase();
+            }
 
             {
                 let _span = self.log.enter_buy_phase();
+
+                // for now we just auto play all treasures
                 for c in area
                     .inspect_hand()
                     .filter(|c| c.get_types().any(|t| t == CardTypes::TREASURE))

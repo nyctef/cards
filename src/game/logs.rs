@@ -54,16 +54,21 @@ impl GameLog {
         let data = SpanData(&data);
         GameLogSpan::new(self.inner.enter_span("turn", data), self.inner.clone())
     }
-    pub fn enter_cleanup(&self) -> GameLogSpan {
+    pub fn enter_action_phase(&self) -> GameLogSpan {
         GameLogSpan::new(
-            self.inner.enter_span("cleanup", SpanData::empty()),
+            self.inner.enter_span("action phase", SpanData::empty()),
             self.inner.clone(),
         )
     }
-
     pub fn enter_buy_phase(&self) -> GameLogSpan {
         GameLogSpan::new(
             self.inner.enter_span("buy phase", SpanData::empty()),
+            self.inner.clone(),
+        )
+    }
+    pub fn enter_cleanup(&self) -> GameLogSpan {
+        GameLogSpan::new(
+            self.inner.enter_span("cleanup", SpanData::empty()),
             self.inner.clone(),
         )
     }
