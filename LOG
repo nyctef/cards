@@ -1,3 +1,23 @@
+Thinking about how to make actions work
+
+play_area.play_card is currently hardcoded to just add coins based on card
+treasure values.
+
+We don't want to just keep adding more hardcoded values like treasure_value to
+cards and then have play_card encode all possible actions, since that will
+fall apart pretty quickly.
+
+Introducing CardEffect feels like a step in the right direction, but even now
+the logic in play_area.play_card is effectively the same as it would have been
+otherwise.
+
+A specific question: where do cards trashed by play_area.play_card go?
+Currently the play_area only knows about the specific player's card piles, but
+the trash is global to the game (like the supply). So it feels like at some
+point we'll need to combine supply+trash+play areas into a more shared concept.
+
+-------------------------------------------------------------------------------
+
 First milestone: got something useful running in main.rs
 Next milestone: get some actions working
 
@@ -48,8 +68,6 @@ TODO next:
   - Library does some interesting things with intermediate card locations
     ("set aside") and a new kind of agent interaction ("do you want to discard
     this?")
-
-
 
 -------------------------------------------------------------------------------
 
