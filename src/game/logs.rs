@@ -12,11 +12,30 @@ pub enum GameEvent {
     Shuffle(),
 }
 
+pub struct SpanData<'a>(&'a [(&'static str, &'a dyn std::fmt::Debug)]);
+impl SpanData<'_> {
+    fn empty() -> Self {
+        SpanData(&[])
+    }
+}
+impl std::fmt::Debug for SpanData<'_> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut first = true;
+        for (name, value) in self.0 {
+            if first {
+                first = false;
+            } else {
+                write!(f, ", ")?;
+            }
+            write!(f, "{}={:?}", name, value)?;
+        }
+        Ok(())
+    }
+}
+
 pub trait GameLogInner {
     fn record(&self, event: GameEvent);
-    // TODO: a more generic way of storing key-value pairs in data
-    // like Attributes in the tracing crate
-    fn enter_span<'a>(&self, span_name: &'static str, data: &'a str) -> SpanId;
+    fn enter_span<'a>(&self, span_name: &'static str, data: SpanData<'a>) -> SpanId;
     fn exit_span(&self, id: SpanId);
 }
 
@@ -30,18 +49,26 @@ impl GameLog {
     pub fn record(&self, event: GameEvent) {
         self.inner.record(event)
     }
-    pub fn enter_turn<'a>(&self, player_name: &'a str) -> GameLogSpan {
+    pub fn enter_turn<'a>(&self, player_name: &'a str, turn_counter: u8) -> GameLogSpan {
+        let data = [
+            ("player_name", &player_name),
+            ("turn_counter", &turn_counter),
+        ];
+        let data = SpanData(&data);
+        GameLogSpan::new(self.inner.enter_span("turn", data), self.inner.clone())
+    }
+    pub fn enter_cleanup(&self) -> GameLogSpan {
         GameLogSpan::new(
-            self.inner.enter_span("turn", player_name),
+            self.inner.enter_span("cleanup", SpanData::empty()),
             self.inner.clone(),
         )
     }
-    pub fn enter_cleanup(&self) -> GameLogSpan {
-        GameLogSpan::new(self.inner.enter_span("cleanup", ""), self.inner.clone())
-    }
 
     pub fn enter_buy_phase(&self) -> GameLogSpan {
-        GameLogSpan::new(self.inner.enter_span("buy phase", ""), self.inner.clone())
+        GameLogSpan::new(
+            self.inner.enter_span("buy phase", SpanData::empty()),
+            self.inner.clone(),
+        )
     }
 }
 
@@ -89,8 +116,8 @@ impl GameLogInner for ConsoleLog {
         self.print(format!("{:?}", event));
     }
 
-    fn enter_span<'a>(&self, name: &'static str, data: &'a str) -> SpanId {
-        self.print(format!("{}: {}", name, data));
+    fn enter_span<'a>(&self, name: &'static str, data: SpanData<'a>) -> SpanId {
+        self.print(format!("{}: {:?}", name, data));
         *self.indent.borrow_mut() += 1;
         SpanId::new(self.indent.borrow().clone())
     }
@@ -113,7 +140,7 @@ impl ConsoleLog {
 pub struct NullLog;
 impl GameLogInner for NullLog {
     fn record(&self, _event: GameEvent) {}
-    fn enter_span<'a>(&self, _name: &'static str, _data: &'a str) -> SpanId {
+    fn enter_span<'a>(&self, _name: &'static str, _data: SpanData<'a>) -> SpanId {
         SpanId::new(0)
     }
     fn exit_span(&self, _id: SpanId) {}
@@ -154,8 +181,8 @@ pub mod tests {
             self.print(format!("{:?}", event));
         }
 
-        fn enter_span<'a>(&self, name: &'static str, data: &'a str) -> SpanId {
-            self.print(format!("{}: {}", name, data));
+        fn enter_span<'a>(&self, name: &'static str, data: SpanData<'a>) -> SpanId {
+            self.print(format!("{}: {:?}", name, data));
             *self.indent.borrow_mut() += 1;
             SpanId::new(0)
         }

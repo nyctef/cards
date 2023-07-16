@@ -55,7 +55,7 @@ impl<'a> Game<'a> {
     fn play_one_turn(&mut self) {
         self.turn_counter += 1;
         for (name, area, agent) in self.players.iter_mut() {
-            let _span = self.log.enter_turn(name);
+            let _span = self.log.enter_turn(name, self.turn_counter);
 
             let mut player_counters = PlayerCounters::new_turn();
             // TODO: implement actions
