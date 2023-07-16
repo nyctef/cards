@@ -113,7 +113,7 @@ impl ConsoleLog {
 pub struct NullLog;
 impl GameLogInner for NullLog {
     fn record(&self, _event: GameEvent) {}
-    fn enter_span<'a>(&self, _name: &'static str, data: &'a str) -> SpanId {
+    fn enter_span<'a>(&self, _name: &'static str, _data: &'a str) -> SpanId {
         SpanId::new(0)
     }
     fn exit_span(&self, _id: SpanId) {}
@@ -160,7 +160,7 @@ pub mod tests {
             SpanId::new(0)
         }
 
-        fn exit_span(&self, id: SpanId) {
+        fn exit_span(&self, _id: SpanId) {
             *self.indent.borrow_mut() -= 1;
         }
     }
