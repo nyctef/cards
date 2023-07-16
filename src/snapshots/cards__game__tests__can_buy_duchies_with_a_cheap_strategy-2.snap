@@ -29,13 +29,14 @@ expression: "(game.players, game.supply)"
                 ],
                 shuffler: NoShuffle,
             },
-            BuyPriority {
-                priorities: [
+            BasicPriorities {
+                buy_priorities: [
                     [Duchy],
                     [Province],
                     [Silver],
                     [Copper],
                 ],
+                play_priorities: [],
             },
         ),
     ],

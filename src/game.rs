@@ -61,7 +61,25 @@ impl<'a> Game<'a> {
 
             {
                 let _span = self.log.enter_action_phase();
-                agent.action_phase();
+                while player_counters.actions > 0 {
+                    let playable_cards = area
+                        .inspect_hand()
+                        .filter(|c| c.get_types().any(|t| t == CardTypes::ACTION))
+                        .map(|c| c.name)
+                        .collect_vec();
+                    let action_choice = agent.action_phase(&playable_cards);
+                    match action_choice {
+                        players::PlayChoice::Play(card) => {
+                            area.play_card(card, &mut player_counters);
+                            self.log
+                                .record(GameEvent::CardPlayed(card, player_counters.clone()));
+                            player_counters.actions -= 1;
+                        }
+                        players::PlayChoice::None => {
+                            break;
+                        }
+                    }
+                }
             }
 
             {

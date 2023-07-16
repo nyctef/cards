@@ -26,10 +26,11 @@ expression: "(game.players, game.supply)"
                 ],
                 shuffler: NoShuffle,
             },
-            BuyPriority {
-                priorities: [
+            BasicPriorities {
+                buy_priorities: [
                     [Copper],
                 ],
+                play_priorities: [],
             },
         ),
     ],
