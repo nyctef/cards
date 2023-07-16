@@ -114,6 +114,17 @@ mod tests {
         shuffler::NoShuffle,
     };
 
+    macro_rules! cards {
+        ( $($c:ident $n:expr) ; +) => {
+            {
+                // based on https://danielkeep.github.io/tlborm/book/mbe-macro-rules.html
+                let mut v = Vec::new();
+                $(v.append(&mut (0..$n).map(|_| Cards::$c()).collect_vec());)+
+                v
+            }
+        };
+    }
+
     fn from_initial_cards(mut cards: Vec<Card>) -> PlayArea<'static> {
         let shuffler = Box::leak(Box::new(NoShuffle::new()));
         let mut area = PlayArea::new(shuffler);
@@ -122,19 +133,7 @@ mod tests {
     }
 
     fn standard_cards() -> Vec<Card> {
-        let cards = vec![
-            Cards::copper(),
-            Cards::copper(),
-            Cards::copper(),
-            Cards::copper(),
-            Cards::copper(),
-            Cards::copper(),
-            Cards::copper(),
-            Cards::estate(),
-            Cards::estate(),
-            Cards::estate(),
-        ];
-        cards
+        cards![copper 7; estate 3]
     }
 
     fn make_log() -> GameLog {
@@ -168,9 +167,7 @@ mod tests {
 
     #[test]
     fn discarded_cards_are_recycled_into_hand() {
-        let mut cards = vec![];
-        cards.append(&mut (0..5).map(|_| Cards::copper()).collect_vec());
-        cards.append(&mut (0..2).map(|_| Cards::estate()).collect_vec());
+        let cards = cards![copper 5; estate 2];
 
         let mut play_area = from_initial_cards(cards);
         // draw 5 and discard
