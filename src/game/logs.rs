@@ -50,7 +50,7 @@ impl GameLog {
         self.inner.record(event)
     }
     pub fn enter_turn<'a>(&self, player_name: &'a str, turn_counter: u8) -> GameLogSpan {
-        let data = [
+        let data: &[(&'static str, &dyn std::fmt::Debug)] = &[
             ("player_name", &player_name),
             ("turn_counter", &turn_counter),
         ];
