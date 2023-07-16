@@ -134,6 +134,16 @@ impl<'a> Game<'a> {
         self.populate_supply(Cards::province, 12);
     }
 
+    pub fn populate_prosperous_kingdom(&mut self) {
+        self.populate_supply(Cards::platinum, 12);
+        self.populate_supply(Cards::colony, 12);
+    }
+
+    pub fn populate_some_actions(&mut self) {
+        self.populate_supply(Cards::village, 10);
+        self.populate_supply(Cards::smithy, 10);
+    }
+
     fn populate_supply(&mut self, printer: impl Fn() -> Card, count: u8) {
         self.supply.add((0..count).map(|_| printer()).collect());
     }

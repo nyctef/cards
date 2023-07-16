@@ -18,6 +18,8 @@ fn main() {
     game.add_player("P1 [GFD]", &mut player_1, &shuffler);
     game.add_player("P2 [ST]", &mut player_2, &shuffler);
     game.populate_basic_kingdom();
+    game.populate_prosperous_kingdom();
+    game.populate_some_actions();
 
     let results = game.play_to_end();
     println!("{}", results);
