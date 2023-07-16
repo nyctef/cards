@@ -109,10 +109,10 @@ impl<'p> PlayArea<'p> {
                 .iter()
                 .for_each(|e| self.resolve_effect(e.clone(), counters, log)),
             CardEffect::AddActions(a) => counters.actions += a,
-            CardEffect::AddBuys(_) => todo!(),
+            // CardEffect::AddBuys(_) => todo!(),
             CardEffect::AddCoins(c) => counters.coins += c,
             CardEffect::DrawCards(n) => self.draw_n(n.into(), log),
-            CardEffect::TrashCardsFromHand(_) => todo!(),
+            // CardEffect::TrashCardsFromHand(_) => todo!(),
         }
     }
 

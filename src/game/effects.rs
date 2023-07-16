@@ -3,10 +3,10 @@ pub enum CardEffect {
     None,
     Sequence(Box<[CardEffect]>),
     AddActions(u8),
-    AddBuys(u8),
+    // AddBuys(u8),
     AddCoins(u8),
     DrawCards(u8),
-    TrashCardsFromHand(TrashInstruction),
+    // TrashCardsFromHand(TrashInstruction),
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

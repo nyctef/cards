@@ -1,7 +1,7 @@
 use std::rc::Rc;
 
 use game::{
-    logs::{ConsoleLog, GameLog, NullLog},
+    logs::{ConsoleLog, GameLog},
     players::Agents,
     shuffler::RandomShuffler,
     Game,
