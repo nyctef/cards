@@ -52,7 +52,7 @@ impl<'p> PlayArea<'p> {
                 self.hand.append(&mut cards);
                 // we didn't get all the cards we need, so shuffle the discard pile
                 // and turn it back into the deck:
-                assert!(self.deck.is_empty() && self.in_play.is_empty());
+                assert!(self.deck.is_empty());
 
                 log.record(GameEvent::Shuffle());
                 let mut shuffled = self.shuffler.shuffle(&mut self.discard);
