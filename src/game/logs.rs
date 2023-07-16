@@ -114,6 +114,7 @@ pub struct ConsoleLog {
     indent: RefCell<u64>,
 }
 impl ConsoleLog {
+    #[allow(dead_code)]
     pub fn new() -> Self {
         ConsoleLog { indent: 0.into() }
     }
