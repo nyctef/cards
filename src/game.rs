@@ -202,7 +202,7 @@ impl<'a> Game<'a> {
 pub struct PlayerResult<'a> {
     name: &'a str,
     cards: Vec<Card>,
-    score: u8,
+    pub score: u8,
 }
 
 impl Display for PlayerResult<'_> {

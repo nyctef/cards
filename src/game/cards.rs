@@ -1,6 +1,6 @@
 use super::effects::CardEffect;
 
-#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord, Hash)]
 pub struct CardName {
     name: &'static str,
 }
