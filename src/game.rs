@@ -28,6 +28,7 @@ pub struct Game<'a> {
     players: Vec<(&'a str, PlayArea<'a>, &'a mut dyn Agent)>,
     supply: Supply,
     log: GameLog,
+    turn_counter: u8,
     max_turns: u8,
 }
 impl<'a> Game<'a> {
@@ -36,6 +37,7 @@ impl<'a> Game<'a> {
             players: vec![],
             supply: Supply::new(),
             log,
+            turn_counter: 0,
             max_turns: 100,
         }
     }
@@ -51,7 +53,7 @@ impl<'a> Game<'a> {
     }
 
     fn play_one_turn(&mut self) {
-        self.max_turns -= 1;
+        self.turn_counter += 1;
         for (name, area, agent) in self.players.iter_mut() {
             let _span = self.log.enter_turn(name);
 
@@ -91,7 +93,7 @@ impl<'a> Game<'a> {
                 area.draw_hand(&self.log);
             }
 
-            if Self::has_ended(self.max_turns, &self.supply) {
+            if Self::has_ended(self.turn_counter, self.max_turns, &self.supply) {
                 return;
             }
         }
@@ -124,8 +126,8 @@ impl<'a> Game<'a> {
     /** Annoyingly we can't just take &self here, since we want to call this from another method:
      * https://stackoverflow.com/a/32405737
      */
-    fn has_ended(max_turns: u8, supply: &Supply) -> bool {
-        max_turns == 0
+    fn has_ended(turn_counter: u8, max_turns: u8, supply: &Supply) -> bool {
+        turn_counter >= max_turns
             || supply
                 .empty_supply_piles()
                 // TODO: check for type == victory rather than just by name
@@ -154,7 +156,7 @@ impl<'a> Game<'a> {
     pub fn play_to_end(&mut self) -> PlayerResults {
         self.deal_starting_hands();
 
-        while !Self::has_ended(self.max_turns, &self.supply) {
+        while !Self::has_ended(self.turn_counter, self.max_turns, &self.supply) {
             self.play_one_turn();
         }
         self.collect_cards_and_get_results()
