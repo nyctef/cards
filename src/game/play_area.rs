@@ -74,9 +74,12 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn play_card(&mut self, name: CardName, counters: &mut PlayerCounters) {
-        let card = self
-            .hand
-            .remove(self.hand.iter().position(|c| c.name == name).expect("TODO"));
+        let card = self.hand.remove(
+            self.hand
+                .iter()
+                .position(|c| c.name == name)
+                .expect("BUG: expected hand to contain card being played"),
+        );
 
         match card.effect {
             super::effects::CardEffect::None => {}
@@ -125,6 +128,17 @@ mod tests {
         };
     }
 
+    macro_rules! names {
+        ( $($c:ident $n:expr) ; +) => {
+            {
+                // based on https://danielkeep.github.io/tlborm/book/mbe-macro-rules.html
+                let mut v = Vec::new();
+                $(v.extend_from_slice(&[CardNames::$c; $n]);)+
+                v
+            }
+        };
+    }
+
     fn from_initial_cards(mut cards: Vec<Card>) -> PlayArea<'static> {
         let shuffler = Box::leak(Box::new(NoShuffle::new()));
         let mut area = PlayArea::new(shuffler);
@@ -146,13 +160,7 @@ mod tests {
         let mut play_area = from_initial_cards(cards);
         play_area.draw_hand(&make_log());
         assert_eq!(
-            vec![
-                CardNames::COPPER,
-                CardNames::COPPER,
-                CardNames::ESTATE,
-                CardNames::ESTATE,
-                CardNames::ESTATE,
-            ],
+            names![COPPER 2; ESTATE 3],
             play_area.inspect_hand().map(|c| c.name).collect_vec()
         );
     }
@@ -176,23 +184,16 @@ mod tests {
         // attempt to draw another 5: get some of the original discarded cards
         play_area.draw_hand(&make_log());
         assert_eq!(
-            vec![
-                CardNames::COPPER,
-                CardNames::COPPER,
-                CardNames::COPPER,
-                CardNames::ESTATE,
-                CardNames::ESTATE,
-            ],
+            names![COPPER 3; ESTATE 2],
             play_area.inspect_hand().map(|c| c.name).collect_vec()
         );
     }
 
     #[test]
     fn can_attempt_to_draw_five_even_if_deck_contains_fewer_cards() {
-        let mut cards = vec![];
-        cards.append(&mut (0..3).map(|_| Cards::copper()).collect_vec());
-        let mut play_area = from_initial_cards(cards);
+        let cards = cards![copper 3];
 
+        let mut play_area = from_initial_cards(cards);
         play_area.draw_hand(&make_log());
 
         assert_eq!(3, play_area.inspect_hand().count());

@@ -102,7 +102,9 @@ impl<'a> Game<'a> {
                 let buy_choice = agent.buy_phase(&buyable_cards.collect_vec());
                 match buy_choice {
                     BuyChoice::Buy(card) => {
-                        let purchased = self.supply.take_one(card).expect("TODO");
+                        let purchased = self.supply.take_one(card).expect(
+                            "BUG: expected to be able to buy a card the supply told us was buyable",
+                        );
                         area.gain_card_to_discard_pile(purchased);
                         self.log.record(GameEvent::CardBoughtGained(card));
                     }

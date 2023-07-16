@@ -34,9 +34,9 @@ agent input? (eg if we wanted to implement a server-based UI)
 ultimately the answer is probably to go back to the pure functional redux/elm
 style architecture
 
-TODO next:
+next:
 
-- Look into improving logging - GameEvent::Todo needs replacing
+- Look into improving logging - need more than one kind of GameEvent
   - Some kind of span/context for nested events?
   - could use tracing crates as an inspiration, but they're probably not
     worth trying to use directly
@@ -83,16 +83,16 @@ point does Card just become a thin wrapper around CardName plus ownership?
 it's slowly starting to come together! finally working on some win conditions.
 returning iterators from functions is kinda complicated
 
-TODO next:
+next:
 
 - implement silvers so that someone can actually win in a reasonable amount of
   time
 - implement deck shuffling to make things interesting
-- then carry on with the below TODOs
+- then carry on with the below ideas
 
 -------------------------------------------------------------------------------
 
-TODO next:
+next:
 
 - implement some kind of win condition
 - make a couple more bots
@@ -126,7 +126,7 @@ revised design to try next:
 
 -------------------------------------------------------------------------------
 
-TODO next:
+next:
 
 - replace Game.copper_count with some kind of "kingdom" or "supply" concept
 - might need a builder to easily set up different test scenarios
@@ -139,7 +139,7 @@ TODO next:
 
 -------------------------------------------------------------------------------
 
-TODO next:
+next:
 - add input logs / output logs to the game
 - start using some snapshot testing
 

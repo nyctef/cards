@@ -132,8 +132,8 @@ impl GameLogInner for ConsoleLog {
 
 impl ConsoleLog {
     fn print(&self, str: String) {
-        // TODO: is there a nicer way to build `indent` here?
-        let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
+        let indent = *self.indent.borrow();
+        let indent = "  ".repeat(indent as usize);
         println!("{}{}", indent, str)
     }
 }
@@ -171,8 +171,8 @@ pub mod tests {
         }
 
         fn print(&self, str: String) {
-            // TODO: is there a nicer way to build `indent` here?
-            let indent = "  ".repeat(TryInto::<usize>::try_into(*(self.indent.borrow())).unwrap());
+            let indent = *self.indent.borrow();
+            let indent = "  ".repeat(indent as usize);
             self.messages
                 .borrow_mut()
                 .push(format!("{}{}", indent, str))
