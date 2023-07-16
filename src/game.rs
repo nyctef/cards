@@ -130,9 +130,8 @@ impl<'a> Game<'a> {
         turn_counter >= max_turns
             || supply
                 .empty_supply_piles()
-                // TODO: check for type == victory rather than just by name
                 // TODO: check for 3/4 empty supply piles
-                .any(|s| s == CardNames::PROVINCE)
+                .any(|s| s == CardNames::PROVINCE || s == CardNames::COLONY)
     }
 
     fn collect_cards_and_get_results(&mut self) -> PlayerResults {

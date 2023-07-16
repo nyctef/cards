@@ -47,9 +47,12 @@ impl CardNames {
     pub const COPPER: CardName = CardName { name: "Copper" };
     pub const SILVER: CardName = CardName { name: "Silver" };
     pub const GOLD: CardName = CardName { name: "Gold" };
+    pub const _PLATINUM: CardName = CardName { name: "Platinum" };
+
     pub const ESTATE: CardName = CardName { name: "Estate" };
     pub const DUCHY: CardName = CardName { name: "Duchy" };
     pub const PROVINCE: CardName = CardName { name: "Province" };
+    pub const COLONY: CardName = CardName { name: "Colony" };
 }
 
 pub struct Cards {}
@@ -83,6 +86,10 @@ impl Cards {
     pub fn gold() -> Card {
         Self::basic_treasure(6, 3, CardNames::GOLD)
     }
+    pub fn _platinum() -> Card {
+        Self::basic_treasure(9, 5, CardNames::_PLATINUM)
+    }
+
     pub fn estate() -> Card {
         Self::basic_victory(2, 1, CardNames::ESTATE)
     }
@@ -91,5 +98,8 @@ impl Cards {
     }
     pub fn province() -> Card {
         Self::basic_victory(8, 6, CardNames::PROVINCE)
+    }
+    pub fn _colony() -> Card {
+        Self::basic_victory(11, 10, CardNames::COLONY)
     }
 }
