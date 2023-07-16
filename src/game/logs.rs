@@ -1,4 +1,5 @@
 use derive_more::Constructor;
+use itertools::Itertools;
 use std::{cell::RefCell, ops::Deref, rc::Rc};
 
 use self::span_details_are_private::*;
@@ -20,16 +21,12 @@ impl SpanData<'_> {
 }
 impl std::fmt::Debug for SpanData<'_> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let mut first = true;
-        for (name, value) in self.0 {
-            if first {
-                first = false;
-            } else {
-                write!(f, ", ")?;
-            }
-            write!(f, "{}={:?}", name, value)?;
-        }
-        Ok(())
+        let str = self
+            .0
+            .iter()
+            .map(|(k, v)| format!("{}={:?}", k, v))
+            .join(", ");
+        write!(f, "{}", str)
     }
 }
 
