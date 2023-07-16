@@ -29,12 +29,23 @@ impl<'p> PlayArea<'p> {
         }
     }
 
-    pub fn draw_hand(&mut self, log: &GameLog) {
-        let cards = self.deck.take_n(5);
+    #[cfg(test)]
+    pub fn test_from_hand(hand: Vec<Card>) -> Self {
+        PlayArea {
+            deck: CardPile::new(),
+            hand,
+            in_play: vec![],
+            discard: vec![],
+            shuffler: &crate::game::shuffler::NoShuffle,
+        }
+    }
+
+    pub fn draw_n(&mut self, n: usize, log: &GameLog) {
+        let cards = self.deck.take_n(n);
         match cards {
             DrawResult::Complete(mut cards) => {
                 self.hand.append(&mut cards);
-                log.record(GameEvent::DrawCards(5));
+                log.record(GameEvent::DrawCards(n));
             }
             DrawResult::Partial(mut cards, remaining) => {
                 log.record(GameEvent::DrawCards(cards.len()));
@@ -52,6 +63,10 @@ impl<'p> PlayArea<'p> {
                 self.hand.append(&mut remaining_cards)
             }
         }
+    }
+
+    pub fn draw_hand(&mut self, log: &GameLog) {
+        self.draw_n(5, log)
     }
 
     pub fn discard_hand(&mut self) {
@@ -74,7 +89,7 @@ impl<'p> PlayArea<'p> {
         self.hand.iter()
     }
 
-    pub fn play_card(&mut self, name: CardName, counters: &mut PlayerCounters) {
+    pub fn play_card(&mut self, name: CardName, counters: &mut PlayerCounters, log: &GameLog) {
         let card = self.hand.remove(
             self.hand
                 .iter()
@@ -82,17 +97,23 @@ impl<'p> PlayArea<'p> {
                 .expect("BUG: expected hand to contain card being played"),
         );
 
-        match card.effect {
-            CardEffect::None => {}
-            CardEffect::Sequence(_) => todo!(),
-            CardEffect::AddActions(_) => todo!(),
-            CardEffect::AddBuys(_) => todo!(),
-            CardEffect::AddCoins(treasure_value) => counters.coins += treasure_value,
-            CardEffect::DrawCards(_) => todo!(),
-            CardEffect::TrashCardsFromHand(_) => todo!(),
-        }
+        self.resolve_effect(card.effect.clone(), counters, log);
 
         self.in_play.push(card);
+    }
+
+    fn resolve_effect(&mut self, effect: CardEffect, counters: &mut PlayerCounters, log: &GameLog) {
+        match effect {
+            CardEffect::None => {}
+            CardEffect::Sequence(s) => s
+                .iter()
+                .for_each(|e| self.resolve_effect(e.clone(), counters, log)),
+            CardEffect::AddActions(a) => counters.actions += a,
+            CardEffect::AddBuys(_) => todo!(),
+            CardEffect::AddCoins(c) => counters.coins += c,
+            CardEffect::DrawCards(n) => self.draw_n(n.into(), log),
+            CardEffect::TrashCardsFromHand(_) => todo!(),
+        }
     }
 
     pub fn take_all_cards(&mut self) -> Vec<Card> {
@@ -198,5 +219,37 @@ mod tests {
         play_area.draw_hand(&make_log());
 
         assert_eq!(3, play_area.inspect_hand().count());
+    }
+
+    #[test]
+    fn playing_treasure_increases_coins() {
+        let mut play_area = PlayArea::test_from_hand(cards![copper 1; silver 1]);
+        let mut counters = PlayerCounters::new_turn();
+
+        play_area.play_card(CardNames::COPPER, &mut counters, &make_log());
+        assert_eq!(1, counters.coins);
+        play_area.play_card(CardNames::SILVER, &mut counters, &make_log());
+        assert_eq!(3, counters.coins);
+    }
+
+    #[test]
+    fn playing_smithy_draws_more_cards() {
+        let mut play_area = PlayArea::test_from_hand(cards![smithy 1]);
+        play_area.gain_cards_to_discard_pile(&mut cards![copper 3]);
+        let mut counters = PlayerCounters::new_turn();
+
+        play_area.play_card(CardNames::SMITHY, &mut counters, &make_log());
+        assert_eq!(3, play_area.inspect_hand().count());
+    }
+
+    #[test]
+    fn playing_village_increases_actions() {
+        let mut play_area = PlayArea::test_from_hand(cards![village 1]);
+        let mut counters = PlayerCounters::new_turn();
+
+        assert_eq!(1, counters.actions);
+        play_area.play_card(CardNames::VILLAGE, &mut counters, &make_log());
+        // note these tests assume that play_area isn't responsible for decrementing actions
+        assert_eq!(3, counters.actions);
     }
 }

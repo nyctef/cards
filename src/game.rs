@@ -71,7 +71,7 @@ impl<'a> Game<'a> {
                     let action_choice = agent.action_phase(&playable_cards);
                     match action_choice {
                         players::PlayChoice::Play(card) => {
-                            area.play_card(card, &mut player_counters);
+                            area.play_card(card, &mut player_counters, &self.log);
                             self.log
                                 .record(GameEvent::CardPlayed(card, player_counters.clone()));
                             player_counters.actions -= 1;
@@ -93,7 +93,7 @@ impl<'a> Game<'a> {
                     .map(|c| c.name)
                     .collect_vec()
                 {
-                    area.play_card(c, &mut player_counters);
+                    area.play_card(c, &mut player_counters, &self.log);
                     self.log
                         .record(GameEvent::CardPlayed(c, player_counters.clone()));
                 }

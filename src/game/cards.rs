@@ -18,7 +18,6 @@ pub struct CardType {
 
 pub struct CardTypes {}
 impl CardTypes {
-    #[allow(dead_code)] // TODO start implementing some actions
     pub const ACTION: CardType = CardType { name: "Action" };
     pub const TREASURE: CardType = CardType { name: "Treasure" };
     pub const VICTORY: CardType = CardType { name: "Victory" };
@@ -55,6 +54,9 @@ impl CardNames {
     pub const DUCHY: CardName = CardName { name: "Duchy" };
     pub const PROVINCE: CardName = CardName { name: "Province" };
     pub const COLONY: CardName = CardName { name: "Colony" };
+
+    pub const SMITHY: CardName = CardName { name: "Smithy" };
+    pub const VILLAGE: CardName = CardName { name: "Village" };
 }
 
 pub struct Cards {}
@@ -103,5 +105,27 @@ impl Cards {
     }
     pub fn _colony() -> Card {
         Self::basic_victory(11, 10, CardNames::COLONY)
+    }
+
+    pub fn smithy() -> Card {
+        Card {
+            name: CardNames::SMITHY,
+            coins_cost: 4,
+            vp_value: 0,
+            types: vec![CardTypes::ACTION],
+            effect: CardEffect::DrawCards(3),
+        }
+    }
+    pub fn village() -> Card {
+        Card {
+            name: CardNames::VILLAGE,
+            coins_cost: 3,
+            vp_value: 0,
+            types: vec![CardTypes::ACTION],
+            effect: CardEffect::Sequence(Box::new([
+                CardEffect::DrawCards(1),
+                CardEffect::AddActions(2),
+            ])),
+        }
     }
 }

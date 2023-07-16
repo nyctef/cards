@@ -1,4 +1,3 @@
-#[allow(dead_code)] // TODO
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum CardEffect {
     None,
