@@ -93,8 +93,3 @@ impl Cards {
         Self::basic_victory(8, 6, CardNames::PROVINCE)
     }
 }
-
-pub enum BuyChoice {
-    Buy(CardName),
-    None,
-}

@@ -13,10 +13,10 @@ use std::fmt::{Display, Formatter};
 
 use self::{
     logs::{GameEvent, GameLog},
-    model::{BuyChoice, Card, CardNames, CardTypes, Cards},
+    model::{Card, CardNames, CardTypes, Cards},
     play_area::PlayArea,
     player_counters::PlayerCounters,
-    players::Agent,
+    players::{Agent, BuyChoice},
     shuffler::Shuffler,
     supply::Supply,
 };

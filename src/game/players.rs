@@ -1,6 +1,11 @@
 use derive_more::Constructor;
 
-use super::model::{BuyChoice, CardName, CardNames};
+use super::model::{CardName, CardNames};
+
+pub enum BuyChoice {
+    Buy(CardName),
+    None,
+}
 
 /** An agent is a thing that decides what to do */
 pub trait Agent: std::fmt::Debug {
