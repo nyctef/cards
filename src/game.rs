@@ -1,8 +1,8 @@
 #![allow(clippy::expect_fun_call)]
 
 mod card_pile;
+mod cards;
 pub mod logs;
-mod model;
 mod play_area;
 mod player_counters;
 pub mod players;
@@ -12,8 +12,8 @@ mod supply;
 use std::fmt::{Display, Formatter};
 
 use self::{
+    cards::{Card, CardNames, CardTypes, Cards},
     logs::{GameEvent, GameLog},
-    model::{Card, CardNames, CardTypes, Cards},
     play_area::PlayArea,
     player_counters::PlayerCounters,
     players::{Agent, BuyChoice},

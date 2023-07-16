@@ -1,6 +1,6 @@
 use super::{
     card_pile::{CardPile, DrawResult},
-    model::{Card, CardName},
+    cards::{Card, CardName},
     player_counters::PlayerCounters,
 };
 use crate::{
@@ -97,8 +97,8 @@ mod tests {
 
     use super::*;
     use crate::game::{
+        cards::{CardNames, Cards},
         logs::tests::TestLog,
-        model::{CardNames, Cards},
         shuffler::NoShuffle,
     };
 

@@ -2,7 +2,7 @@ use derive_more::Constructor;
 use std::{cell::RefCell, ops::Deref, rc::Rc};
 
 use self::span_details_are_private::*;
-use super::{model::CardName, player_counters::PlayerCounters};
+use super::{cards::CardName, player_counters::PlayerCounters};
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum GameEvent {

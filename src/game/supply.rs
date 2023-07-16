@@ -1,6 +1,6 @@
 use super::{
     card_pile::CardPile,
-    model::{Card, CardName},
+    cards::{Card, CardName},
 };
 
 #[derive(Debug)]

@@ -1,6 +1,6 @@
 use itertools::Itertools;
 
-use super::model::Card;
+use super::cards::Card;
 
 pub struct CardPile {
     cards: Vec<Card>,
@@ -73,7 +73,7 @@ impl std::fmt::Debug for CardPile {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::game::model::{CardNames, Cards};
+    use crate::game::cards::{CardNames, Cards};
 
     #[test]
     fn added_cards_can_be_drawn() {
