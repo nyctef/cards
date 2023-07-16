@@ -5,7 +5,7 @@ expression: testlog.dump()
 DrawCards(0)
 Shuffle
 DrawCards(5)
-turn: Player 1
+turn: player_name="Player 1", turn_counter=1
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])

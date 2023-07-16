@@ -5,14 +5,14 @@ expression: testlog.dump()
 DrawCards(0)
 Shuffle
 DrawCards(5)
-turn: Player 1
+turn: player_name="Player 1", turn_counter=1
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
-turn: Player 1
+turn: player_name="Player 1", turn_counter=2
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
@@ -24,7 +24,7 @@ turn: Player 1
     DrawCards(0)
     Shuffle
     DrawCards(5)
-turn: Player 1
+turn: player_name="Player 1", turn_counter=3
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
@@ -34,7 +34,7 @@ turn: Player 1
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
-turn: Player 1
+turn: player_name="Player 1", turn_counter=4
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardBoughtGained([Copper])
@@ -42,7 +42,7 @@ turn: Player 1
     DrawCards(2)
     Shuffle
     DrawCards(3)
-turn: Player 1
+turn: player_name="Player 1", turn_counter=5
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
