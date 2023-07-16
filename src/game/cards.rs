@@ -1,3 +1,5 @@
+use super::effects::CardEffect;
+
 #[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub struct CardName {
     name: &'static str,
@@ -25,8 +27,8 @@ impl CardTypes {
 pub struct Card {
     pub name: CardName,
     pub coins_cost: u8,
-    pub treasure_value: u8,
     pub vp_value: u8,
+    pub effect: CardEffect,
     types: Vec<CardType>,
 }
 
@@ -61,9 +63,9 @@ impl Cards {
         Card {
             name,
             coins_cost,
-            treasure_value,
             vp_value: 0,
             types: vec![CardTypes::TREASURE],
+            effect: CardEffect::AddCoins(treasure_value),
         }
     }
 
@@ -71,9 +73,9 @@ impl Cards {
         Card {
             name,
             coins_cost,
-            treasure_value: 0,
             vp_value,
             types: vec![CardTypes::VICTORY],
+            effect: CardEffect::None,
         }
     }
 

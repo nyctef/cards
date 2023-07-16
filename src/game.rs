@@ -2,6 +2,7 @@
 
 mod card_pile;
 mod cards;
+mod effects;
 pub mod logs;
 mod play_area;
 mod player_counters;

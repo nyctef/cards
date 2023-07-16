@@ -77,7 +77,19 @@ impl<'p> PlayArea<'p> {
         let card = self
             .hand
             .remove(self.hand.iter().position(|c| c.name == name).expect("TODO"));
-        counters.coins += card.treasure_value;
+
+        match card.effect {
+            super::effects::CardEffect::None => {}
+            super::effects::CardEffect::Sequence(_) => todo!(),
+            super::effects::CardEffect::AddActions(_) => todo!(),
+            super::effects::CardEffect::AddBuys(_) => todo!(),
+            super::effects::CardEffect::AddCoins(treasure_value) => {
+                counters.coins += treasure_value
+            }
+            super::effects::CardEffect::DrawCards(_) => todo!(),
+            super::effects::CardEffect::TrashCardsFromHand(_) => todo!(),
+        }
+
         self.in_play.push(card);
     }
 
