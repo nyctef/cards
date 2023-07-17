@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::{rc::Rc, cmp::Ordering};
 
 use crate::game::{
     logs::{GameLog, NullLog},
@@ -30,12 +30,10 @@ fn main() {
         // TODO: figure out some nicer way to get at these results
         let p1_score = results.0.get(0).unwrap().score;
         let p2_score = results.0.get(1).unwrap().score;
-        if p1_score > p2_score {
-            p1_wins += 1;
-        } else if p2_score > p1_score {
-            p2_wins += 1;
-        } else {
-            draws += 1;
+        match p1_score.cmp(&p2_score) {
+            Ordering::Greater => p1_wins += 1,
+            Ordering::Equal => draws += 1,
+            Ordering::Less => p2_wins += 1,
         }
     }
 

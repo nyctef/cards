@@ -80,7 +80,7 @@ impl Agent for BoundedPriorities {
                 return BuyChoice::Buy(*candidate);
             }
         }
-        return BuyChoice::None;
+        BuyChoice::None
     }
 }
 
