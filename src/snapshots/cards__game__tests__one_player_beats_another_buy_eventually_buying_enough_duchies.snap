@@ -14,6 +14,7 @@ turn: player_name="P1 [GFD]", turn_counter=1
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -32,7 +33,6 @@ turn: player_name="P1 [GFD]", turn_counter=2
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(0)
@@ -54,8 +54,8 @@ turn: player_name="P1 [GFD]", turn_counter=3
   action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Duchy])
   cleanup: 
@@ -74,8 +74,8 @@ turn: player_name="P1 [GFD]", turn_counter=4
   action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(2)
@@ -96,9 +96,10 @@ turn: player_name="P1 [GFD]", turn_counter=5
   action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardBoughtGained([Silver])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=5
@@ -107,6 +108,7 @@ turn: player_name="P2 [ABC]", turn_counter=5
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -115,7 +117,8 @@ turn: player_name="P1 [GFD]", turn_counter=6
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(4)
@@ -128,6 +131,7 @@ turn: player_name="P2 [ABC]", turn_counter=6
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(4)
@@ -136,11 +140,10 @@ turn: player_name="P2 [ABC]", turn_counter=6
 turn: player_name="P1 [GFD]", turn_counter=7
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardBoughtGained([Duchy])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=7
@@ -149,7 +152,6 @@ turn: player_name="P2 [ABC]", turn_counter=7
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -157,8 +159,8 @@ turn: player_name="P1 [GFD]", turn_counter=8
   action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Duchy])
   cleanup: 
@@ -169,16 +171,17 @@ turn: player_name="P2 [ABC]", turn_counter=8
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=9
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
-    CardBoughtGained([Duchy])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(1)
     Shuffle
@@ -199,10 +202,9 @@ turn: player_name="P2 [ABC]", turn_counter=9
 turn: player_name="P1 [GFD]", turn_counter=10
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
@@ -233,16 +235,16 @@ turn: player_name="P2 [ABC]", turn_counter=11
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=12
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardBoughtGained([Silver])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(4)
     Shuffle
@@ -253,7 +255,6 @@ turn: player_name="P2 [ABC]", turn_counter=12
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(4)
@@ -262,10 +263,10 @@ turn: player_name="P2 [ABC]", turn_counter=12
 turn: player_name="P1 [GFD]", turn_counter=13
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
@@ -275,6 +276,8 @@ turn: player_name="P2 [ABC]", turn_counter=13
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -292,8 +295,6 @@ turn: player_name="P2 [ABC]", turn_counter=14
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -301,10 +302,9 @@ turn: player_name="P1 [GFD]", turn_counter=15
   action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 3C])
     CardPlayed([Silver], [1A 1B 5C])
-    CardPlayed([Copper], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 7C])
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
@@ -315,14 +315,16 @@ turn: player_name="P2 [ABC]", turn_counter=15
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=16
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(2)
@@ -335,7 +337,6 @@ turn: player_name="P2 [ABC]", turn_counter=16
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(2)
@@ -344,10 +345,9 @@ turn: player_name="P2 [ABC]", turn_counter=16
 turn: player_name="P1 [GFD]", turn_counter=17
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
-    CardPlayed([Copper], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
@@ -358,7 +358,6 @@ turn: player_name="P2 [ABC]", turn_counter=17
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -366,8 +365,7 @@ turn: player_name="P1 [GFD]", turn_counter=18
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardBoughtGained([Silver])
+    CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=18
@@ -384,9 +382,10 @@ turn: player_name="P2 [ABC]", turn_counter=18
 turn: player_name="P1 [GFD]", turn_counter=19
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardBoughtGained([Silver])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=19
@@ -395,6 +394,7 @@ turn: player_name="P2 [ABC]", turn_counter=19
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -402,9 +402,9 @@ turn: player_name="P1 [GFD]", turn_counter=20
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
-    CardPlayed([Copper], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
@@ -449,7 +449,7 @@ turn: player_name="P1 [GFD]", turn_counter=22
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 6C])
     CardBoughtGained([Duchy])
   cleanup: 
     DrawCards(5)
@@ -460,7 +460,6 @@ turn: player_name="P2 [ABC]", turn_counter=22
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -468,9 +467,9 @@ turn: player_name="P1 [GFD]", turn_counter=23
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardBoughtGained([Duchy])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=23
@@ -480,15 +479,16 @@ turn: player_name="P2 [ABC]", turn_counter=23
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=24
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -499,7 +499,6 @@ turn: player_name="P2 [ABC]", turn_counter=24
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -508,8 +507,8 @@ turn: player_name="P1 [GFD]", turn_counter=25
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -520,7 +519,6 @@ turn: player_name="P2 [ABC]", turn_counter=25
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -528,7 +526,8 @@ turn: player_name="P1 [GFD]", turn_counter=26
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardBoughtGained([Copper])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=26
@@ -538,16 +537,15 @@ turn: player_name="P2 [ABC]", turn_counter=26
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=27
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardBoughtGained([Silver])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardBoughtGained([Copper])
   cleanup: 
     DrawCards(1)
     Shuffle
@@ -559,6 +557,7 @@ turn: player_name="P2 [ABC]", turn_counter=27
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(1)
@@ -568,9 +567,7 @@ turn: player_name="P1 [GFD]", turn_counter=28
   action phase: 
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardBoughtGained([Silver])
+    CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=28
@@ -589,7 +586,8 @@ turn: player_name="P1 [GFD]", turn_counter=29
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -600,14 +598,18 @@ turn: player_name="P2 [ABC]", turn_counter=29
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=30
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -618,7 +620,6 @@ turn: player_name="P2 [ABC]", turn_counter=30
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -626,7 +627,8 @@ turn: player_name="P1 [GFD]", turn_counter=31
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -637,7 +639,6 @@ turn: player_name="P2 [ABC]", turn_counter=31
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -645,9 +646,9 @@ turn: player_name="P1 [GFD]", turn_counter=32
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
-    CardPlayed([Copper], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -667,7 +668,6 @@ turn: player_name="P1 [GFD]", turn_counter=33
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -678,7 +678,6 @@ turn: player_name="P2 [ABC]", turn_counter=33
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -687,8 +686,6 @@ turn: player_name="P1 [GFD]", turn_counter=34
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Copper], [1A 1B 7C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(2)
@@ -701,6 +698,7 @@ turn: player_name="P2 [ABC]", turn_counter=34
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(2)
@@ -709,9 +707,9 @@ turn: player_name="P2 [ABC]", turn_counter=34
 turn: player_name="P1 [GFD]", turn_counter=35
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -747,10 +745,9 @@ turn: player_name="P2 [ABC]", turn_counter=36
 turn: player_name="P1 [GFD]", turn_counter=37
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -769,8 +766,8 @@ turn: player_name="P1 [GFD]", turn_counter=38
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -788,10 +785,12 @@ turn: player_name="P2 [ABC]", turn_counter=38
 turn: player_name="P1 [GFD]", turn_counter=39
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
-    CardBoughtGained([Silver])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Copper], [1A 1B 9C])
+    CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=39
@@ -809,6 +808,7 @@ turn: player_name="P1 [GFD]", turn_counter=40
   buy phase: 
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -819,6 +819,7 @@ turn: player_name="P2 [ABC]", turn_counter=40
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
@@ -826,8 +827,9 @@ turn: player_name="P1 [GFD]", turn_counter=41
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -846,10 +848,10 @@ turn: player_name="P1 [GFD]", turn_counter=42
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardPlayed([Silver], [1A 1B 7C])
-    CardPlayed([Silver], [1A 1B 9C])
+    CardPlayed([Copper], [1A 1B 8C])
     CardBoughtGained([Province])
   cleanup: 
     DrawCards(4)
@@ -873,10 +875,7 @@ turn: player_name="P1 [GFD]", turn_counter=43
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardPlayed([Silver], [1A 1B 10C])
-    CardBoughtGained([Province])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=43
@@ -886,18 +885,17 @@ turn: player_name="P2 [ABC]", turn_counter=43
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
     CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=44
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardBoughtGained([Province])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=44
@@ -907,15 +905,16 @@ turn: player_name="P2 [ABC]", turn_counter=44
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardBoughtGained([Copper])
+    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=45
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -927,17 +926,13 @@ turn: player_name="P2 [ABC]", turn_counter=45
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
     CardPlayed([Copper], [1A 1B 5C])
-    CardBoughtGained([Copper])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=46
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardBoughtGained([Province])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=46
@@ -947,6 +942,7 @@ turn: player_name="P2 [ABC]", turn_counter=46
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=47
@@ -955,7 +951,9 @@ turn: player_name="P1 [GFD]", turn_counter=47
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Silver], [1A 1B 3C])
     CardPlayed([Silver], [1A 1B 5C])
-    CardBoughtGained([Silver])
+    CardPlayed([Silver], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
+    CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=47
@@ -971,8 +969,10 @@ turn: player_name="P2 [ABC]", turn_counter=47
 turn: player_name="P1 [GFD]", turn_counter=48
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=48
@@ -982,7 +982,6 @@ turn: player_name="P2 [ABC]", turn_counter=48
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=49
@@ -991,8 +990,7 @@ turn: player_name="P1 [GFD]", turn_counter=49
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardBoughtGained([Province])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=49
@@ -1002,14 +1000,13 @@ turn: player_name="P2 [ABC]", turn_counter=49
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=50
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1026,8 +1023,9 @@ turn: player_name="P2 [ABC]", turn_counter=50
 turn: player_name="P1 [GFD]", turn_counter=51
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1047,8 +1045,8 @@ turn: player_name="P1 [GFD]", turn_counter=52
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardPlayed([Silver], [1A 1B 10C])
+    CardPlayed([Copper], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
     CardBoughtGained([Province])
   cleanup: 
     DrawCards(2)
@@ -1069,10 +1067,12 @@ turn: player_name="P2 [ABC]", turn_counter=52
 turn: player_name="P1 [GFD]", turn_counter=53
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
-    CardBoughtGained([Silver])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=53
@@ -1082,6 +1082,7 @@ turn: player_name="P2 [ABC]", turn_counter=53
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=54
@@ -1089,8 +1090,8 @@ turn: player_name="P1 [GFD]", turn_counter=54
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Copper], [1A 1B 7C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1101,6 +1102,7 @@ turn: player_name="P2 [ABC]", turn_counter=54
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=55
@@ -1108,7 +1110,6 @@ turn: player_name="P1 [GFD]", turn_counter=55
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1127,7 +1128,8 @@ turn: player_name="P1 [GFD]", turn_counter=56
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1147,8 +1149,8 @@ turn: player_name="P1 [GFD]", turn_counter=57
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Silver], [1A 1B 3C])
     CardPlayed([Silver], [1A 1B 5C])
-    CardPlayed([Copper], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Silver], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
     CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
@@ -1168,8 +1170,7 @@ turn: player_name="P1 [GFD]", turn_counter=58
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardBoughtGained([Province])
+    CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=58
@@ -1179,7 +1180,6 @@ turn: player_name="P2 [ABC]", turn_counter=58
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=59
@@ -1203,9 +1203,9 @@ turn: player_name="P2 [ABC]", turn_counter=59
 turn: player_name="P1 [GFD]", turn_counter=60
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1215,15 +1215,14 @@ turn: player_name="P2 [ABC]", turn_counter=60
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Copper], [1A 1B 4C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=61
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1240,9 +1239,8 @@ turn: player_name="P2 [ABC]", turn_counter=61
 turn: player_name="P1 [GFD]", turn_counter=62
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Silver], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
     CardBoughtGained([Silver])
   cleanup: 
     DrawCards(5)
@@ -1255,13 +1253,16 @@ turn: player_name="P2 [ABC]", turn_counter=62
     CardPlayed([Copper], [1A 1B 4C])
     CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
-    DrawCards(5)
+    DrawCards(3)
+    Shuffle
+    DrawCards(2)
 turn: player_name="P1 [GFD]", turn_counter=63
   action phase: 
   buy phase: 
-    CardPlayed([Copper], [1A 1B 1C])
-    CardPlayed([Copper], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=63
@@ -1273,15 +1274,14 @@ turn: player_name="P2 [ABC]", turn_counter=63
     CardPlayed([Copper], [1A 1B 4C])
     CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
-    DrawCards(0)
-    Shuffle
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=64
   action phase: 
   buy phase: 
-    CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
   cleanup: 
     DrawCards(1)
     Shuffle
@@ -1302,7 +1302,8 @@ turn: player_name="P1 [GFD]", turn_counter=65
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Copper], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
     CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
@@ -1313,7 +1314,6 @@ turn: player_name="P2 [ABC]", turn_counter=65
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=66
@@ -1337,8 +1337,9 @@ turn: player_name="P1 [GFD]", turn_counter=67
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Silver], [1A 1B 4C])
-    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=67
@@ -1357,8 +1358,7 @@ turn: player_name="P1 [GFD]", turn_counter=68
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Silver], [1A 1B 8C])
-    CardBoughtGained([Province])
+    CardPlayed([Copper], [1A 1B 7C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=68
@@ -1395,7 +1395,8 @@ turn: player_name="P1 [GFD]", turn_counter=70
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
-    CardPlayed([Copper], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=70
@@ -1405,18 +1406,13 @@ turn: player_name="P2 [ABC]", turn_counter=70
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
-    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=71
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
-    CardPlayed([Copper], [1A 1B 3C])
-    CardPlayed([Silver], [1A 1B 5C])
-    CardPlayed([Silver], [1A 1B 7C])
-    CardPlayed([Silver], [1A 1B 9C])
-    CardBoughtGained([Province])
+    CardPlayed([Silver], [1A 1B 4C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P2 [ABC]", turn_counter=71
@@ -1425,6 +1421,8 @@ turn: player_name="P2 [ABC]", turn_counter=71
     CardPlayed([Copper], [1A 1B 1C])
     CardPlayed([Copper], [1A 1B 2C])
     CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
   cleanup: 
     DrawCards(5)
 turn: player_name="P1 [GFD]", turn_counter=72
@@ -1442,14 +1440,188 @@ turn: player_name="P2 [ABC]", turn_counter=72
     CardPlayed([Copper], [1A 1B 3C])
     CardPlayed([Copper], [1A 1B 4C])
   cleanup: 
-    DrawCards(5)
+    DrawCards(3)
+    Shuffle
+    DrawCards(2)
 turn: player_name="P1 [GFD]", turn_counter=73
   action phase: 
   buy phase: 
     CardPlayed([Silver], [1A 1B 2C])
     CardPlayed([Silver], [1A 1B 4C])
     CardPlayed([Silver], [1A 1B 6C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=73
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=74
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
+    CardPlayed([Silver], [1A 1B 9C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=74
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=75
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=75
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=76
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Copper], [1A 1B 6C])
     CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=76
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=77
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Silver], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=77
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=78
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Copper], [1A 1B 7C])
+  cleanup: 
+    DrawCards(1)
+    Shuffle
+    DrawCards(4)
+turn: player_name="P2 [ABC]", turn_counter=78
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=79
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Silver], [1A 1B 3C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=79
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=80
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Copper], [1A 1B 5C])
+    CardPlayed([Silver], [1A 1B 7C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=80
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=81
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardBoughtGained([Province])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P2 [ABC]", turn_counter=81
+  action phase: 
+  buy phase: 
+    CardPlayed([Copper], [1A 1B 1C])
+    CardPlayed([Copper], [1A 1B 2C])
+    CardPlayed([Copper], [1A 1B 3C])
+    CardPlayed([Copper], [1A 1B 4C])
+  cleanup: 
+    DrawCards(5)
+turn: player_name="P1 [GFD]", turn_counter=82
+  action phase: 
+  buy phase: 
+    CardPlayed([Silver], [1A 1B 2C])
+    CardPlayed([Silver], [1A 1B 4C])
+    CardPlayed([Silver], [1A 1B 6C])
+    CardPlayed([Silver], [1A 1B 8C])
+    CardPlayed([Silver], [1A 1B 10C])
     CardBoughtGained([Province])
   cleanup: 
     DrawCards(5)
