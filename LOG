@@ -1,3 +1,19 @@
+Got distracted by the idea of doing some performance investigation.
+Rust doesn't seem to have dedicated performance tools like js or dotnet,
+so we just use uiforetw to capture an etl trace and wpa to show a flamegraph.
+
+The important part is configuring wpa to only load symbols from the one process
+we care about so that loading symbols doesn't take forever.
+
+Anyway, found a quick win by switching from StdRng to a cheaper non-
+cryptographic prng.
+
+The other big cost seems to be allocation - mostly from the millions of tiny
+Vecs that we're creating and passing around to transfer card ownership. Fixing
+this probably requires a bit more of a rethink, though.
+
+-------------------------------------------------------------------------------
+
 Thinking about how to make actions work
 
 play_area.play_card is currently hardcoded to just add coins based on card
