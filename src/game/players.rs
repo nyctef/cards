@@ -2,7 +2,10 @@ use std::collections::HashMap;
 
 use derive_more::Constructor;
 
-use super::cards::{CardName, CardNames};
+use super::{
+    cards::{CardName, CardNames},
+    effects::CardEffect,
+};
 
 pub enum BuyChoice {
     Buy(CardName),
@@ -18,6 +21,37 @@ pub enum PlayChoice {
 pub trait Agent: std::fmt::Debug {
     fn action_phase(&mut self, playable_cards: &[CardName]) -> PlayChoice;
     fn buy_phase(&mut self, buyable_cards: &[CardName]) -> BuyChoice;
+}
+
+trait Agent2 {
+    fn request_choice(&mut self, choice: &ChoiceRequest) -> ChoiceResponse;
+}
+
+struct ChoiceResponse(Box<[CardName]>);
+
+// eg Library might have a stack like this:
+//  Phase(ActionPhase) > Card(Library) > Effect(DrawCards(7)) > Question(DiscardQ(<card>))
+// to ask the agent to maybe discard a card and keep drawing
+
+struct ChoiceRequest(Box<[TurnStateStackEntry]>);
+
+enum TurnStateStackEntry {
+    Phase(TurnPhase),
+    Card(CardName),
+    Effect(CardEffect),
+    Question(AgentQuestion),
+}
+
+enum TurnPhase {
+    Buy,
+    Action,
+    Cleanup,
+    Night,
+    /* ... */
+}
+
+enum AgentQuestion {
+    DiscardQ(CardName),
 }
 
 #[derive(Debug, Constructor)]
