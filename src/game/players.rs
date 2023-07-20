@@ -33,6 +33,10 @@ struct ChoiceResponse(Box<[CardName]>);
 //  Phase(ActionPhase) > Card(Library) > Effect(DrawCards(7)) > Question(DiscardQ(<card>))
 // to ask the agent to maybe discard a card and keep drawing
 
+// TODO: what about other choices? like "gain +1$ or +1 buy"
+// or Moat deciding whether to reveal your card or not (although there's not really any reason not to?)
+
+
 struct ChoiceRequest(Box<[TurnStateStackEntry]>);
 
 enum TurnStateStackEntry {
@@ -47,6 +51,7 @@ enum TurnPhase {
     Action,
     Cleanup,
     Night,
+    // some way of marking this, but another player's turn (in case of attacks?)
     /* ... */
 }
 
