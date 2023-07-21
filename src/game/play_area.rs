@@ -2,11 +2,9 @@ use super::{
     card_pile::{CardPile, DrawResult},
     cards::{Card, CardName},
     effects::CardEffect,
+    logs::{GameEvent, GameLog},
     player_counters::PlayerCounters,
-};
-use crate::{
-    game::logs::{GameEvent, GameLog},
-    game::shuffler::Shuffler,
+    shuffler::Shuffler,
 };
 
 #[derive(Debug)]
