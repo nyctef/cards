@@ -35,7 +35,10 @@ struct ChoiceResponse(Box<[CardName]>);
 
 // TODO: what about other choices? like "gain +1$ or +1 buy"
 // or Moat deciding whether to reveal your card or not (although there's not really any reason not to?)
-
+// those can probably just be extra values in a ChoiceResponse enum
+// I guess the main downside is that the request/responses are less well-typed?
+// would need to handle the cases where agents give invalid responses more explicitly.
+// or maybe just a few top-level methods like request_card_choice and request_effect_choice
 
 struct ChoiceRequest(Box<[TurnStateStackEntry]>);
 
