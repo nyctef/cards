@@ -17,6 +17,12 @@ impl CardPile {
         CardPile { cards: vec![] }
     }
 
+    pub fn with_initial_capacity(n: usize) -> CardPile {
+        CardPile {
+            cards: Vec::with_capacity(n),
+        }
+    }
+
     #[cfg(test)]
     pub fn from_cards(cards: Vec<Card>) -> Self {
         CardPile { cards }

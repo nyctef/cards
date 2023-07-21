@@ -19,10 +19,10 @@ pub struct PlayArea<'a> {
 impl<'p> PlayArea<'p> {
     pub fn new(shuffler: &'p dyn Shuffler<Card>) -> Self {
         PlayArea {
-            deck: CardPile::new(),
-            hand: CardPile::new(),
+            deck: CardPile::with_initial_capacity(20),
+            hand: CardPile::with_initial_capacity(5),
             in_play: vec![],
-            discard: CardPile::new(),
+            discard: CardPile::with_initial_capacity(20),
             shuffler,
         }
     }
