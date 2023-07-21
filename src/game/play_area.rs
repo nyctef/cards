@@ -1,5 +1,5 @@
 use super::{
-    card_pile::{CardPile, DrawResult, DrawResult2},
+    card_pile::{CardPile, DrawResult},
     cards::{Card, CardName},
     effects::CardEffect,
     player_counters::PlayerCounters,
@@ -43,10 +43,10 @@ impl<'p> PlayArea<'p> {
     pub fn draw_n(&mut self, n: usize, log: &GameLog) {
         let status = self.deck.move_n_to(n, &mut self.hand);
         match status {
-            DrawResult2::Complete => {
+            DrawResult::Complete => {
                 log.record(GameEvent::DrawCards(n));
             }
-            DrawResult2::Partial(remaining) => {
+            DrawResult::Partial(remaining) => {
                 log.record(GameEvent::DrawCards(n - remaining));
                 // we didn't get all the cards we need, so shuffle the discard pile
                 // and turn it back into the deck:

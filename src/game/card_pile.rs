@@ -8,12 +8,6 @@ pub struct CardPile {
 
 #[derive(Debug)]
 pub enum DrawResult {
-    Complete(Vec<Card>),
-    Partial(Vec<Card>, usize),
-}
-
-#[derive(Debug)]
-pub enum DrawResult2 {
     Complete,
     Partial(usize),
 }
@@ -23,23 +17,8 @@ impl CardPile {
         CardPile { cards: vec![] }
     }
 
-    pub fn from_cards(cards: Vec<Card>) -> Self {
-        CardPile { cards }
-    }
-
-    /** Try to draw `n` cards, and return whether we were successful */
-    pub fn take_n(&mut self, n: usize) -> DrawResult {
-        let cards = self.take_up_to_n(n);
-        if cards.len() == n {
-            DrawResult::Complete(cards)
-        } else {
-            let remaining = n - cards.len();
-            DrawResult::Partial(cards, remaining)
-        }
-    }
-
     /** Try to move `n` cards, and return whether we were successful */
-    pub fn move_n_to(&mut self, n: usize, other: &mut CardPile) -> DrawResult2 {
+    pub fn move_n_to(&mut self, n: usize, other: &mut CardPile) -> DrawResult {
         let len = self.cards.len();
         let index = len.saturating_sub(n);
         let count = len - index;
@@ -48,9 +27,9 @@ impl CardPile {
         other.cards.extend(cards);
 
         if count == n {
-            DrawResult2::Complete
+            DrawResult::Complete
         } else {
-            DrawResult2::Partial(n - count)
+            DrawResult::Partial(n - count)
         }
     }
 
@@ -126,11 +105,13 @@ mod tests {
         deck.add_range(&mut vec![Cards::silver()]);
         deck.add_range(&mut vec![Cards::gold()]);
 
+        let mut other = CardPile::new();
+
         // since the cards were added one at a time, they get drawn in reverse order
         assert_eq!(CardNames::GOLD, deck.peek().unwrap().name);
-        let _ = deck.take_n(1);
+        let _ = deck.move_n_to(1, &mut other);
         assert_eq!(CardNames::SILVER, deck.peek().unwrap().name);
-        let _ = deck.take_n(1);
+        let _ = deck.move_n_to(1, &mut other);
         assert_eq!(CardNames::COPPER, deck.peek().unwrap().name);
     }
 
@@ -138,9 +119,10 @@ mod tests {
     fn if_there_arent_enough_cards_then_remaining_cards_get_drawn() {
         let mut deck = CardPile::new();
         deck.add_range(&mut vec![Cards::copper(), Cards::silver(), Cards::gold()]);
+        let mut other = CardPile::new();
 
-        let cards = deck.take_n(5);
+        let result = deck.move_n_to(5, &mut other);
 
-        assert!(matches!(cards, DrawResult::Partial(_, 2)));
+        assert!(matches!(result, DrawResult::Partial(2)));
     }
 }
