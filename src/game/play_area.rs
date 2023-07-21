@@ -124,7 +124,7 @@ impl<'p> PlayArea<'p> {
 }
 
 #[cfg(test)]
-mod tests {
+pub mod tests {
     use itertools::Itertools;
     use std::rc::Rc;
 
@@ -156,6 +156,10 @@ mod tests {
             }
         };
     }
+
+    // TODO: should probably find a better place for these macros to live
+    pub(crate) use cards;
+    pub(crate) use names;
 
     fn from_initial_cards(mut cards: Vec<Card>) -> PlayArea<'static> {
         let shuffler = Box::leak(Box::new(NoShuffle::new()));

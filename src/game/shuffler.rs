@@ -43,21 +43,5 @@ impl<T> Shuffler<T> for RandomShuffler {
 #[derive(Debug, Constructor)]
 pub struct NoShuffle;
 impl<T> Shuffler<T> for NoShuffle {
-    fn shuffle(&self, input: &mut CardPile) {}
-}
-
-/**
- * Throws away input and returns cards from test data instead
- */
-#[derive(Debug)]
-pub struct PredestinedShuffler<T> {
-    cards: RefCell<Vec<T>>,
-}
-impl<T> Shuffler<T> for PredestinedShuffler<T>
-where
-    T: std::fmt::Debug,
-{
-    fn shuffle(&self, input: &mut CardPile) {
-        todo!()
-    }
+    fn shuffle(&self, _input: &mut CardPile) {}
 }

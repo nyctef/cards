@@ -17,6 +17,11 @@ impl CardPile {
         CardPile { cards: vec![] }
     }
 
+    #[cfg(test)]
+    pub fn from_cards(cards: Vec<Card>) -> Self {
+        CardPile { cards }
+    }
+
     /** Try to move `n` cards, and return whether we were successful */
     pub fn move_n_to(&mut self, n: usize, other: &mut CardPile) -> DrawResult {
         let len = self.cards.len();
@@ -46,10 +51,6 @@ impl CardPile {
     pub fn take_up_to_n(&mut self, n: usize) -> Vec<Card> {
         let index = self.cards.len().saturating_sub(n);
         self.cards.split_off(index)
-    }
-
-    pub fn add_range(&mut self, cards: &mut Vec<Card>) {
-        self.cards.append(cards)
     }
 
     pub fn peek(&self) -> Option<&Card> {
@@ -101,13 +102,11 @@ impl std::fmt::Debug for CardPile {
 mod tests {
     use super::*;
     use crate::game::cards::{CardNames, Cards};
+    use crate::game::play_area::tests::*;
 
     #[test]
     fn added_cards_can_be_drawn() {
-        let mut deck = CardPile::new();
-        deck.add_range(&mut vec![Cards::copper()]);
-        deck.add_range(&mut vec![Cards::silver()]);
-        deck.add_range(&mut vec![Cards::gold()]);
+        let mut deck = CardPile::from_cards(cards![copper 1; silver 1; gold 1]);
 
         let mut other = CardPile::new();
 
@@ -121,8 +120,7 @@ mod tests {
 
     #[test]
     fn if_there_arent_enough_cards_then_remaining_cards_get_drawn() {
-        let mut deck = CardPile::new();
-        deck.add_range(&mut vec![Cards::copper(), Cards::silver(), Cards::gold()]);
+        let mut deck = CardPile::from_cards(cards![copper 1; silver 1; gold 1]);
         let mut other = CardPile::new();
 
         let result = deck.move_n_to(5, &mut other);
