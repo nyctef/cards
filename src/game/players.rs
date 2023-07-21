@@ -27,6 +27,7 @@ trait Agent2 {
     fn request_choice(&mut self, choice: &ChoiceRequest) -> ChoiceResponse;
 }
 
+#[allow(dead_code)]
 struct ChoiceResponse(Box<[CardName]>);
 
 // eg Library might have a stack like this:
@@ -40,8 +41,10 @@ struct ChoiceResponse(Box<[CardName]>);
 // would need to handle the cases where agents give invalid responses more explicitly.
 // or maybe just a few top-level methods like request_card_choice and request_effect_choice
 
+#[allow(dead_code)]
 struct ChoiceRequest(Box<[TurnStateStackEntry]>);
 
+#[allow(dead_code)]
 enum TurnStateStackEntry {
     Phase(TurnPhase),
     Card(CardName),
@@ -49,6 +52,7 @@ enum TurnStateStackEntry {
     Question(AgentQuestion),
 }
 
+#[allow(dead_code)]
 enum TurnPhase {
     Buy,
     Action,
@@ -58,6 +62,7 @@ enum TurnPhase {
     /* ... */
 }
 
+#[allow(dead_code)]
 enum AgentQuestion {
     DiscardQ(CardName),
 }
