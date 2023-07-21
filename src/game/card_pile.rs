@@ -72,6 +72,10 @@ impl CardPile {
     pub fn temp_iter(&self) -> impl Iterator<Item = &Card> {
         self.cards.iter()
     }
+
+    pub fn move_all_to(&mut self, other: &mut CardPile) {
+        self.move_up_to_n_to(self.cards.len(), other)
+    }
 }
 
 impl From<Vec<Card>> for CardPile {

@@ -14,7 +14,7 @@ pub struct PlayArea<'a> {
     deck: CardPile,
     hand: CardPile,
     in_play: Vec<Card>,
-    discard: Vec<Card>,
+    discard: CardPile,
     shuffler: &'a dyn Shuffler<Card>,
 }
 
@@ -24,7 +24,7 @@ impl<'p> PlayArea<'p> {
             deck: CardPile::new(),
             hand: CardPile::new(),
             in_play: vec![],
-            discard: vec![],
+            discard: CardPile::new(),
             shuffler,
         }
     }
@@ -35,7 +35,7 @@ impl<'p> PlayArea<'p> {
             deck: CardPile::new(),
             hand: CardPile::from(hand),
             in_play: vec![],
-            discard: vec![],
+            discard: CardPile::new(),
             shuffler: &crate::game::shuffler::NoShuffle,
         }
     }
@@ -53,9 +53,9 @@ impl<'p> PlayArea<'p> {
                 assert!(self.deck.is_empty());
 
                 log.record(GameEvent::Shuffle());
-                let mut shuffled = self.shuffler.shuffle(&mut self.discard);
+                self.shuffler.shuffle(&mut self.discard);
+                self.discard.move_all_to(&mut self.deck);
 
-                self.deck.add_range(&mut shuffled);
                 // todo: fix log if we didn't actually get `remaining` cards back
                 log.record(GameEvent::DrawCards(remaining));
                 self.deck.move_up_to_n_to(remaining, &mut self.hand);
@@ -68,19 +68,19 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn discard_hand(&mut self) {
-        self.discard.append(&mut self.hand.temp_internal_vec());
+        self.hand.move_all_to(&mut self.discard);
     }
 
     pub fn discard_in_play(&mut self) {
-        self.discard.append(&mut self.in_play);
+        self.discard.temp_internal_vec().append(&mut self.in_play);
     }
 
     pub fn gain_cards_to_discard_pile(&mut self, cards: &mut Vec<Card>) {
-        self.discard.append(cards)
+        self.discard.temp_internal_vec().append(cards)
     }
 
     pub fn gain_card_to_discard_pile(&mut self, card: Card) {
-        self.discard.push(card)
+        self.discard.temp_internal_vec().push(card)
     }
 
     pub fn inspect_hand(&self) -> impl Iterator<Item = &Card> + '_ {
@@ -118,7 +118,7 @@ impl<'p> PlayArea<'p> {
         let mut res = vec![];
         res.append(&mut self.deck.take_all());
         res.append(&mut self.hand.temp_internal_vec());
-        res.append(&mut self.discard);
+        res.append(&mut self.discard.temp_internal_vec());
         res
     }
 }

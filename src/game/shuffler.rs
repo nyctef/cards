@@ -1,7 +1,6 @@
-use std::cell::RefCell;
-
 use derive_more::Constructor;
-use rand::{self, Rng, SeedableRng};
+use rand::{self, seq::SliceRandom, SeedableRng};
+use std::cell::RefCell;
 // We use Pcg64Mcg over StdRng because it's faster and we don't need cryptographic security.
 // Also referencing Pcg64Mcg directly instead of SmallRng since apparently SmallRng can
 // decide to change implementations, and it might be nice to have reproducible games
@@ -10,11 +9,10 @@ use rand::{self, Rng, SeedableRng};
 // of cards that got drawn rather than the seed used to pick them)
 use rand_pcg::Pcg64Mcg as PRng;
 
+use super::card_pile::CardPile;
+
 pub trait Shuffler<T>: std::fmt::Debug {
-    /**
-     * Consumes values from input and returns a shuffled Vec.
-     */
-    fn shuffle(&self, input: &mut Vec<T>) -> Vec<T>;
+    fn shuffle(&self, input: &mut CardPile);
 }
 
 #[derive(Debug)]
@@ -36,23 +34,16 @@ impl RandomShuffler {
     }
 }
 impl<T> Shuffler<T> for RandomShuffler {
-    fn shuffle(&self, input: &mut Vec<T>) -> Vec<T> {
-        let mut result = Vec::with_capacity(input.len());
+    fn shuffle(&self, input: &mut CardPile) {
         let mut rng = self.rng.borrow_mut();
-        while !input.is_empty() {
-            let index = rng.gen_range(0..input.len());
-            result.push(input.remove(index));
-        }
-        result
+        input.temp_internal_vec().shuffle(&mut *rng);
     }
 }
 
 #[derive(Debug, Constructor)]
 pub struct NoShuffle;
 impl<T> Shuffler<T> for NoShuffle {
-    fn shuffle(&self, input: &mut Vec<T>) -> Vec<T> {
-        input.drain(..).collect()
-    }
+    fn shuffle(&self, input: &mut CardPile) {}
 }
 
 /**
@@ -66,7 +57,7 @@ impl<T> Shuffler<T> for PredestinedShuffler<T>
 where
     T: std::fmt::Debug,
 {
-    fn shuffle(&self, input: &mut Vec<T>) -> Vec<T> {
-        self.cards.borrow_mut().drain(0..input.len()).collect()
+    fn shuffle(&self, input: &mut CardPile) {
+        todo!()
     }
 }
