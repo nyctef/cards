@@ -9,11 +9,7 @@ expression: "(game.players, game.supply)"
             PlayArea {
                 deck: [],
                 hand: [
-                    [Copper],
-                    [Copper],
-                    [Copper],
-                    [Copper],
-                    [Copper],
+                    "5 [Copper]",
                 ],
                 in_play: [],
                 discard: [

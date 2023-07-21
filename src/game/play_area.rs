@@ -1,5 +1,5 @@
 use super::{
-    card_pile::{CardPile, DrawResult},
+    card_pile::{CardPile, DrawResult, DrawResult2},
     cards::{Card, CardName},
     effects::CardEffect,
     player_counters::PlayerCounters,
@@ -12,7 +12,7 @@ use crate::{
 #[derive(Debug)]
 pub struct PlayArea<'a> {
     deck: CardPile,
-    hand: Vec<Card>,
+    hand: CardPile,
     in_play: Vec<Card>,
     discard: Vec<Card>,
     shuffler: &'a dyn Shuffler<Card>,
@@ -22,7 +22,7 @@ impl<'p> PlayArea<'p> {
     pub fn new(shuffler: &'p dyn Shuffler<Card>) -> Self {
         PlayArea {
             deck: CardPile::new(),
-            hand: vec![],
+            hand: CardPile::new(),
             in_play: vec![],
             discard: vec![],
             shuffler,
@@ -33,7 +33,7 @@ impl<'p> PlayArea<'p> {
     pub fn test_from_hand(hand: Vec<Card>) -> Self {
         PlayArea {
             deck: CardPile::new(),
-            hand,
+            hand: CardPile::from(hand),
             in_play: vec![],
             discard: vec![],
             shuffler: &crate::game::shuffler::NoShuffle,
@@ -41,15 +41,13 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn draw_n(&mut self, n: usize, log: &GameLog) {
-        let cards = self.deck.take_n(n);
-        match cards {
-            DrawResult::Complete(mut cards) => {
-                self.hand.append(&mut cards);
+        let status = self.deck.move_n_to(n, &mut self.hand);
+        match status {
+            DrawResult2::Complete => {
                 log.record(GameEvent::DrawCards(n));
             }
-            DrawResult::Partial(mut cards, remaining) => {
-                log.record(GameEvent::DrawCards(cards.len()));
-                self.hand.append(&mut cards);
+            DrawResult2::Partial(remaining) => {
+                log.record(GameEvent::DrawCards(n - remaining));
                 // we didn't get all the cards we need, so shuffle the discard pile
                 // and turn it back into the deck:
                 assert!(self.deck.is_empty());
@@ -58,9 +56,9 @@ impl<'p> PlayArea<'p> {
                 let mut shuffled = self.shuffler.shuffle(&mut self.discard);
 
                 self.deck.add_range(&mut shuffled);
+                // todo: fix log if we didn't actually get `remaining` cards back
                 log.record(GameEvent::DrawCards(remaining));
-                let mut remaining_cards = self.deck.take_up_to_n(remaining);
-                self.hand.append(&mut remaining_cards)
+                self.deck.move_up_to_n_to(remaining, &mut self.hand);
             }
         }
     }
@@ -70,7 +68,7 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn discard_hand(&mut self) {
-        self.discard.append(&mut self.hand);
+        self.discard.append(&mut self.hand.temp_internal_vec());
     }
 
     pub fn discard_in_play(&mut self) {
@@ -86,13 +84,13 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn inspect_hand(&self) -> impl Iterator<Item = &Card> + '_ {
-        self.hand.iter()
+        self.hand.temp_iter()
     }
 
     pub fn play_card(&mut self, name: CardName, counters: &mut PlayerCounters, log: &GameLog) {
-        let card = self.hand.remove(
-            self.hand
-                .iter()
+        let hand = &mut self.hand.temp_internal_vec();
+        let card = hand.remove(
+            hand.iter()
                 .position(|c| c.name == name)
                 .expect("BUG: expected hand to contain card being played"),
         );
@@ -119,7 +117,7 @@ impl<'p> PlayArea<'p> {
     pub fn take_all_cards(&mut self) -> Vec<Card> {
         let mut res = vec![];
         res.append(&mut self.deck.take_all());
-        res.append(&mut self.hand);
+        res.append(&mut self.hand.temp_internal_vec());
         res.append(&mut self.discard);
         res
     }

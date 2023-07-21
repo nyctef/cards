@@ -12,9 +12,19 @@ pub enum DrawResult {
     Partial(Vec<Card>, usize),
 }
 
+#[derive(Debug)]
+pub enum DrawResult2 {
+    Complete,
+    Partial(usize),
+}
+
 impl CardPile {
     pub fn new() -> Self {
         CardPile { cards: vec![] }
+    }
+
+    pub fn from_cards(cards: Vec<Card>) -> Self {
+        CardPile { cards }
     }
 
     /** Try to draw `n` cards, and return whether we were successful */
@@ -26,6 +36,31 @@ impl CardPile {
             let remaining = n - cards.len();
             DrawResult::Partial(cards, remaining)
         }
+    }
+
+    /** Try to move `n` cards, and return whether we were successful */
+    pub fn move_n_to(&mut self, n: usize, other: &mut CardPile) -> DrawResult2 {
+        let len = self.cards.len();
+        let index = len.saturating_sub(n);
+        let count = len - index;
+
+        let cards = self.cards.drain(index..);
+        other.cards.extend(cards);
+
+        if count == n {
+            DrawResult2::Complete
+        } else {
+            DrawResult2::Partial(n - count)
+        }
+    }
+
+    /** Try to move `n` cards, and just move fewer if there weren't enough */
+    pub fn move_up_to_n_to(&mut self, n: usize, other: &mut CardPile) {
+        let len = self.cards.len();
+        let index = len.saturating_sub(n);
+
+        let cards = self.cards.drain(index..);
+        other.cards.extend(cards);
     }
 
     /** Try to draw `n` cards, and just return fewer if there weren't enough */
@@ -48,6 +83,15 @@ impl CardPile {
 
     pub fn is_empty(&self) -> bool {
         self.cards.is_empty()
+    }
+
+    pub fn temp_internal_vec(&mut self) -> &mut Vec<Card> {
+        // TODO: replace usages with proper CardPile methods
+        &mut self.cards
+    }
+
+    pub fn temp_iter(&self) -> impl Iterator<Item = &Card> {
+        self.cards.iter()
     }
 }
 

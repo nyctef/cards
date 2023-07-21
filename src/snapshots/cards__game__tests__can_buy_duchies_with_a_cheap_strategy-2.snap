@@ -12,11 +12,8 @@ expression: "(game.players, game.supply)"
                     "3 [Copper]",
                 ],
                 hand: [
-                    [Copper],
-                    [Copper],
-                    [Copper],
-                    [Copper],
-                    [Estate],
+                    "4 [Copper]",
+                    "1 [Estate]",
                 ],
                 in_play: [],
                 discard: [
