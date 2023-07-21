@@ -93,21 +93,24 @@ impl<'p> PlayArea<'p> {
                 .expect("BUG: expected hand to contain card being played"),
         );
 
-        self.resolve_effect(card.effect.clone(), counters, log);
+        self.resolve_effect(&card.effect, counters, log);
 
         self.in_play.push(card);
     }
 
-    fn resolve_effect(&mut self, effect: CardEffect, counters: &mut PlayerCounters, log: &GameLog) {
+    fn resolve_effect(
+        &mut self,
+        effect: &CardEffect,
+        counters: &mut PlayerCounters,
+        log: &GameLog,
+    ) {
         match effect {
             CardEffect::None => {}
-            CardEffect::Sequence(s) => s
-                .iter()
-                .for_each(|e| self.resolve_effect(e.clone(), counters, log)),
+            CardEffect::Sequence(s) => s.iter().for_each(|e| self.resolve_effect(e, counters, log)),
             CardEffect::AddActions(a) => counters.actions += a,
             // CardEffect::AddBuys(_) => todo!(),
             CardEffect::AddCoins(c) => counters.coins += c,
-            CardEffect::DrawCards(n) => self.draw_n(n.into(), log),
+            CardEffect::DrawCards(n) => self.draw_n(*n as usize, log),
             // CardEffect::TrashCardsFromHand(_) => todo!(),
         }
     }
