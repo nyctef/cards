@@ -116,7 +116,11 @@ impl<'p> PlayArea<'p> {
     }
 
     pub fn take_all_cards(&mut self) -> Vec<Card> {
-        let mut res = vec![];
+        let mut res = Vec::with_capacity(
+            self.deck.temp_internal_vec().len()
+                + self.hand.temp_internal_vec().len()
+                + self.discard.temp_internal_vec().len(),
+        );
         res.append(&mut self.deck.take_all());
         res.append(&mut self.hand.temp_internal_vec());
         res.append(&mut self.discard.temp_internal_vec());
