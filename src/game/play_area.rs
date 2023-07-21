@@ -87,7 +87,7 @@ impl<'p> PlayArea<'p> {
 
     pub fn play_card(&mut self, name: CardName, counters: &mut PlayerCounters, log: &GameLog) {
         let hand = &mut self.hand.temp_internal_vec();
-        let card = hand.remove(
+        let card = hand.swap_remove(
             hand.iter()
                 .position(|c| c.name == name)
                 .expect("BUG: expected hand to contain card being played"),
