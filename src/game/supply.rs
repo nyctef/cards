@@ -73,4 +73,9 @@ impl Supply {
             .expect(format!("Missing supply pile for {:?}", card).as_str());
         pile.take_up_to_n(n)
     }
+
+    pub fn clear(&mut self) {
+        // TODO: some way to reuse the vecs here too?
+        self.supply_piles = vec![];
+    }
 }

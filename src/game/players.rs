@@ -21,6 +21,7 @@ pub enum PlayChoice {
 pub trait Agent: std::fmt::Debug {
     fn action_phase(&mut self, playable_cards: &[CardName]) -> PlayChoice;
     fn buy_phase(&mut self, buyable_cards: &[CardName]) -> BuyChoice;
+    fn reset(&mut self);
 }
 
 trait Agent2 {
@@ -89,6 +90,10 @@ impl Agent for BasicPriorities {
         }
         BuyChoice::None
     }
+
+    fn reset(&mut self) {
+        // no state to update
+    }
 }
 
 #[derive(Debug)]
@@ -128,6 +133,10 @@ impl Agent for BoundedPriorities {
             }
         }
         BuyChoice::None
+    }
+
+    fn reset(&mut self) {
+        self.purchased_cards.clear();
     }
 }
 

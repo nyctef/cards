@@ -148,6 +148,14 @@ impl<'a> Game<'a> {
         self.supply.add((0..count).map(|_| printer()).collect());
     }
 
+    pub fn reset(&mut self) {
+        self.turn_counter = 0;
+        self.supply.clear();
+        self.players
+            .iter_mut()
+            .for_each(|(_, _, agent)| agent.reset());
+    }
+
     fn deal_starting_hands(&mut self) {
         for (_, area, _) in self.players.iter_mut() {
             let mut coppers = self.supply.take_up_to_n(CardNames::COPPER, 7);
